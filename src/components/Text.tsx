@@ -15,18 +15,24 @@ export const fontCommon = css`
     sans-serif;
 `;
 
+/*
+ * font-size in rem - for mobile firefox view
+ */
 const H1 = styled.span`
-  ${fontCommon}
+  ${fontCommon};
+  font-size: 2rem;
   font-size: calc(24px + (72 - 24) * (100vw -400px) / (1600 -400));
 `;
 
 const H3 = styled.span`
-  ${fontCommon}
+  ${fontCommon};
+  font-size: 1.5rem;
   font-size: calc(12px + (48 - 12) * (100vw -400px) / (1600 -400));
 `;
 
 const H5 = styled.span`
-  ${fontCommon}
+  ${fontCommon};
+  font-size: 1rem;
   font-size: calc(12px + (24 - 12) * (100vw -400px) / (1600 -400));
 `;
 

@@ -32,6 +32,7 @@ const Nav = styled.nav`
   display: flex;
   position: sticky;
   top: 0;
+
   background: ${theme.colors.bg50};
 
   min-height: ${theme.sizes.nav.height}px;
