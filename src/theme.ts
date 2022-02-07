@@ -5,7 +5,8 @@ export const theme = {
     success: '#4caf50',
     danger: '#f44336 ',
 
-    bg: '#E5E4E8',
+    bg: '#fff',
+    bg50: 'rgba(255,255,255,0.50)',
     font: '#111',
   },
 
@@ -18,6 +19,7 @@ export const theme = {
 
   // in px
   sizes: {
+    nav: {height: 78},
     header: {height: 56},
     container: {width: 1200},
     footer: {height: 128},

@@ -1,15 +1,28 @@
 //import logo from './logo.svg';
 //import './App.css';
-import {Main} from './pages';
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import {Main, UI} from './pages';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Layout} from './containers';
+import {createGlobalStyle} from 'styled-components';
 
-const TestPage = () => {
+const App = () => {
   return (
-    <div>
-      <h1>test</h1>
-    </div>
+    <BrowserRouter>
+      <GlobalStyle />
+      {/* A <Routes> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="new" element={<NewPage />} />
+          <Route path="ui" element={<UI />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
+
+export default App;
 
 const NewPage = () => {
   return (
@@ -19,34 +32,9 @@ const NewPage = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">HOME</Link>
-            </li>
-            <li>
-              <Link to="/test">TEST</Link>
-            </li>
-            <li>
-              <Link to="/new">NEW</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Routes> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="test" element={<TestPage />} />
-          <Route path="new" element={<NewPage />} />
-        </Routes>
-      </div>
-    </Router>
-  );
-};
-
-export default App;
+const GlobalStyle = createGlobalStyle`
+  body {
+    position: relative;
+    margin: 0;
+  }
+`;
