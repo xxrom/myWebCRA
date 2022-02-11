@@ -1,13 +1,18 @@
-import styled from 'styled-components';
+import styled, {
+  CSSProperties,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 import {theme} from '../theme';
+import cx from 'classnames';
 
 export type ContainerProps = {
   children: React.ReactNode;
+  className?: FlattenSimpleInterpolation;
 };
 
-export const Container = ({children}: ContainerProps) => (
+export const Container = ({children, className}: ContainerProps) => (
   <Wrapper>
-    <Border>{children}</Border>
+    <Border className={cx(className)}>{children}</Border>
   </Wrapper>
 );
 
@@ -16,8 +21,8 @@ const Wrapper = styled.div`
 
   width: 100%;
 
-  min-height: 600px;
-  max-height: 60vh;
+  min-height: 500px;
+  max-height: 50vh;
 `;
 
 const Border = styled.div`
@@ -30,4 +35,5 @@ const Border = styled.div`
   margin: 0.5rem;
 
   border: 1px solid ${theme.colors.bg};
+  ${props => props.className};
 `;

@@ -6,7 +6,7 @@ export const theme = {
     danger: '#f44336 ',
 
     bg: '#fff',
-    bg50: 'rgba(255,255,255,0.50)',
+    bg50: 'rgba(225,225,225,0.90)',
     font: '#111',
   },
 
