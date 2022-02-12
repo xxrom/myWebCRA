@@ -33,6 +33,10 @@ const NewPage = () => {
 };
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     position: relative;
     margin: 0;

@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   width: 100%;
 
   min-height: 500px;
-  max-height: 50vh;
 `;
 
 const Border = styled.div`

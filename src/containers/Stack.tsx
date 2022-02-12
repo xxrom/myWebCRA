@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Container, Text} from '../components';
 import {theme} from '../theme';
 
@@ -6,16 +6,28 @@ export type StackProps = {};
 
 export const Stack = ({}: StackProps) => {
   return (
-    <Container>
+    <Container className={containerCss}>
+      <Text variant="h3" className={titleCss}>
+        Stack:
+      </Text>
+
       <Skills>
-        <Text variant="h3">JS/ TS</Text>
-        <Text variant="h3">Apollo/ GraphQL/ WS/ API</Text>
+        <Text variant="h3">JavaScript/ TypeScript</Text>
+        <Text variant="h3">React/ GraphQL/ WebSockets</Text>
         <Text variant="h3">Python/ Node</Text>
         <Text variant="h3">k8s/ k3s/ AWS/ Heroku</Text>
       </Skills>
     </Container>
   );
 };
+
+const containerCss = css`
+  flex-direction: column;
+`;
+
+const titleCss = css`
+  margin-bottom: 1rem;
+`;
 
 const Skills = styled.div`
   display: flex;
