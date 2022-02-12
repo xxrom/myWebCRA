@@ -1,7 +1,4 @@
-import styled, {
-  CSSProperties,
-  FlattenSimpleInterpolation,
-} from 'styled-components';
+import styled, {FlattenSimpleInterpolation} from 'styled-components';
 import {theme} from '../theme';
 import cx from 'classnames';
 

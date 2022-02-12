@@ -1,6 +1,6 @@
 import {Link, Outlet} from 'react-router-dom';
 import styled from 'styled-components';
-import {Text} from '../components';
+import {Button, Text} from '../components';
 import {fontCommon} from '../components/Text';
 import {theme} from '../theme';
 
@@ -13,11 +13,9 @@ export const Layout = () => (
             <Text variant="h3">Chernyshov Nikita</Text>
           </LinkMin>
         </Li>
+
         <Li>
-          <LinkMin to="/new">New</LinkMin>
-        </Li>
-        <Li>
-          <LinkMin to="/ui">UI</LinkMin>
+          <Button>Menu</Button>
         </Li>
       </Ul>
     </Nav>
@@ -27,6 +25,17 @@ export const Layout = () => (
     </main>
   </div>
 );
+
+/*
+
+          <Li>
+            <LinkMin to="/new">New</LinkMin>
+          </Li>
+          <Li>
+            <LinkMin to="/ui">UI</LinkMin>
+          </Li>
+
+ */
 
 const Nav = styled.nav`
   display: flex;
