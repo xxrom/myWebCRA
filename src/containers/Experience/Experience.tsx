@@ -55,7 +55,7 @@ const JobWrapper = styled.div`
   flex: 1;
 
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 1rem 2.5rem;
   box-sizing: border-box;
 `;
 
@@ -67,6 +67,7 @@ const ImageBox = styled.div`
   width: 100%;
   min-height: 250px;
   min-width: 250px;
+  max-width: 500px;
 
   margin-bottom: 0.5rem;
 `;
