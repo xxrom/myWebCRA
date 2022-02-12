@@ -14,10 +14,10 @@ export const Experience = ({}: ExperienceProps) => {
       <Text variant="h3">Experience:</Text>
 
       <Container className={jobsContainerCss}>
-        <Job imgSrc={sber}>1 SberBank</Job>
-        <Job imgSrc={yandex}>2 Yandex</Job>
-        <Job imgSrc={vtb}>3 VtbBank</Job>
-        <Job imgSrc={sphere}>4 Sphere</Job>
+        <Job imgSrc={sber}>SberBank</Job>
+        <Job imgSrc={yandex}>Yandex</Job>
+        <Job imgSrc={vtb}>VtbBank</Job>
+        <Job imgSrc={sphere}>Sphere</Job>
       </Container>
     </Container>
   );
