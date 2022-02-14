@@ -2,12 +2,13 @@ import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
 import {theme} from '../theme';
 import cx from 'classnames';
 
-export type Variant = 'h1' | 'h3' | 'h5';
+export type Variant = 'h1' | 'h3' | 'h5' | 'link-h3';
 
 type TextProps = {
   variant: Variant;
   children?: React.ReactNode;
   className?: FlattenSimpleInterpolation;
+  href?: string;
 };
 
 export const fontCommon = css`
@@ -27,10 +28,13 @@ const H1 = styled.span`
   ${props => props.className};
 `;
 
-const H3 = styled.span`
-  ${fontCommon};
+const h3FontSize = css`
   font-size: 1.5rem;
   font-size: calc(12px + (48 - 12) * (100vw -400px) / (1600 -400));
+`;
+const H3 = styled.span`
+  ${fontCommon};
+  ${h3FontSize};
   ${props => props.className};
 `;
 
@@ -41,7 +45,19 @@ const H5 = styled.span`
   ${props => props.className};
 `;
 
-export const Text = ({variant, children, className}: TextProps) => {
+const LinkH3 = styled.a`
+  ${fontCommon};
+  ${h3FontSize};
+  text-decoration: none;
+
+  &:hover {
+    color: ${theme.colors.fontHover};
+  }
+
+  ${props => props.className};
+`;
+
+export const Text = ({variant, children, className, ...other}: TextProps) => {
   switch (variant) {
     case 'h1':
       return <H1 className={cx(className)}>{children}</H1>;
@@ -49,6 +65,13 @@ export const Text = ({variant, children, className}: TextProps) => {
       return <H3 className={cx(className)}>{children}</H3>;
     case 'h5':
       return <H5 className={cx(className)}>{children}</H5>;
+
+    case 'link-h3':
+      return (
+        <LinkH3 href={other.href} className={cx(className)}>
+          {children}
+        </LinkH3>
+      );
 
     default:
       return <span className={cx(className)}>{children}</span>;

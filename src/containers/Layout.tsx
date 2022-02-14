@@ -10,9 +10,17 @@ export const Layout = () => (
       <Ul>
         <Li>
           <LinkMin to="/">
-            <Text variant="h3">Chernyshov Nikita</Text>
+            <Text variant="link-h3">Chernyshov Nikita</Text>
           </LinkMin>
         </Li>
+
+        <Li>
+          <Text variant="link-h3" href="mailto:chernyshovnm@gmail.com">
+            mail
+          </Text>
+        </Li>
+
+        <a href={'https://www.linkedin.com/in/chernyshovn/'}></a>
 
         <Li>
           <Button>Menu</Button>

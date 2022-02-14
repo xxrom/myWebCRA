@@ -5,6 +5,8 @@ import sber from './sber.png';
 import yandex from './yandex.jpg';
 import vtb from './vtb.png';
 import sphere from './sphere.png';
+import {useCallback, useState} from 'react';
+import cx from 'classnames';
 
 export type ExperienceProps = {};
 
@@ -29,10 +31,14 @@ type JobProps = {
 };
 
 const Job = ({imgSrc = sber, children}: JobProps) => {
+  const [isOpened, setIsOpened] = useState(false);
+
+  const onClick = useCallback(() => setIsOpened(!isOpened), [isOpened]);
+
   return (
     <JobWrapper>
-      <ImageBox>
-        <Image src={imgSrc} />
+      <ImageBox className={cx(isOpened && openedJobBoxCss)} onClick={onClick}>
+        {isOpened ? <span>Opened</span> : <Image src={imgSrc} />}
       </ImageBox>
 
       <Text variant="h1" className={jobCss}>
@@ -55,21 +61,36 @@ const JobWrapper = styled.div`
   flex: 1;
 
   align-items: center;
-  padding: 1rem 1rem 2.5rem;
+  padding: 2rem 2rem 2.5rem;
   box-sizing: border-box;
 `;
 
 const ImageBox = styled.div`
-  position: relative;
   display: flex;
   flex: 1;
   height: 100%;
   width: 100%;
   min-height: 250px;
   min-width: 250px;
-  max-width: 500px;
 
   margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid red;
+  overflow: hidden;
+
+  ${props => props.className};
+`;
+
+const openedJobBoxCss = css`
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+
+  border: 5px solid red;
 `;
 
 const jobCss = css`
@@ -78,13 +99,24 @@ const jobCss = css`
 `;
 
 const Image = styled.img`
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
 
   height: 100%;
   width: 100%;
 
-  z-index: -1;
   object-fit: cover;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    top: -5%;
+    left: -5%;
+    height: 110%;
+    width: 110%;
+    border-radius: 10px;
+    transform: translateY(-10px);
+  }
 `;

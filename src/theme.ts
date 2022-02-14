@@ -8,6 +8,7 @@ export const theme = {
     bg: '#fff',
     bg50: 'rgba(215,215,215,0.40)',
     font: '#111',
+    fontHover: '#555',
   },
 
   media: {
