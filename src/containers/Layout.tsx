@@ -54,6 +54,7 @@ const Nav = styled.nav`
 
   min-height: ${theme.sizes.nav.height}px;
   max-height: ${theme.sizes.nav.height}px;
+  z-index: 10;
 `;
 
 const Ul = styled.ul`

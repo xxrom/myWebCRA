@@ -37,8 +37,12 @@ const Job = ({imgSrc = sber, children}: JobProps) => {
 
   return (
     <JobWrapper>
-      <ImageBox className={cx(isOpened && openedJobBoxCss)} onClick={onClick}>
-        {isOpened ? <span>Opened</span> : <Image src={imgSrc} />}
+      <ImageBox>
+        {isOpened ? (
+          <Popup onClick={onClick}>Opened2</Popup>
+        ) : (
+          <Image onClick={onClick} src={imgSrc} />
+        )}
       </ImageBox>
 
       <Text variant="h1" className={jobCss}>
@@ -76,13 +80,14 @@ const ImageBox = styled.div`
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
   border: 1px solid red;
-  overflow: hidden;
 
   ${props => props.className};
 `;
 
-const openedJobBoxCss = css`
+const Popup = styled.div`
   position: fixed;
+  display: flex;
+  flex: 1;
 
   top: 0;
   left: 0;
