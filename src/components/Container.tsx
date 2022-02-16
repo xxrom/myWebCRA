@@ -15,9 +15,7 @@ export const Container = ({children, className}: ContainerProps) => (
 
 const Wrapper = styled.div`
   display: flex;
-
   width: 100%;
-
   min-height: 500px;
 `;
 

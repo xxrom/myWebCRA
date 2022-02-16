@@ -5,8 +5,24 @@ import sber from './sber.png';
 import yandex from './yandex.jpg';
 import vtb from './vtb.png';
 import sphere from './sphere.png';
-import {useCallback, useState} from 'react';
-import cx from 'classnames';
+import {useCallback, useEffect, useState} from 'react';
+
+const sberInfo: JobProps['info'] = {
+  title: 'Sber',
+  description: 'Sber job description',
+};
+const yandexInfo: JobProps['info'] = {
+  title: 'Yandex',
+  description: 'Yandex job description',
+};
+const vtbInfo: JobProps['info'] = {
+  title: 'VTB',
+  description: 'VTB job description',
+};
+const sphereInfo: JobProps['info'] = {
+  title: 'Sphere',
+  description: 'Sphere info',
+};
 
 export type ExperienceProps = {};
 
@@ -16,10 +32,10 @@ export const Experience = ({}: ExperienceProps) => {
       <Text variant="h3">Experience:</Text>
 
       <Container className={jobsContainerCss}>
-        <Job imgSrc={sber}>SberBank</Job>
-        <Job imgSrc={yandex}>Yandex</Job>
-        <Job imgSrc={vtb}>VtbBank</Job>
-        <Job imgSrc={sphere}>Sphere</Job>
+        <Job info={sberInfo} imgSrc={sber} />
+        <Job info={yandexInfo} imgSrc={yandex} />
+        <Job info={vtbInfo} imgSrc={vtb} />
+        <Job info={sphereInfo} imgSrc={sphere} />
       </Container>
     </Container>
   );
@@ -27,26 +43,56 @@ export const Experience = ({}: ExperienceProps) => {
 
 type JobProps = {
   imgSrc?: string;
-  children: string;
+  info: {
+    title: string;
+    description: string;
+  };
 };
 
-const Job = ({imgSrc = sber, children}: JobProps) => {
+const Job = ({imgSrc = sber, info}: JobProps) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const onClick = useCallback(() => setIsOpened(!isOpened), [isOpened]);
 
+  useEffect(() => {
+    // Hack for disabling scroll when popup opened
+    if (isOpened === true) {
+      const body = document.body;
+      body.style.height = '100vh';
+      body.style.overflowY = 'hidden';
+    } else {
+      const body = document.body;
+      body.style.height = '';
+      body.style.overflowY = '';
+    }
+  }, [isOpened]);
+
+  const {title = '', description = ''} = info;
+
+  // TODO: add markdown support for job description
+  const popupContent = (
+    <Popup onClick={onClick}>
+      <PopupContent>
+        <Text variant="h1" className={popupTitleCss}>
+          {title}
+        </Text>
+        <Text variant="h3" className={popupDescriptionCss}>
+          {description}
+        </Text>
+      </PopupContent>
+    </Popup>
+  );
+
   return (
     <JobWrapper>
       <ImageBox>
-        {isOpened ? (
-          <Popup onClick={onClick}>Opened2</Popup>
-        ) : (
-          <Image onClick={onClick} src={imgSrc} />
-        )}
+        {isOpened && popupContent}
+
+        <Image onClick={onClick} src={imgSrc} />
       </ImageBox>
 
-      <Text variant="h1" className={jobCss}>
-        {children}
+      <Text variant="h3" className={jobCss}>
+        {title}
       </Text>
     </JobWrapper>
   );
@@ -74,12 +120,11 @@ const ImageBox = styled.div`
   flex: 1;
   height: 100%;
   width: 100%;
-  min-height: 250px;
+  min-height: 150px;
   min-width: 250px;
 
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
-  border: 1px solid red;
 
   ${props => props.className};
 `;
@@ -87,20 +132,33 @@ const ImageBox = styled.div`
 const Popup = styled.div`
   position: fixed;
   display: flex;
-  flex: 1;
-
   top: 0;
   left: 0;
-
   height: 100vh;
   width: 100vw;
-
+  background: ${theme.colors.bg};
   border: 5px solid red;
+  z-index: 11;
 `;
 
 const jobCss = css`
   display: flex;
   color: ${theme.colors.font};
+`;
+
+const PopupContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+const popupTitleCss = css`
+  display: flex;
+  margin-bottom: 2rem;
+`;
+const popupDescriptionCss = css`
+  display: flex;
 `;
 
 const Image = styled.img`
@@ -115,13 +173,9 @@ const Image = styled.img`
 
   transition: all 0.3s ease;
   cursor: pointer;
+  border-radius: ${theme.sizes.borderRadius};
 
   &:hover {
-    top: -5%;
-    left: -5%;
-    height: 110%;
-    width: 110%;
-    border-radius: 10px;
-    transform: translateY(-10px);
+    transform: scale(1.1);
   }
 `;

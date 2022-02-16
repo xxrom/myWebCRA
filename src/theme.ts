@@ -25,6 +25,7 @@ export const theme = {
     container: {width: 1200},
     footer: {height: 128},
     modal: {width: 540},
+    borderRadius: '15px',
   },
 
   // in ms
