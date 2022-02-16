@@ -29,7 +29,7 @@ export const Layout = () => (
         </Li>
 
         <Li>
-          <Button>Menu</Button>
+          <Button>-</Button>
         </Li>
       </Ul>
     </Nav>

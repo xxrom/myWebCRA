@@ -5,6 +5,7 @@ export const theme = {
     secondary: '#2b2b2b',
     success: '#4caf50',
     danger: '#f44336 ',
+    ghost: '#eee',
 
     bg: '#fff',
     bgInverted: '#111',

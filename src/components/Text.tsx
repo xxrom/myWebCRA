@@ -80,13 +80,13 @@ export const Text = ({variant, children, className, ...other}: TextProps) => {
 
     case 'link-h3':
       return (
-        <LinkH3 href={other.href} className={cx(className)}>
+        <LinkH3 href={other?.href} className={cx(className)}>
           {children}
         </LinkH3>
       );
     case 'link-h5':
       return (
-        <LinkH5 href={other.href} className={cx(className)}>
+        <LinkH5 href={other?.href} className={cx(className)}>
           {children}
         </LinkH5>
       );
