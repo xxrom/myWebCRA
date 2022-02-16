@@ -1,14 +1,16 @@
 export const theme = {
   colors: {
     primary: '#111',
+    primaryInverted: '#eee',
     secondary: '#2b2b2b',
     success: '#4caf50',
     danger: '#f44336 ',
 
     bg: '#fff',
+    bgInverted: '#111',
     bg50: 'rgba(215,215,215,0.40)',
     font: '#111',
-    fontHover: '#555',
+    fontHover: '#666',
   },
 
   media: {

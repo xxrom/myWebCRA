@@ -1,5 +1,5 @@
 import {Link, Outlet} from 'react-router-dom';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {Button, Text} from '../components';
 import {fontCommon} from '../components/Text';
 import {theme} from '../theme';
@@ -15,12 +15,18 @@ export const Layout = () => (
         </Li>
 
         <Li>
-          <Text variant="link-h3" href="mailto:chernyshovnm@gmail.com">
+          <Text variant="link-h5" href="mailto:chernyshovnm@gmail.com">
             mail
           </Text>
         </Li>
 
-        <a href={'https://www.linkedin.com/in/chernyshovn/'}></a>
+        <Li>
+          <Text
+            variant="link-h5"
+            href="https://www.linkedin.com/in/chernyshovn/">
+            linkedin
+          </Text>
+        </Li>
 
         <Li>
           <Button>Menu</Button>
@@ -31,21 +37,28 @@ export const Layout = () => (
     <main>
       <Outlet />
     </main>
+
+    <Footer>
+      <Text className={footerItemCss} variant="h5">
+        Design by Chernyshov
+      </Text>
+
+      <Text
+        className={footerItemCss}
+        variant="link-h3"
+        href="mailto:chernyshovnm@gmail.com">
+        mail
+      </Text>
+
+      <Text
+        className={footerItemCss}
+        variant="link-h3"
+        href="https://www.linkedin.com/in/chernyshovn/">
+        linkedin
+      </Text>
+    </Footer>
   </div>
 );
-
-/*
-
-          <Li>
-            <LinkMin to="/new">New</LinkMin>
-          </Li>
-          <Li>
-            <LinkMin to="/ui">UI</LinkMin>
-          </Li>
-
-  background: ${theme.colors.bg50};
-
- */
 
 const Nav = styled.nav`
   display: flex;
@@ -71,6 +84,10 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   padding: 0 1rem;
+
+  @media screen and (max-width: 575px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const LinkMin = styled(Link)`
@@ -78,4 +95,24 @@ const LinkMin = styled(Link)`
 
   text-decoration: none;
   font-size: calc(24px + (48 - 24) * (100vw -400px) / (1600 -400));
+`;
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${theme.colors.bgInverted};
+  padding: 5rem 1rem;
+
+  @media screen and (max-width: 575px) {
+    padding: 3rem 0.5rem;
+  }
+`;
+const footerItemCss = css`
+  padding: 0 2rem;
+  color: ${theme.colors.primaryInverted};
+
+  @media screen and (max-width: 575px) {
+    padding: 0 0.5rem;
+  }
 `;

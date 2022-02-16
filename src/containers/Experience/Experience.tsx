@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {Container, Text} from '../../components';
+import {Container, Text, Image} from '../../components';
 import {theme} from '../../theme';
 import sber from './sber.png';
 import yandex from './yandex.jpg';
@@ -102,6 +102,7 @@ const containerCss = css`
   flex-direction: column;
 `;
 const jobsContainerCss = css`
+  flex-direction: row;
   flex-wrap: wrap;
 `;
 
@@ -113,6 +114,10 @@ const JobWrapper = styled.div`
   align-items: center;
   padding: 2rem 2rem 2.5rem;
   box-sizing: border-box;
+
+  @media screen and (max-width: 575px) {
+    padding: 1rem;
+  }
 `;
 
 const ImageBox = styled.div`
@@ -120,13 +125,17 @@ const ImageBox = styled.div`
   flex: 1;
   height: 100%;
   width: 100%;
-  min-height: 150px;
+  min-height: 250px;
+  max-height: 250px;
   min-width: 250px;
-
+  max-width: 50vw;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
-
   ${props => props.className};
+
+  @media screen and (max-width: 575px) {
+    max-width: 90vw;
+  }
 `;
 
 const Popup = styled.div`
@@ -159,23 +168,4 @@ const popupTitleCss = css`
 `;
 const popupDescriptionCss = css`
   display: flex;
-`;
-
-const Image = styled.img`
-  position: relative;
-  top: 0;
-  left: 0;
-
-  height: 100%;
-  width: 100%;
-
-  object-fit: cover;
-
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border-radius: ${theme.sizes.borderRadius};
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;

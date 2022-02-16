@@ -17,11 +17,13 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   min-height: 500px;
+  padding: 5rem 0;
 `;
 
 const Border = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
 
   align-items: center;
   justify-content: center;
