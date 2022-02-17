@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import {Container, Text} from '../components';
+import {blockMarginCss} from '../components/Text';
 import {theme} from '../theme';
 
 export type StackProps = {};
@@ -7,7 +8,7 @@ export type StackProps = {};
 export const Stack = ({}: StackProps) => {
   return (
     <Container className={containerCss}>
-      <Text variant="h3" className={titleCss}>
+      <Text variant="h3" className={blockMarginCss}>
         Stack:
       </Text>
 
@@ -25,14 +26,10 @@ const containerCss = css`
   flex-direction: column;
 `;
 
-const titleCss = css`
-  margin-bottom: 1rem;
-`;
-
 const Skills = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: ${theme.margin.content};
   border: 1px solid ${theme.colors.bg50};
 
   & > * {

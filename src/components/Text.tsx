@@ -95,3 +95,7 @@ export const Text = ({variant, children, className, ...other}: TextProps) => {
       return <span className={cx(className)}>{children}</span>;
   }
 };
+
+export const blockMarginCss = css`
+  margin-bottom: ${theme.margin.block};
+`;

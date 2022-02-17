@@ -1,5 +1,11 @@
 import styled from 'styled-components';
-import {Experience, Intro, Projects, Stack} from '../containers';
+import {
+  Experience,
+  Intro,
+  Projects,
+  Stack,
+  EducationAndHobby,
+} from '../containers';
 
 const Column = styled.div`
   display: flex;
@@ -16,6 +22,8 @@ export const Main = () => {
       <Experience />
 
       <Projects />
+
+      <EducationAndHobby />
     </Column>
   );
 };

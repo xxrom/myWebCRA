@@ -1,11 +1,12 @@
 import styled, {css} from 'styled-components';
-import {Container, Text, Image} from '../../components';
+import {Container, Text, Image, ImageBox} from '../../components';
 import {theme} from '../../theme';
 import sber from './sber.png';
 import yandex from './yandex.jpg';
 import vtb from './vtb.png';
 import sphere from './sphere.png';
 import {useCallback, useEffect, useState} from 'react';
+import {blockMarginCss} from '../../components/Text';
 
 const sberInfo: JobProps['info'] = {
   title: 'Sber',
@@ -29,13 +30,15 @@ export type ExperienceProps = {};
 export const Experience = ({}: ExperienceProps) => {
   return (
     <Container className={containerCss}>
-      <Text variant="h3">Experience:</Text>
+      <Text variant="h3" className={blockMarginCss}>
+        Experience:
+      </Text>
 
       <Container className={jobsContainerCss}>
-        <Job info={sberInfo} imgSrc={sber} />
-        <Job info={yandexInfo} imgSrc={yandex} />
-        <Job info={vtbInfo} imgSrc={vtb} />
         <Job info={sphereInfo} imgSrc={sphere} />
+        <Job info={vtbInfo} imgSrc={vtb} />
+        <Job info={yandexInfo} imgSrc={yandex} />
+        <Job info={sberInfo} imgSrc={sber} />
       </Container>
     </Container>
   );
@@ -91,7 +94,7 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
         <Image onClick={onClick} src={imgSrc} />
       </ImageBox>
 
-      <Text variant="h3" className={jobCss}>
+      <Text variant="h3" className={jobTitleCss}>
         {title}
       </Text>
     </JobWrapper>
@@ -116,25 +119,7 @@ const JobWrapper = styled.div`
   box-sizing: border-box;
 
   @media screen and (max-width: 575px) {
-    padding: 1rem;
-  }
-`;
-
-const ImageBox = styled.div`
-  display: flex;
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  min-height: 250px;
-  max-height: 250px;
-  min-width: 250px;
-  max-width: 50vw;
-  margin-bottom: 0.5rem;
-  transition: all 0.3s ease;
-  ${props => props.className};
-
-  @media screen and (max-width: 575px) {
-    max-width: 90vw;
+    padding: 1rem 1rem 2rem;
   }
 `;
 
@@ -149,12 +134,11 @@ const Popup = styled.div`
   border: 5px solid red;
   z-index: 11;
 `;
-
-const jobCss = css`
+const jobTitleCss = css`
   display: flex;
+  margin-top: 1rem;
   color: ${theme.colors.font};
 `;
-
 const PopupContent = styled.div`
   display: flex;
   flex-direction: column;

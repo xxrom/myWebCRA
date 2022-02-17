@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   min-height: 500px;
-  padding: 5rem 0;
+  padding-bottom: 5rem;
 `;
 
 const Border = styled.div`

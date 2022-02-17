@@ -1,0 +1,1 @@
+export {EducationAndHobby} from './EducationAndHobby';
