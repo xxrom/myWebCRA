@@ -13,6 +13,7 @@ type TextProps = {
 
 export const fontCommon = css`
   color: ${theme.colors.font};
+  text-align: center;
   font-weight: 300;
   font-family: 'Oswald', Roboto, 'Raleway', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
