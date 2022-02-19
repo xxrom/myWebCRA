@@ -25,15 +25,9 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           School of Robotic Technologies and Complex Automatization
         </Text>
         <Text variant="h3">---</Text>
-        <Text variant="h3">Glyndwˆr University (UK):</Text>
+        <Text variant="h3">Glyndwr University (UK):</Text>
         <Text variant="h5">Computer Science, Master’s degree</Text>
-        <Text variant="h3" className={blockMarginCss}>
-          ---
-        </Text>
-
-        <ImageBox className={cx(photoCss)}>
-          <Image src={me} />
-        </ImageBox>
+        <Text variant="h3">---</Text>
       </Container>
       <Container>
         <Text variant="h1" className={blockMarginCss}>
@@ -53,7 +47,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         </Text>
 
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
-          <Image src={hexapod} />
+          <Image isDisabled src={hexapod} />
         </ImageBox>
 
         <Text variant="h3">---</Text>
@@ -62,7 +56,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           ---
         </Text>
         <ImageBox className={cx(photoCss, blockMarginCss)}>
-          <Image src={snowboarding} />
+          <Image isDisabled src={snowboarding} />
         </ImageBox>
       </Container>
     </div>

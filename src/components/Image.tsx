@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import {theme} from '../theme';
 
-export const Image = styled.img`
+type ImageProps = {
+  isDisabled?: boolean;
+};
+
+export const Image = styled.img<ImageProps>`
   position: relative;
   top: 0;
   left: 0;
@@ -12,11 +16,11 @@ export const Image = styled.img`
   object-fit: cover;
 
   transition: all 0.3s ease;
-  cursor: pointer;
+  cursor: ${props => (props?.isDisabled ? 'default' : 'pointer')};
   border-radius: ${theme.sizes.borderRadius};
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(${props => (props?.isDisabled ? 1.0 : 1.05)});
   }
 `;
 
@@ -28,7 +32,7 @@ export const ImageBox = styled.div`
   min-height: 300px;
   max-height: 300px;
   min-width: 350px;
-  max-width: 60vw;
+  max-width: 50vw;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
 
