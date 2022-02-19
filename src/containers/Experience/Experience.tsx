@@ -34,7 +34,7 @@ export const Experience = ({}: ExperienceProps) => {
         Experience:
       </Text>
 
-      <Container className={jobsContainerCss}>
+      <Container className={jobsContainerCss} isEnabledPaddingBottom={false}>
         <Job info={sphereInfo} imgSrc={sphere} />
         <Job info={vtbInfo} imgSrc={vtb} />
         <Job info={yandexInfo} imgSrc={yandex} />

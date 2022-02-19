@@ -1,14 +1,19 @@
-import styled, {FlattenSimpleInterpolation} from 'styled-components';
+import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
 import {theme} from '../theme';
 import cx from 'classnames';
 
 export type ContainerProps = {
   children: React.ReactNode;
   className?: FlattenSimpleInterpolation;
+  isEnabledPaddingBottom?: boolean;
 };
 
-export const Container = ({children, className}: ContainerProps) => (
-  <Wrapper>
+export const Container = ({
+  children,
+  className,
+  isEnabledPaddingBottom = true,
+}: ContainerProps) => (
+  <Wrapper className={cx(isEnabledPaddingBottom && paddingBottomCss)}>
     <Border className={cx(className)}>{children}</Border>
   </Wrapper>
 );
@@ -17,7 +22,11 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   min-height: 500px;
-  padding-bottom: 5rem;
+
+  ${props => props.className};
+`;
+const paddingBottomCss = css`
+  padding-bottom: 7rem;
 `;
 
 const Border = styled.div`
@@ -30,6 +39,5 @@ const Border = styled.div`
 
   margin: 0.5rem;
 
-  border: 1px solid ${theme.colors.bg};
   ${props => props.className};
 `;

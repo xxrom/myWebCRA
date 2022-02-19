@@ -33,9 +33,9 @@ export const ImageBox = styled.div`
   transition: all 0.3s ease;
 
   @media screen and (max-width: 575px) {
-    min-height: 250px;
+    min-height: 150px;
     max-height: 250px;
-    min-width: 250px;
+    min-width: 150px;
     max-width: 90vw;
   }
 
