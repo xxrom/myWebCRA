@@ -1,6 +1,8 @@
-import {Container, Text} from '../components';
-import styled, {css} from 'styled-components';
+import {Container, Image, ImageBox, Text} from '../components';
+import {css} from 'styled-components';
 import {theme} from '../theme';
+import cx from 'classnames';
+import me from '../containers/EducationAndHobby/me.jpg';
 
 export type IntroProps = {};
 
@@ -14,6 +16,10 @@ export const Intro = ({}: IntroProps) => {
       <Text variant="h3" className={marginCss}>
         Software developer
       </Text>
+
+      <ImageBox className={cx(photoCss)}>
+        <Image src={me} />
+      </ImageBox>
     </Container>
   );
 };
@@ -21,7 +27,22 @@ export const Intro = ({}: IntroProps) => {
 const marginCss = css`
   margin-bottom: 2rem;
 `;
+
 const wrapperCss = css`
   flex-direction: column;
   border: 1px solid ${theme.colors.bg};
+`;
+
+const photoCss = css`
+  min-height: 30vw;
+  max-height: 30vw;
+  min-width: 40vw;
+  max-width: 40vw;
+
+  @media screen and (max-width: 575px) {
+    min-height: 30vw;
+    max-height: 30vw;
+    min-width: 40vw;
+    max-width: 40vw;
+  }
 `;

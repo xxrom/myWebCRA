@@ -6,6 +6,7 @@ import {
   Stack,
   EducationAndHobby,
 } from '../containers';
+import {ScrollProvider} from '../Context';
 
 const Column = styled.div`
   display: flex;
@@ -14,16 +15,18 @@ const Column = styled.div`
 
 export const Main = () => {
   return (
-    <Column>
-      <Intro />
+    <ScrollProvider>
+      <Column>
+        <Intro />
 
-      <Stack />
+        <Stack />
 
-      <Experience />
+        <Experience />
 
-      <Projects />
+        <Projects />
 
-      <EducationAndHobby />
-    </Column>
+        <EducationAndHobby />
+      </Column>
+    </ScrollProvider>
   );
 };

@@ -30,7 +30,7 @@ export type ExperienceProps = {};
 export const Experience = ({}: ExperienceProps) => {
   return (
     <Container className={containerCss}>
-      <Text variant="h3" className={blockMarginCss}>
+      <Text variant="h1" className={blockMarginCss}>
         Experience:
       </Text>
 

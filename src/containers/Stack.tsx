@@ -8,15 +8,17 @@ export type StackProps = {};
 export const Stack = ({}: StackProps) => {
   return (
     <Container className={containerCss}>
-      <Text variant="h3" className={blockMarginCss}>
+      <Text variant="h1" className={blockMarginCss}>
         Stack:
       </Text>
 
       <Skills>
+        <Text variant="h3">---</Text>
         <Text variant="h3">JavaScript/ TypeScript</Text>
         <Text variant="h3">React/ GraphQL/ WebSockets</Text>
         <Text variant="h3">Python/ Node</Text>
         <Text variant="h3">k8s/ k3s/ AWS/ Heroku</Text>
+        <Text variant="h3">---</Text>
       </Skills>
     </Container>
   );

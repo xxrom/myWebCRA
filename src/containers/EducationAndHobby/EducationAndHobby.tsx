@@ -13,7 +13,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
   return (
     <div>
       <Container>
-        <Text variant="h3" className={blockMarginCss}>
+        <Text variant="h1" className={blockMarginCss}>
           Education:
         </Text>
 
@@ -36,17 +36,22 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         </ImageBox>
       </Container>
       <Container>
-        <Text variant="h3" className={blockMarginCss}>
+        <Text variant="h1" className={blockMarginCss}>
           Hobbies:
         </Text>
 
         <Text variant="h3">---</Text>
-        <Text variant="h3">
-          Robots: hexapod, balance robot (arduino, raspberry pi)
-        </Text>
+        <Text variant="h3">Robots</Text>
+        <Text variant="h5">Hexapod, balance robot (arduino, raspberry pi)</Text>
+
+        <Text variant="h3">---</Text>
+        <Text variant="h3">3D printing/ Inventor(CAD)</Text>
+        <Text variant="h5">Creating and printing different models</Text>
+
         <Text variant="h3" className={blockMarginCss}>
           ---
         </Text>
+
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image src={hexapod} />
         </ImageBox>

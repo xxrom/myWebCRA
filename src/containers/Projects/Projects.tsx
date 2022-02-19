@@ -11,7 +11,7 @@ const activeSoulUrl = 'https://active-soul.netlify.app/';
 export const Projects = ({}: ProjectsProps) => {
   return (
     <Container>
-      <Text variant="h3" className={blockMarginCss}>
+      <Text variant="h1" className={blockMarginCss}>
         Projects:
       </Text>
 
