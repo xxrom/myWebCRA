@@ -28,19 +28,20 @@ const vtbInfo: JobProps['info'] = {
   description: `
   Jan. 2019 - Jun. 2021: **VTB**
 
-  **Project**: multi-user 👫 online editor 📝 
-  
-  - 👉 like MS Word based on markdown
+    **Project**: 
+
+  - 👉 multi-user 👫 online editor 📝 
+  - 👉 like online MS Word based on markdown
   - 👉 chats / comments
   - 👉 version control
   - 👉 custom plugins
 
   **Responsiblities**:
 
-  - 🪴 built and maintained projects from scratch
+  - 🪴  built and maintained projects from scratch
   - ◽ development / team-leading / project actualization / testing
   - 🚀 optimized project build for 40% from 3min to 1:50 min 
-  - ◽ mentorship team members
+  - ◽ mentorship of team members
   - 👨‍💻 interviewing for team (20+ candidates)
    
   `,
