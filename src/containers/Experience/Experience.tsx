@@ -28,12 +28,12 @@ const vtbInfo: JobProps['info'] = {
   description: `
   Jan. 2019 - Jun. 2021: **VTB**
 
-  **Project** - multi-user 👫 online editor 📝 
+  **Project**: multi-user 👫 online editor 📝 
   
   - 👉 like MS Word based on markdown
-  - ⚪ chats / comments
-  - ⚪ version control
-  - ⚪ custom plugins
+  - 👉 chats / comments
+  - 👉 version control
+  - 👉 custom plugins
 
   **Responsiblities**:
 
