@@ -13,12 +13,10 @@ export const Stack = ({}: StackProps) => {
       </Text>
 
       <Skills>
-        <Text variant="h3">---</Text>
         <Text variant="h3">JavaScript/ TypeScript</Text>
         <Text variant="h3">React/ GraphQL/ WebSockets</Text>
         <Text variant="h3">Python/ Node</Text>
         <Text variant="h3">k8s/ k3s/ AWS/ Heroku</Text>
-        <Text variant="h3">---</Text>
       </Skills>
     </Container>
   );
