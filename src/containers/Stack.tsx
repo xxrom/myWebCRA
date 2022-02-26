@@ -5,6 +5,19 @@ import {theme} from '../theme';
 
 export type StackProps = {};
 
+/*
+import MD from 'react-markdown';
+const stackMD = `
+- **JavaScript** / TypeScript
+- **React** / *GraphQL* / WebSockets 
+- *Python* / Node
+- *k8s* / **k3s** / AWS / Heroku
+`;
+        <Text variant="h3" isColumn={true}>
+          <MD>{stackMD}</MD>
+        </Text>
+ */
+
 export const Stack = ({}: StackProps) => {
   return (
     <Container className={containerCss}>
@@ -13,10 +26,16 @@ export const Stack = ({}: StackProps) => {
       </Text>
 
       <Skills>
-        <Text variant="h3">JavaScript/ TypeScript</Text>
-        <Text variant="h3">React/ GraphQL/ WebSockets</Text>
-        <Text variant="h3">Python/ Node</Text>
-        <Text variant="h3">k8s/ k3s/ AWS/ Heroku</Text>
+        <Text variant="h3">
+          <b>JavaScript</b> / TypeScript
+        </Text>
+        <Text variant="h3">
+          <b>React</b> / GraphQL / WebSockets
+        </Text>
+        <Text variant="h3">Python / Node</Text>
+        <Text variant="h3">
+          k8s / <b>k3s</b> / AWS / Heroku
+        </Text>
       </Skills>
     </Container>
   );
@@ -31,6 +50,7 @@ const Skills = styled.div`
   flex-direction: column;
   padding: ${theme.margin.content};
   border: 1px solid ${theme.colors.bg50};
+  border-radius: ${theme.sizes.borderRadius};
 
   & > * {
     margin-bottom: 1rem;

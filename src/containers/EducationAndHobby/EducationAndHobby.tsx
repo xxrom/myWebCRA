@@ -3,7 +3,6 @@ import {Container, Text, Image, ImageBox} from '../../components';
 import {blockMarginCss} from '../../components/Text';
 import cx from 'classnames';
 
-import me from './me.jpg';
 import hexapod from './hexapod.png';
 import snowboarding from './snowboarding.jpeg';
 
@@ -43,7 +42,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         <Text variant="h5">Creating and printing different models</Text>
 
         <Text variant="h3" className={blockMarginCss}>
-          ---
+          -
         </Text>
 
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>

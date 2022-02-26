@@ -1,8 +1,8 @@
-import {Container, Image, ImageBox, Text} from '../components';
+import {Container, Image, ImageBox, Text} from '../../components';
 import {css} from 'styled-components';
-import {theme} from '../theme';
+import {theme} from '../../theme';
 import cx from 'classnames';
-import me from '../containers/EducationAndHobby/me.jpg';
+import me from './me.jpg';
 
 export type IntroProps = {};
 

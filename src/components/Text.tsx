@@ -5,9 +5,13 @@ import cx from 'classnames';
 export type Variant = 'h1' | 'h3' | 'h5' | 'link-h3' | 'link-h5';
 
 type TextProps = {
+  // Style Variants for text view
   variant: Variant;
   children?: React.ReactNode;
-  className?: FlattenSimpleInterpolation;
+  className?: FlattenSimpleInterpolation | string;
+  // Is column block view ?
+  isColumn?: boolean;
+  // href for links
   href?: string;
 };
 
@@ -70,33 +74,47 @@ const LinkH5 = styled.a`
   ${props => props.className};
 `;
 
-export const Text = ({variant, children, className, ...other}: TextProps) => {
+export const Text = ({
+  variant,
+  children,
+  className,
+  isColumn = false,
+  ...other
+}: TextProps) => {
+  const commonClassName = cx(className, isColumn && isColumnCss);
+
   switch (variant) {
     case 'h1':
-      return <H1 className={cx(className)}>{children}</H1>;
+      return <H1 className={commonClassName}>{children}</H1>;
     case 'h3':
-      return <H3 className={cx(className)}>{children}</H3>;
+      return <H3 className={commonClassName}>{children}</H3>;
     case 'h5':
-      return <H5 className={cx(className)}>{children}</H5>;
+      return <H5 className={commonClassName}>{children}</H5>;
 
     case 'link-h3':
       return (
-        <LinkH3 href={other?.href} className={cx(className)}>
+        <LinkH3 href={other?.href} className={commonClassName}>
           {children}
         </LinkH3>
       );
     case 'link-h5':
       return (
-        <LinkH5 href={other?.href} className={cx(className)}>
+        <LinkH5 href={other?.href} className={commonClassName}>
           {children}
         </LinkH5>
       );
 
     default:
-      return <span className={cx(className)}>{children}</span>;
+      return <span className={commonClassName}>{children}</span>;
   }
 };
 
 export const blockMarginCss = css`
   margin-bottom: ${theme.margin.block};
+`;
+
+const isColumnCss = css`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 `;

@@ -1,4 +1,6 @@
 import styled, {css} from 'styled-components';
+import MD from 'react-markdown';
+import cx from 'classnames';
 import {Container, Text, Image, ImageBox} from '../../components';
 import {theme} from '../../theme';
 import sber from './sber.png';
@@ -7,22 +9,47 @@ import vtb from './vtb.png';
 import sphere from './sphere.png';
 import {useCallback, useEffect, useState} from 'react';
 import {blockMarginCss} from '../../components/Text';
+import {commonMdCss} from '../../commonStyles';
 
 const sberInfo: JobProps['info'] = {
   title: 'Sber',
-  description: 'Sber job description',
+  description: `
+  Sber job description
+  `,
 };
 const yandexInfo: JobProps['info'] = {
   title: 'Yandex',
-  description: 'Yandex job description',
+  description: `
+  # Yandex job description
+  `,
 };
 const vtbInfo: JobProps['info'] = {
   title: 'VTB',
-  description: 'VTB job description',
+  description: `
+  Jan. 2019 - Jun. 2021: **VTB**
+
+  **Project** - multi-user 👫 online editor 📝 
+  
+  - 👉 like MS Word based on markdown
+  - ⚪ chats / comments
+  - ⚪ version control
+  - ⚪ custom plugins
+
+  **Responsiblities**:
+
+  - 🪴 built and maintained projects from scratch
+  - ◽ development / team-leading / project actualization / testing
+  - 🚀 optimized project build for 40% from 3min to 1:50 min 
+  - ◽ mentorship team members
+  - 👨‍💻 interviewing for team (20+ candidates)
+   
+  `,
 };
 const sphereInfo: JobProps['info'] = {
   title: 'Sphere',
-  description: 'Sphere info',
+  description: `
+  # Sphere info
+  `,
 };
 
 export type ExperienceProps = {};
@@ -58,7 +85,7 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
   const onClick = useCallback(() => setIsOpened(!isOpened), [isOpened]);
 
   useEffect(() => {
-    // Hack for disabling scroll when popup opened
+    // Hack for disabling blobal scroll when popup opened
     if (isOpened === true) {
       const body = document.body;
       body.style.height = '100vh';
@@ -72,15 +99,18 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
 
   const {title = '', description = ''} = info;
 
-  // TODO: add markdown support for job description
   const popupContent = (
     <Popup onClick={onClick}>
       <PopupContent>
         <Text variant="h1" className={popupTitleCss}>
           {title}
         </Text>
-        <Text variant="h3" className={popupDescriptionCss}>
-          {description}
+
+        <Text
+          variant="h3"
+          isColumn
+          className={cx(popupDescriptionCss, commonMdCss)}>
+          <MD>{description}</MD>
         </Text>
       </PopupContent>
     </Popup>
@@ -143,13 +173,17 @@ const PopupContent = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  justify-content: center;
+  padding: 5rem 1rem;
   align-items: center;
+  overflow-y: scroll;
 `;
 const popupTitleCss = css`
   display: flex;
   margin-bottom: 2rem;
 `;
+
 const popupDescriptionCss = css`
   display: flex;
+  flex-direction: column;
+  text-align: left;
 `;
