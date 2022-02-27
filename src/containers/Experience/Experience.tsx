@@ -36,6 +36,7 @@ const vtbInfo: JobProps['info'] = {
   - 👉 version control
   - 👉 custom plugins
 
+
   **Responsiblities**:
 
   - 🪴  built and maintained projects from scratch
