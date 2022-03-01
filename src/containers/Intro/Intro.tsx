@@ -18,7 +18,7 @@ export const Intro = ({}: IntroProps) => {
       </Text>
 
       <ImageBox className={cx(photoCss)}>
-        <Image isDisabled src={me} />
+        <Image isDisabled src={me} aria-label="me" alt="me" />
       </ImageBox>
     </Container>
   );
