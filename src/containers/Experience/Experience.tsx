@@ -14,43 +14,87 @@ import {commonMdCss} from '../../commonStyles';
 const sberInfo: JobProps['info'] = {
   title: 'Sber',
   description: `
-  Sber job description
-  `,
+  Oct. 2016 - Aug. 2018: Sberbank, Moscow, Russia
+
+  **Project**: 
+
+  - 👉 debit cards ordering system at bank branches 
+  - 👉 entering customers **personal information** like phone, email, name and so on
+
+  **Responsiblities**:
+  - ◽ development / code review / testing
+  - ◽ interviewing for team (**5+** candidates)
+
+  **Stack**:
+
+  - ◽**React**, React-Native, Redux, Jasmine/Karma/Selenium, git, JIRA`,
 };
 const yandexInfo: JobProps['info'] = {
   title: 'Yandex',
   description: `
-  # Yandex job description
+  Aug. 2018 - Jan. 2019: Yandex, Moscow, Russia
+
+  **Project Yandex News**: 
+
+  - 👉 biggest news platform 
+  - 👉 stock charts 
+  - 👉 all kind of news 
+
+  **Responsiblities**:
+  - 🪴  developed component* Carousel* for images (like in Instagram) 
+  - ◽ development / code review / testing
+  - ◽ adapted new header component (with search integration)
+
+  **Stack**:
+
+  - ◽ **React**, bem, i-bem, jQuery, Hermione(Jest), GIT(merge/rebase), grep
   `,
 };
 const vtbInfo: JobProps['info'] = {
-  title: 'VTB',
+  title: 'VTB bank',
   description: `
-  Jan. 2019 - Jun. 2021: **VTB**
+  Jan. 2019 - Jun. 2021: VTB bank, Moscow, Russia
 
-    **Project**: 
+  **Project**: 
 
-  - 👉 multi-user 👫 online editor 📝 
+  - 👉 **multi-user** 👫 online editor 📝 
   - 👉 like online MS Word based on markdown
-  - 👉 chats / comments
+  - 👉 **chats** / comments
   - 👉 version control
-  - 👉 custom plugins
-
+  - 👉 custom **plugins**
 
   **Responsiblities**:
-
-  - 🪴  built and maintained projects from scratch
+  - 🪴  built and maintained projetcs **from** **scratch**
   - ◽ development / team-leading / project actualization / testing
-  - 🚀 optimized project build for 40% from 3min to 1:50 min 
+  - 🚀 optimized project build for **40%** from 3min to 1:50 min 
   - ◽ mentorship of team members
-  - 👨‍💻 interviewing for team (20+ candidates)
-   
+  - 👨‍💻 interviewing for team (**20+** candidates)
+
+  **Stack**:
+
+  - ◽ **React**, TypeScript, GraphQL, apollo, linaria, WebSocket, nextJS
+  - ◽ Redux, **Saga**, Webpack, docker, (ES/commit/style)lint, GIT
   `,
 };
 const sphereInfo: JobProps['info'] = {
-  title: 'Sphere',
+  title: 'Sphere inc',
   description: `
-  # Sphere info
+  Jun. 2021 - now: Sphere, North Miami Beach, FL 
+
+  **Project BP** (british petroleum): 
+
+  - 👉 marketing website 
+  - 👉 contentful 
+  - 👉 apollo (graphQL) 
+  - 👉 k8s
+
+  **Responsiblities**:
+
+  - 🪴  development/  code review / project actualization / testing
+  - ◽ ui-kit development
+
+  **Stack**:
+  - ◽ **React**, TypeScript, GraphQL, Apollo, **contentful**
   `,
 };
 
