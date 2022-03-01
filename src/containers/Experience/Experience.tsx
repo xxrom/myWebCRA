@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 import MD from 'react-markdown';
 import cx from 'classnames';
-import {Container, Text, Image, ImageBox} from '../../components';
+import {Container, Text, Image, ImageBox, Button} from '../../components';
 import {theme} from '../../theme';
 import sber from './sber.png';
 import yandex from './yandex.jpg';
@@ -146,8 +146,12 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
   const {title = '', description = ''} = info;
 
   const popupContent = (
-    <Popup onClick={onClick}>
+    <Popup>
       <PopupContent>
+        <CloseButton>
+          <Button onClick={onClick}>close</Button>
+        </CloseButton>
+
         <Text variant="h1" className={popupTitleCss}>
           {title}
         </Text>
@@ -202,12 +206,13 @@ const JobWrapper = styled.div`
 const Popup = styled.div`
   position: fixed;
   display: flex;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
+  top: 2vh;
+  left: 2vw;
+  height: 96vh;
+  width: 96vw;
   background: ${theme.colors.bg};
-  border: 5px solid red;
+  border: 5px solid ${theme.colors.bg50};
+  border-radius: ${theme.sizes.borderRadius};
   z-index: 11;
 `;
 const jobTitleCss = css`
@@ -215,6 +220,7 @@ const jobTitleCss = css`
   margin-top: 1rem;
   color: ${theme.colors.font};
 `;
+
 const PopupContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -222,6 +228,13 @@ const PopupContent = styled.div`
   padding: 5rem 1rem;
   align-items: center;
   overflow-y: scroll;
+`;
+const CloseButton = styled.span`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  border: 5px solid ${theme.colors.bg50};
 `;
 const popupTitleCss = css`
   display: flex;

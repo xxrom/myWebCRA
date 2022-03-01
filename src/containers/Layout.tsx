@@ -1,6 +1,6 @@
 import {Link, Outlet} from 'react-router-dom';
 import styled, {css} from 'styled-components';
-import {Button, Text} from '../components';
+import {Text} from '../components';
 import {fontCommon} from '../components/Text';
 import {theme} from '../theme';
 
@@ -16,7 +16,7 @@ export const Layout = () => (
 
         <Li>
           <Text variant="link-h5" href="mailto:chernyshovnm@gmail.com">
-            mail
+            mail 📬
           </Text>
         </Li>
 
@@ -24,12 +24,8 @@ export const Layout = () => (
           <Text
             variant="link-h5"
             href="https://www.linkedin.com/in/chernyshovn/">
-            linkedin
+            linkedin 🚀
           </Text>
-        </Li>
-
-        <Li>
-          <Button>-</Button>
         </Li>
       </Ul>
     </Nav>

@@ -6,10 +6,17 @@ import {theme} from '../theme';
 export type ButtonProps = {
   children: React.ReactNode;
   className?: FlattenSimpleInterpolation;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const Button = ({children, className}: ButtonProps) => (
-  <ButtonStyled className={cx(className)}>{children}</ButtonStyled>
+export const Button = ({
+  children,
+  className,
+  onClick = () => {},
+}: ButtonProps) => (
+  <ButtonStyled className={cx(className)} onClick={onClick}>
+    {children}
+  </ButtonStyled>
 );
 
 const ButtonStyled = styled.button`
