@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+const name = 'Chernyshov Nikita';
+
+test(`render full page with text ${name}`, () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const names = screen.getAllByText(name);
+  expect(names.length).toBe(2);
 });
