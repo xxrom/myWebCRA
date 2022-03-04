@@ -6,7 +6,7 @@ import {
   Stack,
   EducationAndHobby,
 } from '../containers';
-import {ScrollProvider} from '../Context';
+import {ScrollProvider} from '../context';
 
 const Column = styled.div`
   display: flex;
