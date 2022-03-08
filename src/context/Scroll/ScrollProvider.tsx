@@ -19,18 +19,24 @@ export const scrollInit: ScrollProps = {
 export const ScrollProvider = ({children}: {children: React.ReactNode}) => {
   const [values, setValues] = useState<ScrollProps>(scrollInit);
 
-  const updatePosition = useCallback((scrollY: ScrollProps['scrollY']) => {
-    setValues({
-      ...values,
-      scrollY,
-    });
-  }, []);
+  const updatePosition = useCallback(
+    (scrollY: ScrollProps['scrollY']) => {
+      setValues({
+        ...values,
+        scrollY,
+      });
+    },
+    [values],
+  );
 
-  const onScroll = useCallback(e => {
-    console.log('scroll', e, window.scrollY, window.scrollX);
+  const onScroll = useCallback(
+    e => {
+      //console.log('scroll', e, window.scrollY, window.scrollX);
 
-    updatePosition(window.scrollY);
-  }, []);
+      updatePosition(window.scrollY);
+    },
+    [updatePosition],
+  );
 
   document.addEventListener('scroll', onScroll);
 
