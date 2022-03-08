@@ -1,5 +1,4 @@
 import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
-import {theme} from '../theme';
 import cx from 'classnames';
 
 export type ContainerProps = {
