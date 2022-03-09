@@ -32,8 +32,7 @@ export const ScrollProvider = ({children}: {children: React.ReactNode}) => {
   const onScroll = useCallback(
     e => {
       //console.log('scroll', e, window.scrollY, window.scrollX);
-
-      updatePosition(window.scrollY);
+      //updatePosition(window.scrollY);
     },
     [updatePosition],
   );
