@@ -46,6 +46,14 @@ export const Layout = () => (
         mail
       </Text>
 
+      <Li>
+        <LinkMin to="/test0">
+          <Text className={footerItemCss} variant="link-h3">
+            test0
+          </Text>
+        </LinkMin>
+      </Li>
+
       <Text
         className={footerItemCss}
         variant="link-h3"
