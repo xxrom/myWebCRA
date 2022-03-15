@@ -17,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "BROWSER=none react-scripts start",
+    "dev": "BROWSER=none PORT=3333 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
     "eject": "react-scripts eject",

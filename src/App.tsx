@@ -4,6 +4,7 @@ import {Main, UI} from './pages';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Layout} from './containers';
 import {createGlobalStyle} from 'styled-components';
+import {Test0} from './test/';
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
           <Route path="new" element={<NewPage />} />
           <Route path="ui" element={<UI />} />
         </Route>
+
+        <Route path="/test0" element={<Test0 />} />
       </Routes>
     </BrowserRouter>
   );
