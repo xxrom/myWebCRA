@@ -41,9 +41,9 @@ const yandexInfo: JobProps['info'] = {
   - 👉 all kind of news 
 
   **Responsiblities**:
-  - 🪴  developed component* Carousel* for images (like in Instagram) 
+  - 🪴  developed componet **Carousel** for images (like in Instagram) 
   - ◽ development / code review / testing
-  - ◽ adapted new header component (with search integration)
+  - ◽ adapted **new header component** (with search integration)
 
   **Stack**:
 

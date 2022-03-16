@@ -48,5 +48,6 @@ const Border = styled.div`
   ${theme.media.set575(`
   margin: 0.5rem 1.5rem;
   `)};
+
   ${props => props.className};
 `;
