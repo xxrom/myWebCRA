@@ -8,5 +8,9 @@ export const commonMdCss = css`
   ul {
     list-style-type: none;
     margin: 0.5rem 0;
+    padding-left: 1rem;
+  }
+  ul li {
+    margin: 0.5rem 0;
   }
 `;
