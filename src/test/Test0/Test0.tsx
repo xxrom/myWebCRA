@@ -104,7 +104,7 @@ const Item = ({value, children}: ItemProps) => {
     <div
       onClick={onClickHandler}
       style={{
-        backgroundColor: selectedValue === value ? 'red' : 'blue',
+        backgroundColor: selectedValue === value ? 'green' : 'blue',
       }}>
       {todo?.title || children}
     </div>

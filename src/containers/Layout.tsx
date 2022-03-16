@@ -46,13 +46,14 @@ export const Layout = () => (
         mail
       </Text>
 
-      <Li>
+      {/*<Li>
         <LinkMin to="/test0">
           <Text className={footerItemCss} variant="link-h3">
             test0
           </Text>
         </LinkMin>
       </Li>
+        */}
 
       <Text
         className={footerItemCss}
@@ -78,7 +79,7 @@ const Ul = styled.ul`
   display: flex;
   flex: 1;
 
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   list-style-type: none;
 
@@ -104,7 +105,7 @@ const LinkMin = styled(Link)`
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   background: ${theme.colors.bgInverted};
   padding: 5rem 1rem;
 
