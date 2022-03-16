@@ -3,6 +3,7 @@ import styled, {css} from 'styled-components';
 import {Text} from '../components';
 import {fontCommon} from '../components/Text';
 import {theme} from '../theme';
+import cx from 'classnames';
 
 export const Layout = () => (
   <div>
@@ -15,7 +16,10 @@ export const Layout = () => (
         </Li>
 
         <Li>
-          <Text variant="link-h5" href="mailto:chernyshovnm@gmail.com">
+          <Text
+            variant="link-h5"
+            className={linksAlignFixH3}
+            href="mailto:chernyshovnm@gmail.com">
             mail 📬
           </Text>
         </Li>
@@ -23,6 +27,7 @@ export const Layout = () => (
         <Li>
           <Text
             variant="link-h5"
+            className={linksAlignFixH3}
             href="https://www.linkedin.com/in/chernyshovn/">
             linkedin 🚀
           </Text>
@@ -35,7 +40,7 @@ export const Layout = () => (
     </main>
 
     <Footer>
-      <Text className={footerItemCss} variant="h5">
+      <Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
         Design by Chernyshov
       </Text>
 
@@ -93,6 +98,13 @@ const Li = styled.li`
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;
   }
+`;
+
+const linksAlignFixH3 = css`
+  line-height: 1.65;
+`;
+const linksAlignFixH5 = css`
+  line-height: 1.45;
 `;
 
 const LinkMin = styled(Link)`
