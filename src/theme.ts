@@ -23,7 +23,7 @@ export const theme = {
 
   // in px
   sizes: {
-    nav: {height: 78},
+    nav: {height: 54},
     header: {height: 56},
     container: {width: 1200},
     footer: {height: 128},
