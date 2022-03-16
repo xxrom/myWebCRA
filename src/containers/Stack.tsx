@@ -1,7 +1,6 @@
-import styled, {css} from 'styled-components';
-import {Container, Text} from '../components';
+import {css} from 'styled-components';
+import {Container, Text, BorderContainer} from '../components';
 import {blockMarginCss} from '../components/Text';
-import {theme} from '../theme';
 
 export type StackProps = {};
 
@@ -25,7 +24,7 @@ export const Stack = ({}: StackProps) => {
         Stack:
       </Text>
 
-      <Skills>
+      <BorderContainer>
         <Text variant="h3">
           <b>JavaScript</b> / TypeScript
         </Text>
@@ -36,23 +35,11 @@ export const Stack = ({}: StackProps) => {
         <Text variant="h3">
           k8s / <b>k3s</b> / AWS / Heroku
         </Text>
-      </Skills>
+      </BorderContainer>
     </Container>
   );
 };
 
 const containerCss = css`
   flex-direction: column;
-`;
-
-const Skills = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: ${theme.margin.content};
-  border: 1px solid ${theme.colors.bg50};
-  border-radius: ${theme.sizes.borderRadius};
-
-  & > * {
-    margin-bottom: 1rem;
-  }
 `;
