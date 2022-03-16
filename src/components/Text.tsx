@@ -25,17 +25,19 @@ export const fontCommon = css`
 
 /*
  * font-size in rem - for mobile firefox view
+ * 24 min, 64(72) max
  */
 const H1 = styled.span`
   ${fontCommon};
   font-size: 2rem;
-  font-size: calc(24px + (72 - 24) * (100vw -400px) / (1600 -400));
+  font-size: calc(24px + (64 - 24) * (100vw -400px) / (1600 -400));
   ${props => props.className};
 `;
 
+// 12 min, 40(48) max
 const h3FontSize = css`
   font-size: 1.5rem;
-  font-size: calc(12px + (48 - 12) * (100vw -400px) / (1600 -400));
+  font-size: calc(12px + (40 - 12) * (100vw -400px) / (1600 -400));
 `;
 const H3 = styled.span`
   ${fontCommon};
@@ -43,6 +45,7 @@ const H3 = styled.span`
   ${props => props.className};
 `;
 
+// 12 min, 24 max
 const h5FontSize = css`
   font-size: 1rem;
   font-size: calc(12px + (24 - 12) * (100vw -400px) / (1600 -400));

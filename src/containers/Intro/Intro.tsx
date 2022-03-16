@@ -34,11 +34,9 @@ const wrapperCss = css`
 `;
 
 const photoCss = css`
-  min-height: 30vw;
-  height: 60vw;
+  min-height: 400px;
   max-height: 70vh;
-  min-width: 60vw;
-  width: 60vw;
+  min-width: 50vw;
   max-width: 700px;
 
   @media screen and (max-width: 575px) {
