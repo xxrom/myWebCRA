@@ -9,7 +9,8 @@ export const theme = {
 
     bg: '#fff',
     bgInverted: '#111',
-    bg50: 'rgba(215,215,215,0.40)',
+    bg50: 'rgba(215,215,215,0.60)',
+
     font: '#111',
     fontHover: '#666',
   },
