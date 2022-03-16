@@ -157,7 +157,7 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
         </Text>
 
         <Text
-          variant="h3"
+          variant="h4"
           isColumn
           className={cx(popupDescriptionCss, commonMdCss)}>
           <MD>{description}</MD>

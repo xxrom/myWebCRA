@@ -16,10 +16,10 @@ export const theme = {
   },
 
   media: {
-    extraLarge: '(max-width: 1140px)',
-    large: '(max-width: 960px)',
-    medium: '(max-width: 720px)',
-    small: '(max-width: 540px)',
+    set1140: (css: string) =>
+      `@media screen and (max-width: 1140px) { ${css} }`,
+    set768: (css: string) => `@media screen and (max-width: 768px) { ${css} }`,
+    set575: (css: string) => `@media Screen and (max-width: 575px) { ${css} }`,
   },
 
   // in px

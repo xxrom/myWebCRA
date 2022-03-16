@@ -1,5 +1,6 @@
 import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
 import cx from 'classnames';
+import {theme} from '../theme';
 
 export type ContainerProps = {
   children: React.ReactNode;
@@ -36,7 +37,16 @@ const Border = styled.div`
   align-items: center;
   justify-content: center;
 
-  margin: 0.5rem;
+  margin: 2rem 4rem;
 
+  ${theme.media.set1140(`
+  margin: 1.5rem 4.5rem;
+  `)};
+  ${theme.media.set768(`
+  margin: 1rem 2.5rem;
+  `)};
+  ${theme.media.set575(`
+  margin: 0.5rem 1.5rem;
+  `)};
   ${props => props.className};
 `;

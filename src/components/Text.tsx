@@ -2,7 +2,7 @@ import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
 import {theme} from '../theme';
 import cx from 'classnames';
 
-export type Variant = 'h1' | 'h3' | 'h5' | 'link-h3' | 'link-h5';
+export type Variant = 'h1' | 'h3' | 'h4' | 'h5' | 'link-h3' | 'link-h5';
 
 type TextProps = {
   // Style Variants for text view
@@ -34,14 +34,25 @@ const H1 = styled.span`
   ${props => props.className};
 `;
 
-// 12 min, 40(48) max
+// 16 min, 40(48) max
 const h3FontSize = css`
   font-size: 1.5rem;
-  font-size: calc(12px + (40 - 12) * (100vw -400px) / (1600 -400));
+  font-size: calc(16px + (40 - 12) * (100vw -400px) / (1600 -400));
 `;
 const H3 = styled.span`
   ${fontCommon};
   ${h3FontSize};
+  ${props => props.className};
+`;
+
+// 14 min, 30 max
+const h4FontSize = css`
+  font-size: 1.25rem;
+  font-size: calc(14px + (30 - 12) * (100vw -400px) / (1600 -400));
+`;
+const H4 = styled.span`
+  ${fontCommon};
+  ${h4FontSize};
   ${props => props.className};
 `;
 
@@ -91,6 +102,8 @@ export const Text = ({
       return <H1 className={commonClassName}>{children}</H1>;
     case 'h3':
       return <H3 className={commonClassName}>{children}</H3>;
+    case 'h4':
+      return <H4 className={commonClassName}>{children}</H4>;
     case 'h5':
       return <H5 className={commonClassName}>{children}</H5>;
 
