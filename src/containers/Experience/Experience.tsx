@@ -64,7 +64,7 @@ const vtbInfo: JobProps['info'] = {
   - 👉 custom **plugins**
 
   **Responsiblities**:
-  - 🪴  built and maintained projetcs **from** **scratch**
+  - 🪴  built and maintained projects **from** **scratch**
   - ◽ development / team-leading / project actualization / testing
   - 🚀 optimized project build for **40%** from 3min to 1:50 min 
   - ◽ mentorship of team members
