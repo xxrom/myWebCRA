@@ -4,3 +4,4 @@ export {Stack} from './Stack';
 export {Experience} from './Experience';
 export {Projects} from './Projects';
 export {EducationAndHobby} from './EducationAndHobby';
+export {Todo} from './Todo';
