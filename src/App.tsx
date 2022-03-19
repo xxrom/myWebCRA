@@ -2,7 +2,7 @@
 //import './App.css';
 import {Main, UI} from './pages';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Layout} from './containers';
+import {Layout, Todo} from './containers';
 import {createGlobalStyle} from 'styled-components';
 import {Test0} from './test/';
 
@@ -20,6 +20,7 @@ const App = () => {
         </Route>
 
         <Route path="/test0" element={<Test0 />} />
+        <Route path="/todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   );
