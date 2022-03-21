@@ -11,6 +11,8 @@ type TextProps = {
   className?: FlattenSimpleInterpolation | string;
   // Is column block view ?
   isColumn?: boolean;
+  onClick?: ({...props}: any) => any;
+  style?: {[key: string]: any};
   // href for links
   href?: string;
 };
@@ -99,29 +101,49 @@ export const Text = ({
 
   switch (variant) {
     case 'h1':
-      return <H1 className={commonClassName}>{children}</H1>;
+      return (
+        <H1 className={commonClassName} {...other}>
+          {children}
+        </H1>
+      );
     case 'h3':
-      return <H3 className={commonClassName}>{children}</H3>;
+      return (
+        <H3 className={commonClassName} {...other}>
+          {children}
+        </H3>
+      );
     case 'h4':
-      return <H4 className={commonClassName}>{children}</H4>;
+      return (
+        <H4 className={commonClassName} {...other}>
+          {children}
+        </H4>
+      );
     case 'h5':
-      return <H5 className={commonClassName}>{children}</H5>;
+      return (
+        <H5 className={commonClassName} {...other}>
+          {children}
+        </H5>
+      );
 
     case 'link-h3':
       return (
-        <LinkH3 href={other?.href} className={commonClassName}>
+        <LinkH3 href={other?.href} className={commonClassName} {...other}>
           {children}
         </LinkH3>
       );
     case 'link-h5':
       return (
-        <LinkH5 href={other?.href} className={commonClassName}>
+        <LinkH5 href={other?.href} className={commonClassName} {...other}>
           {children}
         </LinkH5>
       );
 
     default:
-      return <span className={commonClassName}>{children}</span>;
+      return (
+        <span className={commonClassName} {...other}>
+          {children}
+        </span>
+      );
   }
 };
 
