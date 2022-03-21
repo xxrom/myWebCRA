@@ -51,7 +51,7 @@ const Menu = ({children, onChange, renderHeader, selectedValue}: any) => {
     text => {
       setHeader(renderHeader(text));
     },
-    [setHeader],
+    [renderHeader],
   );
 
   return (
