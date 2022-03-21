@@ -11,7 +11,7 @@ test(`render full page with text ${name}`, () => {
   expect(names.length).toBe(2);
 });
 
-test(`render img`, () => {
+test('render img', () => {
   render(<App />);
 
   // find img by aria-label='me'
