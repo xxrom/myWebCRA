@@ -1,4 +1,11 @@
-import {memo, useCallback, useReducer, useState} from 'react';
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import styled, {css} from 'styled-components';
 import {Container, Text} from '../../components';
 
@@ -16,7 +23,7 @@ export type StoreTodoType = {
 const getInitStoreTodo = (): StoreTodoType => {
   const localStorageTodos = localStorage.getItem('todos') || '{}';
 
-  const todos = JSON.parse(localStorageTodos)?.todos;
+  const todos = JSON.parse(localStorageTodos)?.todos || [];
 
   const maxId =
     todos?.reduce((acc: number, item: TodoType) => {
@@ -25,30 +32,21 @@ const getInitStoreTodo = (): StoreTodoType => {
       }
 
       return acc;
-    }, 0) || 2;
+    }, 0) || 1;
 
   return {
-    todos: todos
-      ? todos
-      : [
-          {text: 'todo item 0', id: 0},
-          {text: 'item 1', id: 1},
-        ],
-    idCounter: maxId,
+    todos,
+    idCounter: maxId + 1,
   };
 };
 
 const reducerTodo = (state: StoreTodoType, action: ActionType) => {
-  console.log('ReducerTodo', action, state);
-
   switch (action?.type) {
-    case 'add': {
+    case 'addTodo': {
       const todos = [
         {text: action?.payload || '', id: state.idCounter},
         ...state.todos,
       ];
-
-      localStorage.setItem('todos', JSON.stringify({todos}));
 
       return {
         ...state,
@@ -57,12 +55,11 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
       };
     }
 
-    case 'del': {
+    case 'deleteTodo': {
       const todos = state.todos.filter(
         item => item?.id !== action?.payload?.id,
       );
 
-      localStorage.setItem('todos', JSON.stringify({todos}));
       return {
         ...state,
         todos,
@@ -70,7 +67,6 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
     }
 
     default: {
-      console.log('default');
       return state;
     }
   }
@@ -82,6 +78,7 @@ type TodoItemsType = Pick<StoreTodoType, 'todos'> & {
 
 const TodoItems = memo(({todos, onDelTodoItem}: TodoItemsType) => {
   console.log('Render: TodoItems');
+
   return (
     <>
       {todos?.map((item: TodoType) => (
@@ -94,23 +91,83 @@ const TodoItems = memo(({todos, onDelTodoItem}: TodoItemsType) => {
   );
 });
 
+const useReducerWithMiddleware = (
+  reducer: React.Reducer<any, any>,
+  initValue: any,
+  middlewareFns: Array<(action: ActionType, store?: any) => void>,
+  afterwareFns: Array<(action: ActionType, store?: any) => void>,
+) => {
+  const [store, dispatch] = useReducer<React.Reducer<any, any>>(
+    reducer,
+    initValue,
+  );
+
+  const actionRef = useRef<ActionType>();
+
+  const myDispatch: (action: ActionType) => void = useCallback(
+    action => {
+      // Applying my middlewareS
+      middlewareFns.forEach(middleware => middleware(action, store));
+
+      dispatch(action);
+
+      // Saving our action for Afterwares
+      actionRef.current = action;
+    },
+    [middlewareFns, store],
+  );
+
+  // Applying my afterwareS
+  useEffect(() => {
+    if (!actionRef?.current) {
+      // If we don't have action => exit
+      return;
+    }
+
+    afterwareFns.forEach(
+      afterware => actionRef.current && afterware(actionRef.current, store),
+    );
+
+    // Removing actionRef to be sure that it will be empty
+    actionRef.current = undefined;
+  }, [afterwareFns, store]);
+
+  return [store, myDispatch];
+};
+
+const loggerMiddleware = (action: ActionType, store: any) => {
+  console.log('Logger Middleware: ', action, store);
+};
+const saveToLocalStorageAfterware = (action: ActionType, store: any) => {
+  console.log('SaveToLocalStorage Afterware: ', action, store);
+  localStorage.setItem('todos', JSON.stringify({todos: store.todos}));
+};
+
 export const Todo = () => {
   console.log('Render: Todo');
 
-  const [store, dispatch] = useReducer(reducerTodo, getInitStoreTodo());
+  const [store, dispatch] = useReducerWithMiddleware(
+    reducerTodo,
+    getInitStoreTodo(),
+    [loggerMiddleware],
+    [saveToLocalStorageAfterware],
+  );
   const [inputVal, setInputVal] = useState('');
 
   const onChangeInput = useCallback(e => setInputVal(e?.target?.value), []);
 
-  const onAddTodoItem = useCallback(payload => {
-    dispatch({type: 'add', payload});
-  }, []);
+  const onAddTodoItem = useCallback(
+    payload => {
+      dispatch({type: 'addTodo', payload});
+    },
+    [dispatch],
+  );
 
   const onDelTodoItem = useCallback(
     (id: number) => () => {
-      dispatch({type: 'del', payload: {id}});
+      dispatch({type: 'deleteTodo', payload: {id}});
     },
-    [],
+    [dispatch],
   );
 
   const onCleanInput = useCallback(() => setInputVal(''), []);
@@ -131,7 +188,8 @@ export const Todo = () => {
   return (
     <Container className={containerCss}>
       <Text isColumn variant="h5">
-        Todo list (based on React.useReducer):
+        Todo list (based on React.useReducer + custom Middlewares/Afterwares +
+        localStorage):
       </Text>
 
       <Input
