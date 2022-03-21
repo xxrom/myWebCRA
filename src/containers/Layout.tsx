@@ -11,7 +11,7 @@ export const Layout = () => (
       <Ul>
         <Li>
           <LinkMin to="/">
-            <Text variant="link-h3">Chernyshov Nikita</Text>
+            <Text variant="h3">Chernyshov Nikita</Text>
           </LinkMin>
         </Li>
 
@@ -59,7 +59,7 @@ export const Layout = () => (
 
       <Li>
         <LinkMin to="/test0">
-          <Text className={footerItemCss} variant="link-h3">
+          <Text className={footerItemCss} variant="h3">
             test0
           </Text>
         </LinkMin>
@@ -67,7 +67,7 @@ export const Layout = () => (
 
       <Li>
         <LinkMin to="/todo">
-          <Text className={footerItemCss} variant="link-h3">
+          <Text className={footerItemCss} variant="h3">
             todo
           </Text>
         </LinkMin>

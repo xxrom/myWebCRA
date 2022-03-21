@@ -5,6 +5,7 @@ import React, {
   useState,
   useCallback,
 } from 'react';
+import {Text} from '../../components';
 
 //int: CoinMena 0
 
@@ -101,18 +102,20 @@ const Item = ({value, children}: ItemProps) => {
   }, [rerenderHeader, onChange, value, todo?.title]);
 
   return (
-    <div
+    <Text
+      variant="h3"
+      isColumn
       onClick={onClickHandler}
       style={{
         backgroundColor: selectedValue === value ? 'green' : 'blue',
       }}>
       {todo?.title || children}
-    </div>
+    </Text>
   );
 };
 
 const Header = (text = '') => {
-  return <div>{`Header: ${text}`}</div>;
+  return <Text variant="h1">{`Header: ${text}`}</Text>;
 };
 
 let render = 1;
@@ -120,14 +123,14 @@ let render = 1;
 const A = React.memo(() => {
   render++;
 
-  return <div>{render}</div>;
+  return <Text isColumn variant="h5">{`Render count: ${render}`}</Text>;
 });
 
 export default function App() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <main>
+    <main style={{padding: '2rem'}}>
       <A />
 
       <Menu
