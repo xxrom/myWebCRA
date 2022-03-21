@@ -15,8 +15,8 @@ export type StoreTodoType = {
 
 const initStoreTodo: StoreTodoType = {
   todos: [
-    {text: 'hello', id: 0},
-    {text: 'test', id: 1},
+    {text: 'todo item 0', id: 0},
+    {text: 'item 1', id: 1},
   ],
   idCounter: 2,
 };
@@ -85,7 +85,7 @@ export const Todo = () => {
   return (
     <Container className={containerCss}>
       <div>
-        <Text variant="h5">Todos:</Text>
+        <Text variant="h5">Todo list (based on React.useReducer):</Text>
       </div>
 
       <Input
