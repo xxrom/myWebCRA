@@ -17,10 +17,10 @@ const App = () => {
           <Route index element={<Main />} />
           <Route path="new" element={<NewPage />} />
           <Route path="ui" element={<UI />} />
-        </Route>
 
-        <Route path="/test0" element={<Test0 />} />
-        <Route path="/todo" element={<Todo />} />
+          <Route path="test0" element={<Test0 />} />
+          <Route path="todo" element={<Todo />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
