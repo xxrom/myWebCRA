@@ -1,4 +1,4 @@
-import {useCallback, useReducer, useState} from 'react';
+import {memo, useCallback, useReducer, useState} from 'react';
 import styled, {css} from 'styled-components';
 import {Container, Text} from '../../components';
 
@@ -13,33 +13,59 @@ export type StoreTodoType = {
   idCounter: number;
 };
 
-const initStoreTodo: StoreTodoType = {
-  todos: [
-    {text: 'todo item 0', id: 0},
-    {text: 'item 1', id: 1},
-  ],
-  idCounter: 2,
+const getInitStoreTodo = (): StoreTodoType => {
+  const localStorageTodos = localStorage.getItem('todos') || '{}';
+
+  const todos = JSON.parse(localStorageTodos)?.todos;
+
+  const maxId =
+    todos?.reduce((acc: number, item: TodoType) => {
+      if (item.id > acc) {
+        return item.id;
+      }
+
+      return acc;
+    }, 0) || 2;
+
+  return {
+    todos: todos
+      ? todos
+      : [
+          {text: 'todo item 0', id: 0},
+          {text: 'item 1', id: 1},
+        ],
+    idCounter: maxId,
+  };
 };
 
 const reducerTodo = (state: StoreTodoType, action: ActionType) => {
-  console.log('ReducerTodo', action);
+  console.log('ReducerTodo', action, state);
 
   switch (action?.type) {
     case 'add': {
+      const todos = [
+        {text: action?.payload || '', id: state.idCounter},
+        ...state.todos,
+      ];
+
+      localStorage.setItem('todos', JSON.stringify({todos}));
+
       return {
         ...state,
-        todos: [
-          {text: action?.payload || '', id: state.idCounter},
-          ...state.todos,
-        ],
+        todos,
         idCounter: state.idCounter + 1,
       };
     }
 
     case 'del': {
+      const todos = state.todos.filter(
+        item => item?.id !== action?.payload?.id,
+      );
+
+      localStorage.setItem('todos', JSON.stringify({todos}));
       return {
         ...state,
-        todos: state.todos.filter(item => item?.id !== action?.payload?.id),
+        todos,
       };
     }
 
@@ -50,8 +76,28 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
   }
 };
 
+type TodoItemsType = Pick<StoreTodoType, 'todos'> & {
+  onDelTodoItem: (id: number) => () => void;
+};
+
+const TodoItems = memo(({todos, onDelTodoItem}: TodoItemsType) => {
+  console.log('Render: TodoItems');
+  return (
+    <>
+      {todos?.map((item: TodoType) => (
+        <div key={item?.id}>
+          <TodoItem>{item.text}</TodoItem>
+          <DelBtn onClick={onDelTodoItem(item.id)}>-</DelBtn>
+        </div>
+      ))}
+    </>
+  );
+});
+
 export const Todo = () => {
-  const [store, dispatch] = useReducer(reducerTodo, initStoreTodo);
+  console.log('Render: Todo');
+
+  const [store, dispatch] = useReducer(reducerTodo, getInitStoreTodo());
   const [inputVal, setInputVal] = useState('');
 
   const onChangeInput = useCallback(e => setInputVal(e?.target?.value), []);
@@ -84,9 +130,9 @@ export const Todo = () => {
 
   return (
     <Container className={containerCss}>
-      <div>
-        <Text variant="h5">Todo list (based on React.useReducer):</Text>
-      </div>
+      <Text isColumn variant="h5">
+        Todo list (based on React.useReducer):
+      </Text>
 
       <Input
         value={inputVal}
@@ -94,12 +140,7 @@ export const Todo = () => {
         onKeyDown={onInputKeyDown}
       />
 
-      {store?.todos?.map((item: TodoType) => (
-        <div>
-          <TodoItem key={item?.id}>{item.text}</TodoItem>
-          <DelBtn onClick={onDelTodoItem(item.id)}>-</DelBtn>
-        </div>
-      ))}
+      <TodoItems todos={store?.todos} onDelTodoItem={onDelTodoItem} />
     </Container>
   );
 };

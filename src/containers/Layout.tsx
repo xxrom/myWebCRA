@@ -6,7 +6,7 @@ import {theme} from '../theme';
 import cx from 'classnames';
 
 export const Layout = () => (
-  <div>
+  <Wrapper>
     <Nav>
       <Ul>
         <Li>
@@ -35,9 +35,9 @@ export const Layout = () => (
       </Ul>
     </Nav>
 
-    <main>
+    <Main>
       <Outlet />
-    </main>
+    </Main>
 
     <Footer>
       <Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
@@ -50,26 +50,42 @@ export const Layout = () => (
         href="mailto:chernyshovnm@gmail.com">
         mail
       </Text>
-
-      {/*<Li>
-        <LinkMin to="/test0">
-          <Text className={footerItemCss} variant="link-h3">
-            test0
-          </Text>
-        </LinkMin>
-      </Li>
-        */}
-
       <Text
         className={footerItemCss}
         variant="link-h3"
         href="https://www.linkedin.com/in/chernyshovn/">
         linkedin
       </Text>
+
+      <Li>
+        <LinkMin to="/test0">
+          <Text className={footerItemCss} variant="link-h3">
+            test0
+          </Text>
+        </LinkMin>
+      </Li>
+
+      <Li>
+        <LinkMin to="/todo">
+          <Text className={footerItemCss} variant="link-h3">
+            todo
+          </Text>
+        </LinkMin>
+      </Li>
     </Footer>
-  </div>
+  </Wrapper>
 );
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  display: flex;
+  flex-grow: 1;
+`;
 const Nav = styled.nav`
   display: flex;
   position: sticky;
