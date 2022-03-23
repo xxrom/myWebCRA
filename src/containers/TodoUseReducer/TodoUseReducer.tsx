@@ -1,13 +1,5 @@
-import {
-  memo,
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
-import styled, {css} from 'styled-components';
-import {Container, Text} from '../../components';
+import {useCallback, useEffect, useMemo, useReducer, useRef} from 'react';
+import {Todo} from '../../components';
 
 export type ActionType = {
   type: string;
@@ -72,25 +64,6 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
   }
 };
 
-type TodoItemsType = Pick<StoreTodoType, 'todos'> & {
-  onDelTodoItem: (id: number) => () => void;
-};
-
-const TodoItems = memo(({todos, onDelTodoItem}: TodoItemsType) => {
-  console.log('Render: TodoItems');
-
-  return (
-    <>
-      {todos?.map((item: TodoType) => (
-        <div key={item?.id}>
-          <TodoItem>{item.text}</TodoItem>
-          <DelBtn onClick={onDelTodoItem(item.id)}>-</DelBtn>
-        </div>
-      ))}
-    </>
-  );
-});
-
 const useReducerWithMiddleware = (
   reducer: React.Reducer<any, any>,
   initValue: any,
@@ -143,8 +116,8 @@ const saveToLocalStorageAfterware = (action: ActionType, store: any) => {
   localStorage.setItem('todos', JSON.stringify({todos: store.todos}));
 };
 
-export const Todo = () => {
-  console.log('Render: Todo');
+export const TodoUseReducer = () => {
+  console.log('Render: TodoUseReucer');
 
   const [store, dispatch] = useReducerWithMiddleware(
     reducerTodo,
@@ -152,9 +125,7 @@ export const Todo = () => {
     [loggerMiddleware],
     [saveToLocalStorageAfterware],
   );
-  const [inputVal, setInputVal] = useState('');
-
-  const onChangeInput = useCallback(e => setInputVal(e?.target?.value), []);
+  const todos = useMemo(() => store.todos, [store.todos]);
 
   const onAddTodoItem = useCallback(
     payload => {
@@ -170,76 +141,13 @@ export const Todo = () => {
     [dispatch],
   );
 
-  const onCleanInput = useCallback(() => setInputVal(''), []);
-
-  const onInputKeyDown = useCallback(
-    e => {
-      switch (e?.key) {
-        case 'Enter': {
-          onAddTodoItem(inputVal);
-          onCleanInput();
-          break;
-        }
-      }
-    },
-    [onAddTodoItem, inputVal, onCleanInput],
-  );
-
   return (
-    <Container className={containerCss}>
-      <Text isColumn variant="h5">
-        Todo list (based on React.useReducer + custom Middlewares/Afterwares +
-        localStorage):
-      </Text>
-
-      <Input
-        value={inputVal}
-        onChange={onChangeInput}
-        onKeyDown={onInputKeyDown}
-      />
-
-      <TodoItems todos={store?.todos} onDelTodoItem={onDelTodoItem} />
-    </Container>
+    <Todo
+      title="Todo list (based on React.useReducer + custom Middlewares/Afterwares +
+        localStorage):"
+      todos={todos}
+      onAddTodoItem={onAddTodoItem}
+      onDelTodoItem={onDelTodoItem}
+    />
   );
 };
-
-const containerCss = css`
-  justify-content: flex-start;
-  align-items: flex-start;
-`;
-
-const Input = styled.input`
-  border: 0;
-  border-bottom: 2px solid gray;
-  border-left: 1px solid gray;
-  font-size: 18px;
-  margin: 1rem 0;
-
-  &:hover {
-    border-bottom: 2px solid green;
-    border-left: 1px solid green;
-  }
-`;
-
-const TodoItem = styled.div`
-  display: inline-flex;
-  margin: 0.5rem 1rem 0.5rem 0;
-  border-bottom: 1px solid red;
-`;
-
-const DelBtn = styled.div`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 1rem;
-  width: 1rem;
-  background-color: #00000020;
-  border-radius: 50%;
-  transition: all 0.3s;
-
-  &:hover {
-    border-radius: 30%;
-    background-color: #00000040;
-    cursor: pointer;
-  }
-`;

@@ -59,16 +59,23 @@ export const Layout = () => (
 
       <Li>
         <LinkMin to="/test0">
-          <Text className={footerItemCss} variant="h3">
+          <Text className={footerItemCss} variant="h5">
             test0
           </Text>
         </LinkMin>
       </Li>
 
       <Li>
-        <LinkMin to="/todo">
-          <Text className={footerItemCss} variant="h3">
-            todo
+        <LinkMin to="/todo-use-reducer">
+          <Text className={footerItemCss} variant="h5">
+            todoUseReducer
+          </Text>
+        </LinkMin>
+      </Li>
+      <Li>
+        <LinkMin to="/todo-redux">
+          <Text className={footerItemCss} variant="h5">
+            todoRedux
           </Text>
         </LinkMin>
       </Li>
@@ -132,6 +139,8 @@ const LinkMin = styled(Link)`
 
 const Footer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+
   justify-content: space-between;
   align-items: flex-end;
   background: ${theme.colors.bgInverted};
@@ -139,6 +148,7 @@ const Footer = styled.div`
 
   @media screen and (max-width: 575px) {
     padding: 3rem 0.5rem;
+    justify-content: center;
   }
 `;
 const footerItemCss = css`
