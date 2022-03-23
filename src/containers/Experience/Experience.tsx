@@ -233,8 +233,7 @@ const CloseButton = styled.span`
   position: absolute;
   top: 1rem;
   right: 1rem;
-
-  border: 5px solid ${theme.colors.bg50};
+  padding: 1rem;
 `;
 const popupTitleCss = css`
   display: flex;
