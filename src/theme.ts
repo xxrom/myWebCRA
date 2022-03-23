@@ -30,6 +30,7 @@ export const theme = {
     footer: {height: 128},
     modal: {width: 540},
     borderRadius: '10px',
+    paddingSmall: '8px',
   },
 
   margin: {
