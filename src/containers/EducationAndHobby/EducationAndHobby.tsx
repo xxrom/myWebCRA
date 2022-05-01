@@ -1,5 +1,5 @@
 import {css} from 'styled-components';
-import {Container, Text, Image, ImageBox} from '../../components';
+import {Container, Text, Image, ImageBox, VideoMini} from '../../components';
 import {blockMarginCss} from '../../components/Text';
 import cx from 'classnames';
 
@@ -7,6 +7,9 @@ import hexapod from './hexapod.png';
 import snowboarding from './snowboarding.jpeg';
 import {BorderContainer} from '../../components/BorderContainer';
 import {theme} from '../../theme';
+import circleVideo from './circle_1.mp4';
+import slicesVideo from './slices_1.mp4';
+import rombVideo from './romb_1.mp4';
 
 export type EducationAndHobbyProps = {};
 
@@ -22,9 +25,11 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           <Text variant="h3">
             Bauman Moscow State Technical University (Russia):
           </Text>
+
           <Text variant="h5">
             School of Robotic Technologies and Complex Automatization
           </Text>
+
           <Text variant="h3">-</Text>
           <Text variant="h3">Glyndwr University (UK):</Text>
           <Text variant="h5">Computer Science, Master’s degree</Text>
@@ -49,6 +54,14 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image isDisabled src={hexapod} />
         </ImageBox>
+
+        <BorderContainer margin={theme.margin.content}>
+          <Text variant="h3">Blender</Text>
+        </BorderContainer>
+
+        <VideoMini src={circleVideo} size="full" />
+        <VideoMini src={rombVideo} size="full" />
+        <VideoMini src={slicesVideo} size="full" />
 
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Snowboarding</Text>

@@ -9,9 +9,11 @@ export const Layout = () => (
   <Wrapper>
     <Nav>
       <Ul>
-        <Li>
+        <Li className={cx(mobileHideTextCss)}>
           <LinkMin to="/">
-            <Text variant="h3">Chernyshov Nikita</Text>
+            <Text variant="h3" className={mobileHideTextCss}>
+              Chernyshov Nikita
+            </Text>
           </LinkMin>
         </Li>
 
@@ -20,7 +22,7 @@ export const Layout = () => (
             variant="link-h5"
             className={linksAlignFixH3}
             href="mailto:chernyshovnm@gmail.com">
-            mail 📬
+            mail_📬
           </Text>
         </Li>
 
@@ -29,7 +31,7 @@ export const Layout = () => (
             variant="link-h5"
             className={linksAlignFixH3}
             href="https://www.linkedin.com/in/chernyshovn/">
-            linkedin 🚀
+            linkedin_🚀
           </Text>
         </Li>
       </Ul>
@@ -41,37 +43,24 @@ export const Layout = () => (
 
     <Footer>
       <Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
-        Design by Chernyshov
+        Chernyshov
       </Text>
 
-      <Text
-        className={footerItemCss}
-        variant="link-h3"
-        href="mailto:chernyshovnm@gmail.com">
-        mail
-      </Text>
-      <Text
-        className={footerItemCss}
-        variant="link-h3"
-        href="https://www.linkedin.com/in/chernyshovn/">
-        linkedin
-      </Text>
+      <div>
+        <Text
+          className={footerItemCss}
+          variant="link-h3"
+          href="mailto:chernyshovnm@gmail.com">
+          mail
+        </Text>
 
-      <Li>
-        <LinkMin to="/test0">
-          <Text className={footerItemCss} variant="h3">
-            test0
-          </Text>
-        </LinkMin>
-      </Li>
-
-      <Li>
-        <LinkMin to="/todo">
-          <Text className={footerItemCss} variant="h3">
-            todo
-          </Text>
-        </LinkMin>
-      </Li>
+        <Text
+          className={footerItemCss}
+          variant="link-h3"
+          href="https://www.linkedin.com/in/chernyshovn/">
+          linkedin
+        </Text>
+      </div>
     </Footer>
   </Wrapper>
 );
@@ -92,7 +81,6 @@ const Nav = styled.nav`
   top: 0;
 
   min-height: ${theme.sizes.nav.height}px;
-  max-height: ${theme.sizes.nav.height}px;
   z-index: 10;
 `;
 
@@ -105,14 +93,22 @@ const Ul = styled.ul`
   list-style-type: none;
 
   margin: 0;
-  padding: 0;
+  padding: 0.5rem 1rem;
+
+  @media screen and (max-width: 575px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Li = styled.li`
   padding: 0 1rem;
+  padding-bottom: 0.5rem;
+
+  ${props => props.className};
 
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;
+    padding-bottom: 0.5rem;
   }
 `;
 
@@ -141,11 +137,20 @@ const Footer = styled.div`
     padding: 3rem 0.5rem;
   }
 `;
+
 const footerItemCss = css`
   padding: 0 2rem;
   color: ${theme.colors.primaryInverted};
 
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;
+  }
+`;
+
+const mobileHideTextCss = css`
+  @media screen and (max-width: 575px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
