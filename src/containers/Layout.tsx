@@ -128,6 +128,8 @@ const LinkMin = styled(Link)`
 
 const Footer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+
   justify-content: space-between;
   align-items: flex-end;
   background: ${theme.colors.bgInverted};
@@ -135,6 +137,7 @@ const Footer = styled.div`
 
   @media screen and (max-width: 575px) {
     padding: 3rem 0.5rem;
+    justify-content: center;
   }
 `;
 

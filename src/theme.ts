@@ -29,7 +29,8 @@ export const theme = {
     container: {width: 1200},
     footer: {height: 128},
     modal: {width: 540},
-    borderRadius: '0.5rem',
+    borderRadius: '10px',
+    paddingSmall: '8px',
   },
 
   margin: {
