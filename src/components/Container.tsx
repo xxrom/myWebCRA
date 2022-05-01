@@ -19,9 +19,11 @@ export const Container = ({
 );
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   min-height: 500px;
+  overflow: hidden;
 
   ${props => props.className};
 `;

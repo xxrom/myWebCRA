@@ -1,36 +1,49 @@
-import {Container, Image, ImageBox, Text} from '../../components';
-import {css} from 'styled-components';
+import {
+  Container,
+  Image,
+  ImageBox,
+  Text,
+  BackgroundVideo,
+} from '../../components';
+import styled, {css} from 'styled-components';
 import {theme} from '../../theme';
 import cx from 'classnames';
 import me from './me.jpg';
+import surfVideo from '../EducationAndHobby/surf_1.mp4';
 
 export type IntroProps = {};
 
 export const Intro = ({}: IntroProps) => {
   return (
     <Container className={wrapperCss}>
-      <Text variant="h1" className={marginCss}>
-        Chernyshov Nikita
-      </Text>
+      <BackgroundVideo src={surfVideo}>
+        <Text variant="h1" className={marginCss}>
+          Chernyshov Nikita
+        </Text>
 
-      <Text variant="h3" className={marginCss}>
-        Software developer
-      </Text>
+        <Text variant="h3" className={marginCss}>
+          Software developer
+        </Text>
 
-      <ImageBox className={cx(photoCss)}>
-        <Image isDisabled src={me} aria-label="me" alt="me" />
-      </ImageBox>
+        <ImageBox className={cx(photoCss, marginCss)}>
+          <Image isDisabled src={me} aria-label="me" alt="me" />
+        </ImageBox>
+      </BackgroundVideo>
     </Container>
   );
 };
 
 const marginCss = css`
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
 `;
 
 const wrapperCss = css`
   flex-direction: column;
-  border: 1px solid ${theme.colors.bg};
+
+  @media screen and (min-width: 768px) {
+    border: 4px solid ${theme.colors.bg};
+  }
 `;
 
 const photoCss = css`
@@ -38,6 +51,7 @@ const photoCss = css`
   max-height: 70vh;
   min-width: 50vw;
   max-width: 700px;
+  border-radius: ${theme.sizes.borderRadius};
 
   @media screen and (max-width: 575px) {
     min-height: 150px;
@@ -46,5 +60,6 @@ const photoCss = css`
     min-width: 200px;
     width: 80vw;
     max-width: 80vw;
+    border: 3px solid white;
   }
 `;
