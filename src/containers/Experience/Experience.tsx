@@ -171,7 +171,7 @@ const Job = ({imgSrc = sber, info}: JobProps) => {
       <ImageBox>
         {isOpened && popupContent}
 
-        <Image onClick={onClick} src={imgSrc} />
+        <Image pulse onClick={onClick} src={imgSrc} />
       </ImageBox>
 
       <Text variant="h3" className={jobTitleCss}>
