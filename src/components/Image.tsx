@@ -1,11 +1,34 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {theme} from '../theme';
 
 type ImageProps = {
   isDisabled?: boolean;
 };
 
-export const Image = styled.img<ImageProps>`
+const pulseColor = 150;
+
+const pulseCss = css`
+  box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 1);
+  transform: scale(1);
+  animation: pulse 2s infinite;
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.7);
+    }
+
+    70% {
+      box-shadow: 0 0 0 20px
+        rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0);
+    }
+  }
+`;
+
+export const Image = styled.img<ImageProps & {pulse?: boolean}>`
   position: relative;
   top: 0;
   left: 0;
@@ -22,6 +45,8 @@ export const Image = styled.img<ImageProps>`
   &:hover {
     transform: scale(${props => (props?.isDisabled ? 1.0 : 1.05)});
   }
+
+  ${props => props.pulse && pulseCss};
 `;
 
 export const ImageBox = styled.div`
