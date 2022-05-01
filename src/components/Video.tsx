@@ -5,7 +5,7 @@ export interface VideoProps {
 }
 export const Video: React.FC<VideoProps> = ({src}) => {
   return (
-    <VideoBlock autoPlay muted loop poster="">
+    <VideoBlock autoPlay muted loop playsInline poster="">
       <source src={src} type="video/mp4" />
     </VideoBlock>
   );

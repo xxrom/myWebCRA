@@ -52,6 +52,7 @@ export const VideoMini: FC<VideoMiniProps> = ({
     <Video
       autoPlay
       muted
+      playsInline
       loop
       className={cx(getSizeCss(size), marginTopBottom && marginTopBottomCss)}>
       <source src={src} type="video/mp4" />
