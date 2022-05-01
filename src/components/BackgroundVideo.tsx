@@ -23,7 +23,7 @@ export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
 
   return (
     <>
-      <VideoBlock ref={videoRef} autoPlay muted loop poster="">
+      <VideoBlock ref={videoRef} autoPlay muted loop playsInline poster="">
         <source src={src} type="video/mp4" />
       </VideoBlock>
       {children}
