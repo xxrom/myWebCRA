@@ -1,8 +1,8 @@
 //import logo from './logo.svg';
 //import './App.css';
-import {Main, UI} from './pages';
+import {Main, TodoReduxPage, TodoUseReducerPage, UI} from './pages';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {Layout, Todo} from './containers';
+import {Layout} from './containers';
 import {createGlobalStyle} from 'styled-components';
 import {Test0} from './test/';
 
@@ -19,7 +19,12 @@ const App = () => {
           <Route path="ui" element={<UI />} />
 
           <Route path="test0" element={<Test0 />} />
-          <Route path="todo" element={<Todo />} />
+        </Route>
+        <Route path="/todo-use-reducer" element={<Layout />}>
+          <Route index element={<TodoUseReducerPage />} />
+        </Route>
+        <Route path="/todo-redux" element={<Layout />}>
+          <Route index element={<TodoReduxPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
