@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "BROWSER=none PORT=3333 react-scripts start",
     "start": "BROWSER=none PORT=3333 react-scripts start",
-    "build": "react-scripts build",
+    "build": "BUILD_PATH='./public' react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
