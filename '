@@ -1,0 +1,23 @@
+#FROM node:alpine
+FROM node:16.17.0-bullseye-slim
+
+# Update witn dumb-init for cashing ?
+RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
+
+# productions mode
+ENV NODE_ENV production
+
+# Init and copy package.json 
+WORKDIR '/usr/app'
+
+COPY ./package.json ./
+# instal only required "devDependencies"
+RUN npm ci --only=production #RUN yarn
+
+# Copy all files
+COPY ./ ./
+
+# don't run as root inside
+USER node
+# Run project
+CMD ["yarn", "start"]
