@@ -1,9 +1,10 @@
-import {useEffect, useRef} from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 export interface BackgroundVideoProps {
   src: string;
   playbackRate?: number;
+  children: ReactNode;
 }
 
 export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
