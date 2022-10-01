@@ -1,25 +1,30 @@
-import styled, {FlattenSimpleInterpolation} from 'styled-components';
-import cx from 'classnames';
-import {fontCommon} from './Text';
-import {theme} from '../theme';
+import styled, {
+  css,
+  CSSObject,
+  FlattenSimpleInterpolation,
+} from "styled-components";
+import cx from "classnames";
+import { fontCommon } from "./Text";
+import { theme } from "../theme";
+import { FC } from "react";
 
 export type ButtonProps = {
-  children: React.ReactNode;
-  className?: FlattenSimpleInterpolation;
+  children?: React.ReactNode;
+  className?: string; //FlattenSimpleInterpolation;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export const Button = ({
+export const Button: FC<ButtonProps> = ({
   children,
   className,
   onClick = () => {},
-}: ButtonProps) => (
-  <ButtonStyled className={cx(className)} onClick={onClick}>
+}) => (
+  <ButtonStyled classNameInside={cx(className)} onClick={onClick}>
     {children}
   </ButtonStyled>
 );
 
-const ButtonStyled = styled.button`
+const ButtonStyled = styled.button<{ classNameInside: string }>`
   ${fontCommon};
 
   font-size: 1rem;
@@ -34,5 +39,9 @@ const ButtonStyled = styled.button`
     border: 1px solid ${theme.colors.ghost};
   }
 
-  ${props => props.className};
+  ${(props) => props.classNameInside};
+`;
+
+const cssT = css`
+  color: red;
 `;
