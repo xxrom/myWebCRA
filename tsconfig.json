@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es5",
+    "module": "esnext",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,11 +13,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitAny": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noEmitOnError": true,
     "jsx": "react-jsx",
-    "rootDir": "src"
+    "rootDir": "src",
+    "types": []
   },
-  "include": ["src"],
+  "include": ["src/index2.tsx"],
   "exclude": ["node_modules"]
 }
