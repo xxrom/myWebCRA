@@ -19,9 +19,16 @@ import { Test } from "./Test";
 
 //const root = ReactDOM.createRoot(document.getElementById("root"));
 const element = document.getElementById("root");
+const root = element && ReactDOMClient.createRoot(element);
+root?.render(<Test />);
 
-if (element) {
-  const root = ReactDOMClient.createRoot(element);
+if (module.hot) {
+  module.hot.accept("./Test", () => {
+    const UpdatedApp = require("./Test").Test;
+    const element = document.getElementById("root");
+    const root = element && ReactDOMClient.createRoot(element);
 
-  root?.render(<Test />);
+    root?.render(<UpdatedApp />);
+    //ReactDOM.render(<UpdatedApp />, document.getElementById("app"));
+  });
 }

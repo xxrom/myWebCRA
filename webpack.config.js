@@ -1,30 +1,27 @@
 const path = require("path"); // eslint-disable-line import/no-extraneous-dependencies
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const webpack = require("webpack"); // eslint-disable-line import/no-extraneous-dependencies
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // eslint-disable-line import/no-extraneous-dependencies
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // eslint-disable-line import/no-extraneous-dependencies
 
-const dev = process.env.NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  mode: dev ? "development" : "production",
-  devtool: "source-map",
-  entry: {
-    app: "./src/index2.tsx",
-  },
+  entry: "./src/index2.tsx",
   output: {
-    clean: true,
     path: path.resolve(__dirname, "build"),
-    //publicPath: "/build/",
     filename: "[name].bundle.js",
   },
+  mode: isDev ? "development" : "production",
+  devtool: "eval-source-map", // "source-map",
   devServer: {
-    allowedHosts: "all", // ["0.0.0.0"],
+    allowedHosts: "all", //"local-ip", // "all",
+    hot: true,
+    liveReload: false,
+    port: 3333,
     static: {
-      directory: path.resolve(__dirname, "./dist"),
+      directory: path.resolve(__dirname, "src"),
     },
-  },
-  optimization: {
-    emitOnErrors: false,
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -36,7 +33,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-  ],
+    isDev && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx"],
   },
@@ -46,11 +44,19 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
-          { loader: "babel-loader" },
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-react",
+                ["@babel/preset-env", { targets: { node: "14" } }],
+              ],
+            },
+          },
           //{ loader: "ts-loader" },
           {
             loader: require.resolve("@linaria/webpack5-loader"),
-            options: { sourceMap: dev },
+            options: { sourceMap: isDev },
           },
         ],
       },
@@ -61,7 +67,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { sourceMap: dev },
+            //options: { sourceMap: isDev },
           },
         ],
       },

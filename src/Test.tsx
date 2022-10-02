@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { css } from "@linaria/core";
 import { Test2 } from "./Test2";
 
@@ -9,7 +9,7 @@ const title = css`
   color: red;
 `;
 
-export const Test = ({ test }: { test?: string }) => {
+export const Test = memo(({ test }: { test?: string }) => {
   const [count, setCount] = useState(0);
 
   const onAdd = useCallback(() => setCount((state) => state + 1), []);
@@ -23,4 +23,4 @@ export const Test = ({ test }: { test?: string }) => {
       <Test2 />
     </div>
   );
-};
+});
