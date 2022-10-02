@@ -1,5 +1,26 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
+import { css } from "@linaria/core";
+import { Test2 } from "./Test2";
 
-export const Test = ({ test }: { test?: string }) => (
-  <div>{`Test 44554 ${test}`}</div>
-);
+// Create a class name
+const title = css`
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+`;
+
+export const Test = ({ test }: { test?: string }) => {
+  const [count, setCount] = useState(0);
+
+  const onAdd = useCallback(() => setCount((state) => state + 1), []);
+
+  return (
+    <div>
+      <div
+        onClick={onAdd}
+        className={title}
+      >{`Test 44554 ${test}: ${count}`}</div>
+      <Test2 />
+    </div>
+  );
+};
