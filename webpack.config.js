@@ -18,6 +18,7 @@ module.exports = {
     filename: "[name].bundle.js",
   },
   devServer: {
+    allowedHosts: "all", // ["0.0.0.0"],
     static: {
       directory: path.resolve(__dirname, "./dist"),
     },
@@ -27,7 +28,9 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development"),
+      },
     }),
     new MiniCssExtractPlugin({ filename: "styles.css" }),
     new HtmlWebpackPlugin({
@@ -35,7 +38,7 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
   },
   module: {
     rules: [
@@ -44,6 +47,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           { loader: "babel-loader" },
+          //{ loader: "ts-loader" },
           {
             loader: require.resolve("@linaria/webpack5-loader"),
             options: { sourceMap: dev },
