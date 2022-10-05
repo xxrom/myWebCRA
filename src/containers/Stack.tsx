@@ -1,6 +1,6 @@
-import {css} from 'styled-components';
-import {Container, Text, BorderContainer} from '../components';
-import {blockMarginCss} from '../components/Text';
+import { css } from "@linaria/core";
+import { Container, Text, BorderContainer } from "../components";
+import { blockMarginCss } from "../components/Text";
 
 export type StackProps = {};
 

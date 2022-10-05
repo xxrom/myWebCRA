@@ -1,8 +1,4 @@
-import styled, {
-  css,
-  CSSObject,
-  FlattenSimpleInterpolation,
-} from "styled-components";
+import { styled } from "@linaria/react";
 import cx from "classnames";
 import { fontCommon } from "./Text";
 import { theme } from "../theme";
@@ -40,8 +36,4 @@ const ButtonStyled = styled.button<{ classNameInside: string }>`
   }
 
   ${(props) => props.classNameInside};
-`;
-
-const cssT = css`
-  color: red;
 `;

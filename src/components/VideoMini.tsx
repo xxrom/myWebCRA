@@ -1,9 +1,10 @@
-import {FC} from 'react';
-import styled, {css, CSSProp} from 'styled-components';
-import cx from 'classnames';
-import {theme} from '../theme';
+import { FC } from "react";
+import { styled } from "@linaria/react";
+import { css } from "@linaria/core";
+import cx from "classnames";
+import { theme } from "../theme";
 
-export type SizeType = 'small' | 'normal' | 'full';
+export type SizeType = "small" | "normal" | "full";
 
 export interface VideoMiniProps {
   src: string;
@@ -11,7 +12,7 @@ export interface VideoMiniProps {
   marginTopBottom?: boolean;
 }
 
-const sizesCss: {[K in SizeType]: CSSProp} = {
+const sizesCss: { [K in SizeType]: string } = {
   small: css`
     max-width: 60px;
     max-height: 60px;
@@ -45,7 +46,7 @@ const marginTopBottomCss = css`
 
 export const VideoMini: FC<VideoMiniProps> = ({
   src,
-  size = 'normal',
+  size = "normal",
   marginTopBottom = true,
 }) => {
   return (
@@ -54,14 +55,15 @@ export const VideoMini: FC<VideoMiniProps> = ({
       muted
       playsInline
       loop
-      className={cx(getSizeCss(size), marginTopBottom && marginTopBottomCss)}>
+      className={cx(getSizeCss(size), marginTopBottom && marginTopBottomCss)}
+    >
       <source src={src} type="video/mp4" />
     </Video>
   );
 };
 
 const Video = styled.video`
-  ${props => props.className};
+  ${(props) => props.className || ""};
 
   width: 100%;
   object-fit: cover;
