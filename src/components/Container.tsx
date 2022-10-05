@@ -1,10 +1,11 @@
-import styled, {css, FlattenSimpleInterpolation} from 'styled-components';
-import cx from 'classnames';
-import {theme} from '../theme';
+import { styled } from "@linaria/react";
+import { css } from "@linaria/core";
+import cx from "classnames";
+import { theme } from "../theme";
 
 export type ContainerProps = {
   children: React.ReactNode;
-  className?: FlattenSimpleInterpolation;
+  className?: string;
   isEnabledPaddingBottom?: boolean;
 };
 
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
   min-height: 500px;
   overflow: hidden;
 
-  ${props => props.className};
+  ${(props) => props.className || ""};
 `;
 const paddingBottomCss = css`
   padding-bottom: 7rem;
@@ -51,5 +52,5 @@ const Border = styled.div`
   margin: 0.5rem 1.5rem;
   `)};
 
-  ${props => props.className};
+  ${(props) => props.className || ""};
 `;

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import {styled} from '@linaria/react';
 
 export interface BackgroundVideoProps {
   src: string;

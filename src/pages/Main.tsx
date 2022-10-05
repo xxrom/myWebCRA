@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import { styled } from "@linaria/react";
 import {
-  Experience,
+  //Experience,
   Intro,
-  Projects,
-  Stack,
-  EducationAndHobby,
-} from '../containers';
-import {ScrollProvider} from '../context';
+  //Projects,
+  //Stack,
+  //EducationAndHobby,
+} from "../containers";
+import { ScrollProvider } from "../context";
 
 const Column = styled.div`
   display: flex;
@@ -19,6 +19,7 @@ export const Main = () => {
       <Column>
         <Intro />
 
+        {/*
         <Stack />
 
         <Experience />
@@ -26,6 +27,7 @@ export const Main = () => {
         <Projects />
 
         <EducationAndHobby />
+        */}
       </Column>
     </ScrollProvider>
   );
