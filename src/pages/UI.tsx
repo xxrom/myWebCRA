@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import {Text} from '../components';
+import { styled } from "@linaria/react";
+import { Text } from "../components";
 
 const Column = styled.div`
   display: flex;

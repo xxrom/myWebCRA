@@ -1,9 +1,10 @@
-import {Link, Outlet} from 'react-router-dom';
-import styled, {css} from 'styled-components';
-import {Text} from '../components';
-import {fontCommon} from '../components/Text';
-import {theme} from '../theme';
-import cx from 'classnames';
+import { Link, Outlet } from "react-router-dom";
+import { css } from "@linaria/core";
+import { styled } from "@linaria/react";
+import { Text } from "../components";
+import { fontCommon } from "../components/Text";
+import { theme } from "../theme";
+import cx from "classnames";
 
 export const Layout = () => (
   <Wrapper>
@@ -21,7 +22,8 @@ export const Layout = () => (
           <Text
             variant="link-h5"
             className={linksAlignFixH3}
-            href="mailto:chernyshovnm@gmail.com">
+            href="mailto:chernyshovnm@gmail.com"
+          >
             mail_📬
           </Text>
         </Li>
@@ -30,7 +32,8 @@ export const Layout = () => (
           <Text
             variant="link-h5"
             className={linksAlignFixH3}
-            href="https://www.linkedin.com/in/chernyshovn/">
+            href="https://www.linkedin.com/in/chernyshovn/"
+          >
             linkedin_🚀
           </Text>
         </Li>
@@ -50,14 +53,16 @@ export const Layout = () => (
         <Text
           className={footerItemCss}
           variant="link-h3"
-          href="mailto:chernyshovnm@gmail.com">
+          href="mailto:chernyshovnm@gmail.com"
+        >
           mail
         </Text>
 
         <Text
           className={footerItemCss}
           variant="link-h3"
-          href="https://www.linkedin.com/in/chernyshovn/">
+          href="https://www.linkedin.com/in/chernyshovn/"
+        >
           linkedin
         </Text>
       </div>
@@ -104,7 +109,7 @@ const Li = styled.li`
   padding: 0 1rem;
   padding-bottom: 0.5rem;
 
-  ${props => props.className};
+  ${(props) => props.className || ""};
 
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;

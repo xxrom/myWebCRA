@@ -1,5 +1,7 @@
-import styled, {css} from 'styled-components';
-import {theme} from '../theme';
+import { styled } from "@linaria/react";
+import { css } from "@linaria/core";
+
+import { theme } from "../theme";
 
 type ImageProps = {
   isDisabled?: boolean;
@@ -28,7 +30,7 @@ const pulseCss = css`
   }
 `;
 
-export const Image = styled.img<ImageProps & {pulse?: boolean}>`
+export const Image = styled.img<ImageProps & { pulse?: boolean }>`
   position: relative;
   top: 0;
   left: 0;
@@ -39,14 +41,14 @@ export const Image = styled.img<ImageProps & {pulse?: boolean}>`
   object-fit: cover;
 
   transition: all 0.3s ease;
-  cursor: ${props => (props?.isDisabled ? 'default' : 'pointer')};
+  cursor: ${(props) => (props?.isDisabled ? "default" : "pointer")};
   border-radius: ${theme.sizes.borderRadius};
 
   &:hover {
-    transform: scale(${props => (props?.isDisabled ? 1.0 : 1.05)});
+    transform: scale(${(props) => (props?.isDisabled ? 1.0 : 1.05)});
   }
 
-  ${props => props.pulse && pulseCss};
+  ${(props) => (props.pulse && pulseCss) || ""};
 `;
 
 export const ImageBox = styled.div`
@@ -68,5 +70,5 @@ export const ImageBox = styled.div`
     max-width: 90vw;
   }
 
-  ${props => props.className};
+  ${(props) => props.className || ""};
 `;
