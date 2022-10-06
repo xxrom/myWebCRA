@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { styled } from "@linaria/react";
-import { css, cx } from "@linaria/core";
-import { theme } from "../theme";
+import { FC } from 'react';
+import { styled } from '@linaria/react';
+import { css, cx } from '@linaria/core';
+import { theme } from '../theme';
 
-export type SizeType = "small" | "normal" | "full";
+export type SizeType = 'small' | 'normal' | 'full';
 
 export interface VideoMiniProps {
   src: string;
@@ -45,7 +45,7 @@ const marginTopBottomCss = css`
 
 export const VideoMini: FC<VideoMiniProps> = ({
   src,
-  size = "normal",
+  size = 'normal',
   marginTopBottom = true,
 }) => {
   return (

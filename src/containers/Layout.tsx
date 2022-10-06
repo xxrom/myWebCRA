@@ -1,9 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
-import { Text } from "../components";
-import { fontCommon } from "../components/Text";
-import { theme } from "../theme";
+import { Link, Outlet } from 'react-router-dom';
+import { css, cx } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { Text } from '../components';
+import { fontCommon } from '../components/Text';
+import { theme } from '../theme';
 
 //<Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
 export const Layout = () => (

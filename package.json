@@ -23,28 +23,19 @@
     "web-vitals": "^3.0.3"
   },
   "scripts": {
-    "start": "PORT=3333 react-app-rewired start",
+    "start": "BROWSER=none PORT=3333 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
     "eject": "react-scripts eject",
     "tsc": "tsc",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\" --fix",
+    "lint:fix2": "eslint . --ext ts --ext tsx --ext js --quiet --fix",
     "circleci:validate": "circleci config validate",
     "clean": "rm -rf ./build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

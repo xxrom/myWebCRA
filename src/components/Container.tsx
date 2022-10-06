@@ -1,6 +1,6 @@
-import { styled } from "@linaria/react";
-import { css, cx } from "@linaria/core";
-import { theme } from "../theme";
+import { styled } from '@linaria/react';
+import { css, cx } from '@linaria/core';
+import { theme } from '../theme';
 
 export type ContainerProps = {
   children: React.ReactNode;

@@ -1,16 +1,16 @@
-import { memo, useCallback, useState } from "react";
-import { Text, Container } from "../components";
-import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
+import { memo, useCallback, useState } from 'react';
+import { Text, Container } from '../components';
+import { styled } from '@linaria/react';
+import { css } from '@linaria/core';
 import {
   StoreTodoType,
   TodoType,
-} from "../containers/TodoUseReducer/TodoUseReducer";
+} from '../containers/TodoUseReducer/TodoUseReducer';
 
-type TodoItemsProps = Pick<TodoProps, "todos" | "onDelTodoItem">;
+type TodoItemsProps = Pick<TodoProps, 'todos' | 'onDelTodoItem'>;
 
 export const TodoItems = memo(({ todos, onDelTodoItem }: TodoItemsProps) => {
-  console.log("Render: TodoItems");
+  console.log('Render: TodoItems');
 
   return (
     <>
@@ -24,7 +24,7 @@ export const TodoItems = memo(({ todos, onDelTodoItem }: TodoItemsProps) => {
   );
 });
 
-export type TodoProps = Pick<StoreTodoType, "todos"> & {
+export type TodoProps = Pick<StoreTodoType, 'todos'> & {
   title: string;
   onAddTodoItem: (val: string) => void;
   onDelTodoItem: (id: number) => () => void;
@@ -32,21 +32,21 @@ export type TodoProps = Pick<StoreTodoType, "todos"> & {
 
 export const Todo = memo(
   ({ title, todos, onAddTodoItem, onDelTodoItem }: TodoProps) => {
-    console.log("Render: Todo");
+    console.log('Render: Todo');
 
-    const [inputVal, setInputVal] = useState("");
+    const [inputVal, setInputVal] = useState('');
 
     const onDelete = useCallback(
       (id: number) => onDelTodoItem(id),
       [onDelTodoItem]
     );
 
-    const onCleanInput = useCallback(() => setInputVal(""), [setInputVal]);
+    const onCleanInput = useCallback(() => setInputVal(''), [setInputVal]);
 
     const onInputKeyDown = useCallback(
       (e) => {
         switch (e?.key) {
-          case "Enter": {
+          case 'Enter': {
             onAddTodoItem(inputVal);
             onCleanInput();
             break;

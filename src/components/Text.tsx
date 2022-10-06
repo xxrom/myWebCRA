@@ -1,10 +1,10 @@
-import { css, cx } from "@linaria/core";
-import { styled } from "@linaria/react";
-import { theme } from "../theme";
+import { css, cx } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { theme } from '../theme';
 
 type FlattenSimpleInterpolation = string;
 
-export type Variant = "h1" | "h3" | "h4" | "h5" | "link-h3" | "link-h5";
+export type Variant = 'h1' | 'h3' | 'h4' | 'h5' | 'link-h3' | 'link-h5';
 
 type TextProps = {
   // Style Variants for text view
@@ -79,7 +79,7 @@ export const Text = ({
   const commonClassName = cx(className, isColumn && isColumnCss);
 
   switch (variant) {
-    case "h1":
+    case 'h1':
       return (
         <span
           className={cx(commonClassName, fontCommon, h1FontSize)}
@@ -88,7 +88,7 @@ export const Text = ({
           {children}
         </span>
       );
-    case "h3":
+    case 'h3':
       return (
         <span
           className={cx(commonClassName, fontCommon, h3FontSize)}
@@ -97,7 +97,7 @@ export const Text = ({
           {children}
         </span>
       );
-    case "h4":
+    case 'h4':
       return (
         <span
           className={cx(commonClassName, fontCommon, h4FontSize)}
@@ -106,7 +106,7 @@ export const Text = ({
           {children}
         </span>
       );
-    case "h5":
+    case 'h5':
       return (
         <span
           className={cx(commonClassName, fontCommon, h5FontSize)}
@@ -116,7 +116,7 @@ export const Text = ({
         </span>
       );
 
-    case "link-h3":
+    case 'link-h3':
       return (
         <a
           href={other?.href}
@@ -126,7 +126,7 @@ export const Text = ({
           {children}
         </a>
       );
-    case "link-h5":
+    case 'link-h5':
       return (
         <a
           href={other?.href}

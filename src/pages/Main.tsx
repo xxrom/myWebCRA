@@ -1,12 +1,12 @@
-import { styled } from "@linaria/react";
+import { styled } from '@linaria/react';
 import {
   //Experience,
   Intro,
   //Projects,
   //Stack,
   //EducationAndHobby,
-} from "../containers";
-import { ScrollProvider } from "../context";
+} from '../containers';
+import { ScrollProvider } from '../context';
 
 const Column = styled.div`
   display: flex;
