@@ -1,11 +1,11 @@
-import { css, cx } from "@linaria/core";
-import { Container, Text, Image, ImageBox } from "../../components";
-import activesoul from "./activesoul.png";
-import { blockMarginCss } from "../../components/Text";
+import { css, cx } from '@linaria/core';
+import { Container, Text, Image, ImageBox } from '../../components';
+import activesoul from './activesoul.png';
+import { blockMarginCss } from '../../components/Text';
 
 export type ProjectsProps = {};
 
-const activeSoulUrl = "https://active-soul.netlify.app/";
+const activeSoulUrl = 'https://active-soul.netlify.app/';
 
 export const Projects = ({}: ProjectsProps) => (
   <Container>

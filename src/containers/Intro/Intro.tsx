@@ -4,11 +4,11 @@ import {
   ImageBox,
   Text,
   BackgroundVideo,
-} from "../../components";
-import { css, cx } from "@linaria/core";
-import { theme } from "../../theme";
-import me from "./me.jpg";
-import surfVideo from "../EducationAndHobby/surf_1.mp4";
+} from '../../components';
+import { css, cx } from '@linaria/core';
+import { theme } from '../../theme';
+import me from './me.jpg';
+import surfVideo from '../EducationAndHobby/surf_1.mp4';
 
 export type IntroProps = {};
 

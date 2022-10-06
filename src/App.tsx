@@ -1,6 +1,6 @@
 //import { Main, TodoReduxPage, TodoUseReducerPage, UI } from "./pages";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "./containers";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Layout } from './containers';
 
 //[> A <Routes> looks through its children <Route>s and
 //renders the first one that matches the current URL. */}
