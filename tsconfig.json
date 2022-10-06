@@ -20,5 +20,6 @@
     "commandLineParser.ts",
     "tsc.ts",
     "diagnosticInformationMap.generated.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

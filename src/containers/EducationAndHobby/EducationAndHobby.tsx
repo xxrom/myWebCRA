@@ -1,14 +1,14 @@
-import { css, cx } from "@linaria/core";
-import { Container, Text, Image, ImageBox, VideoMini } from "../../components";
-import { blockMarginCss } from "../../components/Text";
+import { css, cx } from '@linaria/core';
+import { Container, Text, Image, ImageBox, VideoMini } from '../../components';
+import { blockMarginCss } from '../../components/Text';
 
-import hexapod from "./hexapod.png";
-import snowboarding from "./snowboarding.jpeg";
-import { BorderContainer } from "../../components/BorderContainer";
-import { theme } from "../../theme";
-import circleVideo from "./circle_1.mp4";
-import slicesVideo from "./slices_1.mp4";
-import rombVideo from "./romb_1.mp4";
+import hexapod from './hexapod.png';
+import snowboarding from './snowboarding.jpeg';
+import { BorderContainer } from '../../components/BorderContainer';
+import { theme } from '../../theme';
+import circleVideo from './circle_1.mp4';
+import slicesVideo from './slices_1.mp4';
+import rombVideo from './romb_1.mp4';
 
 export type EducationAndHobbyProps = {};
 

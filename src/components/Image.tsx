@@ -1,6 +1,6 @@
-import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
-import { theme } from "../theme";
+import { styled } from '@linaria/react';
+import { css } from '@linaria/core';
+import { theme } from '../theme';
 
 type ImageProps = {
   isDisabled?: boolean;
@@ -40,7 +40,7 @@ export const Image = styled.img<ImageProps & { pulse?: boolean }>`
   object-fit: cover;
 
   transition: all 0.3s ease;
-  cursor: ${(props) => (props?.isDisabled ? "default" : "pointer")};
+  cursor: ${(props) => (props?.isDisabled ? 'default' : 'pointer')};
   border-radius: ${theme.sizes.borderRadius};
 
   &:hover {

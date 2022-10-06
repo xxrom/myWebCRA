@@ -1,18 +1,18 @@
-import { styled } from "@linaria/react";
-import { css, cx } from "@linaria/core";
-import MD from "react-markdown";
-import { Container, Text, Image, ImageBox, Button } from "../../components";
-import { theme } from "../../theme";
-import sber from "./sber.png";
-import yandex from "./yandex.jpg";
-import vtb from "./vtb.png";
-import sphere from "./sphere.png";
-import { useCallback, useEffect, useState } from "react";
-import { blockMarginCss } from "../../components/Text";
-import { commonMdCss } from "../../commonStyles";
+import { styled } from '@linaria/react';
+import { css, cx } from '@linaria/core';
+import MD from 'react-markdown';
+import { Container, Text, Image, ImageBox, Button } from '../../components';
+import { theme } from '../../theme';
+import sber from './sber.png';
+import yandex from './yandex.jpg';
+import vtb from './vtb.png';
+import sphere from './sphere.png';
+import { useCallback, useEffect, useState } from 'react';
+import { blockMarginCss } from '../../components/Text';
+import { commonMdCss } from '../../commonStyles';
 
-const sberInfo: JobProps["info"] = {
-  title: "Sber",
+const sberInfo: JobProps['info'] = {
+  title: 'Sber',
   description: `
   Oct. 2016 - Aug. 2018: Sberbank, Moscow, Russia
 
@@ -29,8 +29,8 @@ const sberInfo: JobProps["info"] = {
 
   - ◽**React**, React-Native, Redux, Jasmine/Karma/Selenium, git, JIRA`,
 };
-const yandexInfo: JobProps["info"] = {
-  title: "Yandex",
+const yandexInfo: JobProps['info'] = {
+  title: 'Yandex',
   description: `
   Aug. 2018 - Jan. 2019: Yandex, Moscow, Russia
 
@@ -50,8 +50,8 @@ const yandexInfo: JobProps["info"] = {
   - ◽ **React**, bem, i-bem, jQuery, Hermione(Jest), GIT(merge/rebase), grep
   `,
 };
-const vtbInfo: JobProps["info"] = {
-  title: "VTB bank",
+const vtbInfo: JobProps['info'] = {
+  title: 'VTB bank',
   description: `
   Jan. 2019 - Jun. 2021: VTB bank, Moscow, Russia
 
@@ -76,8 +76,8 @@ const vtbInfo: JobProps["info"] = {
   - ◽ Redux, **Saga**, Webpack, docker, (ES/commit/style)lint, GIT
   `,
 };
-const sphereInfo: JobProps["info"] = {
-  title: "Sphere inc",
+const sphereInfo: JobProps['info'] = {
+  title: 'Sphere inc',
   description: `
   Jun. 2021 - now: Sphere, North Miami Beach, FL 
 
@@ -134,16 +134,16 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
     // Hack for disabling blobal scroll when popup opened
     if (isOpened === true) {
       const body = document.body;
-      body.style.height = "100vh";
-      body.style.overflowY = "hidden";
+      body.style.height = '100vh';
+      body.style.overflowY = 'hidden';
     } else {
       const body = document.body;
-      body.style.height = "";
-      body.style.overflowY = "";
+      body.style.height = '';
+      body.style.overflowY = '';
     }
   }, [isOpened]);
 
-  const { title = "", description = "" } = info;
+  const { title = '', description = '' } = info;
 
   const popupContent = (
     <Popup>

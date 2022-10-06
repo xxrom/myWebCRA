@@ -1,8 +1,8 @@
-import { cx } from "@linaria/core";
-import { styled } from "@linaria/react";
-import { fontCommon } from "./Text";
-import { theme } from "../theme";
-import { FC } from "react";
+import { cx } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { fontCommon } from './Text';
+import { theme } from '../theme';
+import { FC } from 'react';
 
 export type ButtonProps = {
   children?: React.ReactNode;
