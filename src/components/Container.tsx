@@ -1,6 +1,5 @@
 import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
-import cx from "classnames";
+import { css, cx } from "@linaria/core";
 import { theme } from "../theme";
 
 export type ContainerProps = {
@@ -25,8 +24,6 @@ const Wrapper = styled.div`
   width: 100%;
   min-height: 500px;
   overflow: hidden;
-
-  ${(props) => props.className || ""};
 `;
 const paddingBottomCss = css`
   padding-bottom: 7rem;
@@ -51,6 +48,4 @@ const Border = styled.div`
   ${theme.media.set575(`
   margin: 0.5rem 1.5rem;
   `)};
-
-  ${(props) => props.className || ""};
 `;

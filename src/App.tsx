@@ -1,10 +1,6 @@
-//import logo from "./logo.svg";
-//import "./App.css";
-//export const App = () => {};
-import { Main, TodoReduxPage, TodoUseReducerPage, UI } from "./pages";
+//import { Main, TodoReduxPage, TodoUseReducerPage, UI } from "./pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./containers";
-//import {createGlobalStyle} from 'styled-components';
 
 //[> A <Routes> looks through its children <Route>s and
 //renders the first one that matches the current URL. */}
@@ -14,19 +10,20 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
           {/*
+          <Route index element={<Main />} />
           <Route path="new" element={<NewPage />} />
           <Route path="ui" element={<UI />} />
           <Route path="test0" element={<Test0 />} />
           */}
         </Route>
-        <Route path="/todo-use-reducer" element={<Layout />}>
+        {/*<Route path="/todo-use-reducer" element={<Layout />}>
           <Route index element={<TodoUseReducerPage />} />
         </Route>
         <Route path="/todo-redux" element={<Layout />}>
           <Route index element={<TodoReduxPage />} />
         </Route>
+        */}
       </Routes>
     </BrowserRouter>
   );
@@ -41,15 +38,3 @@ export default App;
 //</div>
 //);
 //};
-
-//const GlobalStyle = createGlobalStyle`
-//* {
-//box-sizing: border-box;
-//}
-
-//body {
-//position: relative;
-//margin: 0;
-//background: #efefef0f;
-//}
-//`;

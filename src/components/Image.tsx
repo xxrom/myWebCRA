@@ -1,6 +1,5 @@
 import { styled } from "@linaria/react";
 import { css } from "@linaria/core";
-
 import { theme } from "../theme";
 
 type ImageProps = {
@@ -47,9 +46,10 @@ export const Image = styled.img<ImageProps & { pulse?: boolean }>`
   &:hover {
     transform: scale(${(props) => (props?.isDisabled ? 1.0 : 1.05)});
   }
-
-  ${(props) => (props.pulse && pulseCss) || ""};
 `;
+//.pulse {
+//${(props) => props.pulse && pulseCss};
+//}
 
 export const ImageBox = styled.div`
   display: flex;
@@ -69,6 +69,4 @@ export const ImageBox = styled.div`
     min-width: 150px;
     max-width: 90vw;
   }
-
-  ${(props) => props.className || ""};
 `;
