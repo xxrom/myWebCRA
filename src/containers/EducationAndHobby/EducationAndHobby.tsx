@@ -1,7 +1,6 @@
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { Container, Text, Image, ImageBox, VideoMini } from "../../components";
 import { blockMarginCss } from "../../components/Text";
-import cx from "classnames";
 
 import hexapod from "./hexapod.png";
 import snowboarding from "./snowboarding.jpeg";

@@ -1,17 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { styled } from "@linaria/react";
 import { Text } from "../components";
 import { fontCommon } from "../components/Text";
 import { theme } from "../theme";
-import cx from "classnames";
 
+//<Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
 export const Layout = () => (
   <Wrapper>
     <Nav>
       <Ul>
-        <Li className={cx(mobileHideTextCss)}>
-          <LinkMin to="/">
+        <Li className={mobileHideTextCss}>
+          <LinkMin to="/" className={fontCommon}>
             <Text variant="h3" className={mobileHideTextCss}>
               Chernyshov Nikita
             </Text>
@@ -45,7 +45,7 @@ export const Layout = () => (
     </Main>
 
     <Footer>
-      <Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
+      <Text className={footerItemCss} variant="h5">
         Chernyshov
       </Text>
 
@@ -109,8 +109,6 @@ const Li = styled.li`
   padding: 0 1rem;
   padding-bottom: 0.5rem;
 
-  ${(props) => props.className || ""};
-
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;
     padding-bottom: 0.5rem;
@@ -125,8 +123,6 @@ const linksAlignFixH5 = css`
 `;
 
 const LinkMin = styled(Link)`
-  ${fontCommon};
-
   text-decoration: none;
   font-size: calc(24px + (48 - 24) * (100vw -400px) / (1600 -400));
 `;
