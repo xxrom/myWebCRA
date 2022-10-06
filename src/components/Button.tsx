@@ -1,5 +1,5 @@
+import { cx } from "@linaria/core";
 import { styled } from "@linaria/react";
-import cx from "classnames";
 import { fontCommon } from "./Text";
 import { theme } from "../theme";
 import { FC } from "react";
@@ -15,14 +15,12 @@ export const Button: FC<ButtonProps> = ({
   className,
   onClick = () => {},
 }) => (
-  <ButtonStyled classNameInside={cx(className)} onClick={onClick}>
+  <ButtonStyled classNameInside={cx(className, fontCommon)} onClick={onClick}>
     {children}
   </ButtonStyled>
 );
 
-const ButtonStyled = styled.button<{ classNameInside: string }>`
-  ${fontCommon};
-
+const ButtonStyled = styled.button`
   font-size: 1rem;
   font-size: calc(12px + (24 - 12) * (100vw -400px) / (1600 -400));
   padding: ${theme.sizes.paddingSmall};
@@ -34,6 +32,4 @@ const ButtonStyled = styled.button<{ classNameInside: string }>`
   &:hover {
     border: 1px solid ${theme.colors.ghost};
   }
-
-  ${(props) => props.classNameInside};
 `;

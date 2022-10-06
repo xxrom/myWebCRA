@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
-import cx from "classnames";
+import { css, cx } from "@linaria/core";
 import { theme } from "../theme";
 
 export type SizeType = "small" | "normal" | "full";
@@ -63,8 +62,6 @@ export const VideoMini: FC<VideoMiniProps> = ({
 };
 
 const Video = styled.video`
-  ${(props) => props.className || ""};
-
   width: 100%;
   object-fit: cover;
   margin-left: 0.5rem;

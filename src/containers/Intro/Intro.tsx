@@ -5,9 +5,8 @@ import {
   Text,
   BackgroundVideo,
 } from "../../components";
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { theme } from "../../theme";
-import cx from "classnames";
 import me from "./me.jpg";
 import surfVideo from "../EducationAndHobby/surf_1.mp4";
 

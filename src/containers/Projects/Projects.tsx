@@ -1,7 +1,6 @@
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import { Container, Text, Image, ImageBox } from "../../components";
 import activesoul from "./activesoul.png";
-import cx from "classnames";
 import { blockMarginCss } from "../../components/Text";
 
 export type ProjectsProps = {};

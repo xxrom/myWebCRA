@@ -1,7 +1,6 @@
 import { styled } from "@linaria/react";
-import { css } from "@linaria/core";
+import { css, cx } from "@linaria/core";
 import MD from "react-markdown";
-import cx from "classnames";
 import { Container, Text, Image, ImageBox, Button } from "../../components";
 import { theme } from "../../theme";
 import sber from "./sber.png";
