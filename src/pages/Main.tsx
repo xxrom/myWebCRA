@@ -1,10 +1,10 @@
 import { styled } from '@linaria/react';
 import {
-  //Experience,
   Intro,
-  //Projects,
-  //Stack,
-  //EducationAndHobby,
+  Stack,
+  Experience,
+  Projects,
+  EducationAndHobby,
 } from '../containers';
 import { ScrollProvider } from '../context';
 
@@ -19,7 +19,6 @@ export const Main = () => {
       <Column>
         <Intro />
 
-        {/*
         <Stack />
 
         <Experience />
@@ -27,7 +26,6 @@ export const Main = () => {
         <Projects />
 
         <EducationAndHobby />
-        */}
       </Column>
     </ScrollProvider>
   );
