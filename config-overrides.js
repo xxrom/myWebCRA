@@ -11,9 +11,7 @@ module.exports = override(
         loader: '@linaria/webpack-loader',
         options: {
           sourceMap: process.env.NODE_ENV !== 'production',
-          cacheDirectory: 'cache/linaria',
-          extension: '.linaria.css',
-          preprocessor: 'none',
+          cacheDirectory: '.src/.linaria_cache',
         },
       },
     ],

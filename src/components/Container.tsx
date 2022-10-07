@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   width: 100%;
+  max-width: 100vw;
   min-height: 500px;
   overflow: hidden;
 `;
@@ -29,6 +30,7 @@ const paddingBottomCss = css`
   padding-bottom: 7rem;
 `;
 
+//TODO mobile,tablet,desktop renaming !
 const Border = styled.div`
   display: flex;
   flex: 1;
