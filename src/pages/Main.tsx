@@ -13,6 +13,7 @@ const Column = styled.div`
   flex-direction: column;
 `;
 
+// TODO: scaling mobile
 export const Main = () => {
   return (
     <ScrollProvider>
