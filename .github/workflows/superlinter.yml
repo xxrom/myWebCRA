@@ -10,8 +10,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run Super-Linter
-        run: yarn && yarn lint
+      - name: Setup Node@16
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Eslint dependencies
+        run: yarn add -D eslint eslint-config-react-app eslint-plugin-react-hooks
+
+      - name: Run linter
+        run: yarn lint
 
         #uses: github/super-linter@v4
         env:
