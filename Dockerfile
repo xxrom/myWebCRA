@@ -14,15 +14,23 @@ ENV NODE_ENV production
 # Init and copy package.json 
 WORKDIR '/home/node/app'
 
-COPY ./package*.json ./
-# instal only required "devDependencies"
-RUN npm ci
-RUN npm run build
-#RUN yarn
+# Create folder
+RUN mkdir -p /home/node/app
+# Set access
+RUN chmod -R 777 /home/node/app
+# Init and copy package.json 
+WORKDIR '/home/node/app'
+
+COPY ./package.json ./
+COPY ./yarn* ./
+COPY ./config-overrides* ./
+# instal "Dependencies"
+RUN yarn
 #RUN npm ci --only=production #RUN yarn
 
 # Copy all files
 COPY ./ ./
+RUN yarn build
 
 # open only one port
 EXPOSE 3333
