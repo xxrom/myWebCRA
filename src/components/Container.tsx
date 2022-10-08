@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 import { css, cx } from '@linaria/core';
-import { theme } from '../theme';
+import { mobile, tablet, desktop } from '../theme';
 
 export type ContainerProps = {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 const paddingBottomCss = css`
-  padding-bottom: 7rem;
+  padding-bottom: 0rem;
 `;
 
 //TODO mobile,tablet,desktop renaming !
@@ -41,13 +41,13 @@ const Border = styled.div`
 
   margin: 2rem 4rem;
 
-  ${theme.media.set1140(`
-  margin: 1.5rem 4.5rem;
+  ${desktop(`
+  margin: 0rem 4.5rem;
   `)};
-  ${theme.media.set768(`
-  margin: 1rem 2.5rem;
+  ${tablet(`
+  margin: 0rem 2.5rem;
   `)};
-  ${theme.media.set575(`
-  margin: 0.5rem 1.5rem;
+  ${mobile(`
+  margin: 0rem 1.5rem;
   `)};
 `;

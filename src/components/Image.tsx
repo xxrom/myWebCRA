@@ -41,7 +41,7 @@ export const Image = styled.img<ImageProps & { pulse?: boolean }>`
 
   transition: all 0.3s ease;
   cursor: ${(props) => (props?.isDisabled ? 'default' : 'pointer')};
-  border-radius: ${theme.sizes.borderRadius};
+  border-radius: 4px;
 
   &:hover {
     transform: scale(${(props) => (props?.isDisabled ? 1.0 : 1.05)});
@@ -57,7 +57,7 @@ export const ImageBox = styled.div`
   max-height: 300px;
   min-width: 350px;
   max-width: 50vw;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   transition: all 0.3s ease;
 
   @media screen and (max-width: 575px) {
