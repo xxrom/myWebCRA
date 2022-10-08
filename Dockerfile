@@ -25,7 +25,7 @@ COPY ./package.json ./
 COPY ./yarn* ./
 COPY ./config-overrides* ./
 # instal "Dependencies"
-RUN yarn
+RUN yarn install --production=false
 #RUN npm ci --only=production #RUN yarn
 
 # Copy all files

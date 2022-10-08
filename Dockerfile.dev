@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 # productions mode
 #ENV NODE_ENV production
 
+# Init and copy package.json 
+WORKDIR '/home/node/app'
+
 # Create folder
 RUN mkdir -p /home/node/app
 # Set access
@@ -22,7 +25,7 @@ COPY ./package.json ./
 COPY ./yarn* ./
 COPY ./config-overrides* ./
 # instal "Dependencies"
-RUN yarn
+RUN yarn install --production=false
 #RUN npm ci --only=production #RUN yarn
 
 # Copy all files
