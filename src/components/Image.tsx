@@ -8,7 +8,7 @@ type ImageProps = {
 
 const pulseColor = 150;
 
-const pulseCss = css`
+export const pulseCss = css`
   box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 1);
   transform: scale(1);
   animation: pulse 2s infinite;
@@ -47,9 +47,6 @@ export const Image = styled.img<ImageProps & { pulse?: boolean }>`
     transform: scale(${(props) => (props?.isDisabled ? 1.0 : 1.05)});
   }
 `;
-//.pulse {
-//${(props) => props.pulse && pulseCss};
-//}
 
 export const ImageBox = styled.div`
   display: flex;
