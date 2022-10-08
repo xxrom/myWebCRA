@@ -38,8 +38,8 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install Eslint dependencies
-        run: yarn
+      - name: Install TS dependencies
+        run: yarn add typescript @babel/preset-typescript @types/react-router-dom
 
       - name: Run tsc check
         run: yarn tsc
