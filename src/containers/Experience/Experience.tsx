@@ -10,6 +10,7 @@ import sphere from './sphere.png';
 import { useCallback, useEffect, useState } from 'react';
 import { blockMarginCss } from '../../components/Text';
 import { commonMdCss } from '../../commonStyles';
+import { pulseCss } from '../../components/Image';
 
 const sberInfo: JobProps['info'] = {
   title: 'Sber',
@@ -172,7 +173,7 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
       <ImageBox>
         {isOpened && popupContent}
 
-        <Image pulse onClick={onClick} src={imgSrc} />
+        <Image className={pulseCss} onClick={onClick} src={imgSrc} />
       </ImageBox>
 
       <Text variant="h3" className={jobTitleCss}>
