@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { styled } from '@linaria/react';
 import { css, cx } from '@linaria/core';
-import { theme } from '../theme';
+import { mobile, theme } from '../theme';
 
 export type SizeType = 'small' | 'normal' | 'full';
 
@@ -34,13 +34,13 @@ const sizesCss: { [K in SizeType]: string } = {
 const getSizeCss = (size: SizeType) => sizesCss[size] || sizesCss.normal;
 
 const marginTopBottomCss = css`
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 
-  @media screen and (max-width: 575px) {
+  ${mobile(` 
     margin-top: 0.1rem;
     margin-bottom: 0.1rem;
-  }
+    `)};
 `;
 
 export const VideoMini: FC<VideoMiniProps> = ({

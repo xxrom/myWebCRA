@@ -87,6 +87,24 @@ const Nav = styled.nav`
 
   min-height: ${theme.sizes.nav.height}px;
   z-index: 10;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px; /* -blur */
+    left: -8px; /* -blur */
+    width: calc(100% + 16px); /* 100% + blur * 2 */
+    height: calc(100% + 16px); /* 100% + blur * 2 */
+    background-image: linear-gradient(
+      0.5turn,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5)
+    ); /* change color or image here */
+    background-position: 50%;
+    filter: blur(4px);
+    z-index: 9;
+    backdrop-filter: blur(12px);
+  }
 `;
 
 const Ul = styled.ul`
@@ -108,6 +126,7 @@ const Ul = styled.ul`
 const Li = styled.li`
   padding: 0 1rem;
   padding-bottom: 0.5rem;
+  z-index: 11;
 
   @media screen and (max-width: 575px) {
     padding: 0 0.5rem;

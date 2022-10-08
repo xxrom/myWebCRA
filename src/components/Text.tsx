@@ -23,7 +23,7 @@ export const fontCommon = css`
   color: ${theme.colors.font};
   text-align: center;
   font-weight: 300;
-  font-family: "Oswald", Roboto, "Raleway", "Helvetica Neue", Helvetica, Arial,
+  font-family: 'Oswald', Roboto, 'Raleway', 'Helvetica Neue', Helvetica, Arial,
     sans-serif;
 `;
 
@@ -147,5 +147,5 @@ export const Text = ({
 };
 
 export const blockMarginCss = css`
-  margin-bottom: 4rem;
+  margin-bottom: 0rem;
 `;
