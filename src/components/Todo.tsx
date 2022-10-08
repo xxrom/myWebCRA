@@ -1,4 +1,10 @@
-import { memo, useCallback, useState } from 'react';
+import {
+  HTMLInputTypeAttribute,
+  KeyboardEventHandler,
+  memo,
+  useCallback,
+  useState,
+} from 'react';
 import { Text, Container } from '../components';
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
@@ -17,7 +23,7 @@ export const TodoItems = memo(({ todos, onDelTodoItem }: TodoItemsProps) => {
       {todos?.map((item: TodoType) => (
         <div key={item?.id}>
           <TodoItem>{item.text}</TodoItem>
-          <DelBtn onClick={onDelTodoItem(item.id)}>-</DelBtn>
+          <DelBtn onClick={onDelTodoItem(item?.id)}>-</DelBtn>
         </div>
       ))}
     </>
@@ -43,7 +49,7 @@ export const Todo = memo(
 
     const onCleanInput = useCallback(() => setInputVal(''), [setInputVal]);
 
-    const onInputKeyDown = useCallback(
+    const onInputKeyDown: KeyboardEventHandler<HTMLInputElement> = useCallback(
       (e) => {
         switch (e?.key) {
           case 'Enter': {
@@ -56,7 +62,7 @@ export const Todo = memo(
       [onAddTodoItem, inputVal, onCleanInput]
     );
     const onChangeInput = useCallback(
-      (e) => setInputVal(e?.target?.value),
+      (e: React.ChangeEvent<HTMLInputElement>) => setInputVal(e?.target?.value),
       [setInputVal]
     );
 

@@ -5,7 +5,7 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import {Text} from '../../components';
+import { Text } from '../../components';
 
 //int: CoinMena 0
 
@@ -45,14 +45,14 @@ const initValue = {
 
 const MenuContext = createContext<any>(initValue);
 
-const Menu = ({children, onChange, renderHeader, selectedValue}: any) => {
+const Menu = ({ children, onChange, renderHeader, selectedValue }: any) => {
   const [Header, setHeader] = useState(renderHeader());
 
   const rerenderHeader = useCallback(
-    text => {
+    (text: string) => {
       setHeader(renderHeader(text));
     },
-    [renderHeader],
+    [renderHeader]
   );
 
   return (
@@ -61,7 +61,8 @@ const Menu = ({children, onChange, renderHeader, selectedValue}: any) => {
         selectedValue,
         onChange,
         rerenderHeader,
-      }}>
+      }}
+    >
       {Header}
 
       <div>{children}</div>
@@ -70,14 +71,14 @@ const Menu = ({children, onChange, renderHeader, selectedValue}: any) => {
 };
 
 const useApi = (id: number | null) => {
-  const [todo, setTodo] = useState<null | {title: string}>(null);
+  const [todo, setTodo] = useState<null | { title: string }>(null);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(json => {
+      .then((json) => {
         console.log('json', json);
 
         setTodo(json);
@@ -92,8 +93,8 @@ type ItemProps = {
   children: React.ReactNode;
 };
 
-const Item = ({value, children}: ItemProps) => {
-  const {onChange, selectedValue, rerenderHeader} = useContext(MenuContext);
+const Item = ({ value, children }: ItemProps) => {
+  const { onChange, selectedValue, rerenderHeader } = useContext(MenuContext);
   const [todo] = useApi(value);
 
   const onClickHandler = useCallback(() => {
@@ -108,7 +109,8 @@ const Item = ({value, children}: ItemProps) => {
       onClick={onClickHandler}
       style={{
         backgroundColor: selectedValue === value ? 'green' : 'blue',
-      }}>
+      }}
+    >
       {todo?.title || children}
     </Text>
   );
@@ -130,13 +132,14 @@ export default function App() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <main style={{padding: '2rem'}}>
+    <main style={{ padding: '2rem' }}>
       <A />
 
       <Menu
         renderHeader={Header}
         onChange={setSelected}
-        selectedValue={selected}>
+        selectedValue={selected}
+      >
         <Item value={1}>content 1</Item>
         <Item value={2}>content 2</Item>
         <Item value={3}>content 3</Item>
