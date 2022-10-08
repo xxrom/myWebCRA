@@ -129,7 +129,7 @@ export const TodoUseReducer = () => {
   );
   const todos = useMemo(() => store.todos, [store.todos]);
 
-  const onAddTodoItem = useCallback(
+  const onAddTodoItem: TodoProps['onAddTodoItem'] = useCallback(
     (payload) => {
       dispatch({ type: 'addTodo', payload });
     },
