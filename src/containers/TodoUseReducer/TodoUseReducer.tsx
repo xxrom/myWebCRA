@@ -1,12 +1,13 @@
-import {useCallback, useEffect, useMemo, useReducer, useRef} from 'react';
-import {Todo} from '../../components';
+import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
+import { Todo } from '../../components';
+import { TodoProps } from '../../components/Todo';
 
 export type ActionType = {
-  type: string;
-  payload: any;
+  type: 'addTodo' | 'deleteTodo';
+  payload: number | { [key: string]: number };
 };
 
-export type TodoType = {id: number; text: string};
+export type TodoType = { id: number; text: string };
 export type StoreTodoType = {
   todos: Array<TodoType>;
   idCounter: number;
@@ -36,7 +37,7 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
   switch (action?.type) {
     case 'addTodo': {
       const todos = [
-        {text: action?.payload || '', id: state.idCounter},
+        { text: action?.payload || '', id: state.idCounter },
         ...state.todos,
       ];
 
@@ -48,9 +49,10 @@ const reducerTodo = (state: StoreTodoType, action: ActionType) => {
     }
 
     case 'deleteTodo': {
-      const todos = state.todos.filter(
-        item => item?.id !== action?.payload?.id,
-      );
+      const actionId =
+        typeof action?.payload !== 'number' ? action?.payload?.id : '';
+
+      const todos = state.todos.filter((item) => item?.id !== actionId);
 
       return {
         ...state,
@@ -68,26 +70,26 @@ const useReducerWithMiddleware = (
   reducer: React.Reducer<any, any>,
   initValue: any,
   middlewareFns: Array<(action: ActionType, store?: any) => void>,
-  afterwareFns: Array<(action: ActionType, store?: any) => void>,
+  afterwareFns: Array<(action: ActionType, store?: any) => void>
 ) => {
   const [store, dispatch] = useReducer<React.Reducer<any, any>>(
     reducer,
-    initValue,
+    initValue
   );
 
   const actionRef = useRef<ActionType>();
 
   const myDispatch: (action: ActionType) => void = useCallback(
-    action => {
+    (action) => {
       // Applying my middlewareS
-      middlewareFns.forEach(middleware => middleware(action, store));
+      middlewareFns.forEach((middleware) => middleware(action, store));
 
       dispatch(action);
 
       // Saving our action for Afterwares
       actionRef.current = action;
     },
-    [middlewareFns, store],
+    [middlewareFns, store]
   );
 
   // Applying my afterwareS
@@ -98,7 +100,7 @@ const useReducerWithMiddleware = (
     }
 
     afterwareFns.forEach(
-      afterware => actionRef.current && afterware(actionRef.current, store),
+      (afterware) => actionRef.current && afterware(actionRef.current, store)
     );
 
     // Removing actionRef to be sure that it will be empty
@@ -113,7 +115,7 @@ const loggerMiddleware = (action: ActionType, store: any) => {
 };
 const saveToLocalStorageAfterware = (action: ActionType, store: any) => {
   console.log('SaveToLocalStorage Afterware: ', action, store);
-  localStorage.setItem('todos', JSON.stringify({todos: store.todos}));
+  localStorage.setItem('todos', JSON.stringify({ todos: store.todos }));
 };
 
 export const TodoUseReducer = () => {
@@ -123,22 +125,22 @@ export const TodoUseReducer = () => {
     reducerTodo,
     getInitStoreTodo(),
     [loggerMiddleware],
-    [saveToLocalStorageAfterware],
+    [saveToLocalStorageAfterware]
   );
   const todos = useMemo(() => store.todos, [store.todos]);
 
-  const onAddTodoItem = useCallback(
-    payload => {
-      dispatch({type: 'addTodo', payload});
+  const onAddTodoItem: TodoProps['onAddTodoItem'] = useCallback(
+    (payload) => {
+      dispatch({ type: 'addTodo', payload });
     },
-    [dispatch],
+    [dispatch]
   );
 
-  const onDelTodoItem = useCallback(
-    (id: number) => () => {
-      dispatch({type: 'deleteTodo', payload: {id}});
+  const onDelTodoItem: TodoProps['onDelTodoItem'] = useCallback(
+    (id) => () => {
+      dispatch({ type: 'deleteTodo', payload: { id } });
     },
-    [dispatch],
+    [dispatch]
   );
 
   return (
