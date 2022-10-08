@@ -1,5 +1,7 @@
-import {useCallback, useState} from 'react';
-import {ScrollContext} from '.';
+import { ReactEventHandler, useCallback, useState } from 'react';
+import { ScrollContext } from '.';
+
+//type ScrollEventType = React.HTMLEvent<React.ReactNode>;
 
 export type ScrollProps = {
   scrollY: number;
@@ -16,7 +18,7 @@ export const scrollInit: ScrollProps = {
   components: {},
 };
 
-export const ScrollProvider = ({children}: {children: React.ReactNode}) => {
+export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
   const [values, setValues] = useState<ScrollProps>(scrollInit);
 
   const updatePosition = useCallback(
@@ -26,10 +28,10 @@ export const ScrollProvider = ({children}: {children: React.ReactNode}) => {
         scrollY,
       });
     },
-    [values],
+    [values]
   );
 
-  const onScroll = useCallback(e => {
+  const onScroll = useCallback((_e: Event) => {
     //console.log('scroll', e, window.scrollY, window.scrollX);
     //updatePosition(window.scrollY);
   }, []);
