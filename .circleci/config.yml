@@ -1,95 +1,92 @@
 #version: 2.1
 #orbs:
-  #node: circleci/node@4.7
-  #aws-s3: circleci/aws-s3@3.0
-  ##node: circleci/node@1.1.6
-  ##aws-s3: circleci/aws-s3@1.0.15
-  
+#node: circleci/node@4.7
+#aws-s3: circleci/aws-s3@3.0
+##node: circleci/node@1.1.6
+##aws-s3: circleci/aws-s3@1.0.15
+
 #jobs:
-  #test-and-build:
-    #executor:
-      #name: node/default
-    #steps:
-      #- checkout
-      #- node/with-cache:
-          #version: '16.10'
-          #pkg-manager: yarn
-          #steps:
-            #- run: yarn 
-            #- run: yarn test
+#test-and-build:
+#executor:
+#name: node/default
+#steps:
+#- checkout
+#- node/with-cache:
+#version: '16.10'
+#pkg-manager: yarn
+#steps:
+#- run: yarn
+#- run: yarn test
 
-      #- run: yarn build
-      #- persist_to_workspace:
-          #root: ~/
-          #paths:
-            #- project/build
+#- run: yarn build
+#- persist_to_workspace:
+#root: ~/
+#paths:
+#- project/build
 
-  #deploy-to-s3:
-    #machine:
-      #image: circleci/classic:latest
-    #steps:
-      #- checkout
-      #- attach_workspace:
-          #at: ~/
-      #- aws-s3/sync:
-          #arguments: |
-            #--acl public-read \
-            #--cache-control "max-age=86400"
-          #from: build
-          #to: 's3://my-circleci-example'
-          #overwrite: true # default is false
+#deploy-to-s3:
+#machine:
+#image: circleci/classic:latest
+#steps:
+#- checkout
+#- attach_workspace:
+#at: ~/
+#- aws-s3/sync:
+#arguments: |
+#--acl public-read \
+#--cache-control "max-age=86400"
+#from: build
+#to: 's3://my-circleci-example'
+#overwrite: true # default is false
 
 #workflows:
-  #build-and-deploy:
-    #jobs:
-      #- test-and-build
-      #- deploy-to-s3:
-          #requires:
-            #- test-and-build
-          #filters:
-            #branches:
-              #only: master
+#build-and-deploy:
+#jobs:
+#- test-and-build
+#- deploy-to-s3:
+#requires:
+#- test-and-build
+#filters:
+#branches:
+#only: master
 
-
-# ---
+# --- Latest version
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
-version: 2.1
-
+#version: 2.1
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  node: circleci/node@4.7
+#orbs:
+#node: circleci/node@4.7
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-     #Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - node/test:
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
-          # If you are using yarn, change the line below from "npm" to "yarn"
-          pkg-manager: yarn
+## Invoke jobs via workflows
+## See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+#workflows:
+#sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+##Inside the workflow, you define the jobs you want to run.
+#jobs:
+#- node/test:
+## This is the node version to use for the `cimg/node` tag
+## Relevant tags can be found on the CircleCI Developer Hub
+## https://circleci.com/developer/images/image/cimg/node
+#version: '16.10'
+## If you are using yarn, change the line below from "npm" to "yarn"
+#pkg-manager: yarn
 
+#- build:
+#working_directory: ~/circleci-tmp-folder
+#steps:
+#... # build/dependancies
+#- run:
+#name: build
+#command: 'yarn build'
 
-      - build:
-          working_directory: ~/circleci-tmp-folder
-          steps:
-            ... # build/dependancies
-            - run:
-                name: build
-                command: 'yarn build'
+#- deploy:
+#machine:
+#enabled: true
+#working_directory: ~/circleci-tmp-folder
+#steps:
+#- run:
+#name: Deploy
+#command: 'aws s3 sync ${source}/ s3://${bucket} --region us-west-2'
 
-      - deploy:
-          machine:
-            enabled: true
-          working_directory: ~/circleci-tmp-folder
-          steps:
-             - run:
-                name: Deploy
-                command: 'aws s3 sync ${source}/ s3://${bucket} --region us-west-2'
-                  
-                  #---
+##---
