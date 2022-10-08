@@ -34,13 +34,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Node@16
-        uses: kevinpollet/typescript-container-action-template@v1
-        #uses: actions/setup-node@v3
-        #with:
-        #node-version: 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-      #- name: Install TS dependencies
-      #run: yarn add typescript
+      - name: Install TS dependencies
+        run: yarn add typescript
 
       - name: Run tsc check
         run: yarn tsc
