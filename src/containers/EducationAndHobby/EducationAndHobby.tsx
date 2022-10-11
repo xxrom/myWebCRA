@@ -6,6 +6,8 @@ import hexapod from './hexapod.png';
 import snowboarding from './snowboarding.jpeg';
 import { BorderContainer } from '../../components/BorderContainer';
 import { theme } from '../../theme';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 import circleVideo from './circle_1.mp4';
 import slicesVideo from './slices_1.mp4';
 import rombVideo from './romb_1.mp4';
@@ -13,6 +15,14 @@ import rombVideo from './romb_1.mp4';
 export type EducationAndHobbyProps = {};
 
 export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
+  const videos = [
+    <VideoMini className={carouselItemCss} src={circleVideo} size="normal" />,
+    <div className={carouselItemWrapperCss}>
+      <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />
+    </div>,
+    <VideoMini className={carouselItemCss} src={slicesVideo} size="normal" />,
+  ];
+
   return (
     <div>
       <Container>
@@ -38,7 +48,6 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         <Text variant="h1" className={blockMarginCss}>
           Hobbies:
         </Text>
-
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Robots</Text>
           <Text variant="h5">
@@ -49,30 +58,48 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           <Text variant="h3">3D printing/ Inventor(CAD)</Text>
           <Text variant="h5">Creating and printing different models</Text>
         </BorderContainer>
-
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image isDisabled src={hexapod} />
         </ImageBox>
-
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Blender</Text>
         </BorderContainer>
-
-        <VideoMini src={circleVideo} size="full" />
-        <VideoMini src={rombVideo} size="full" />
-        <VideoMini src={slicesVideo} size="full" />
-
-        <BorderContainer margin={theme.margin.content}>
-          <Text variant="h3">Snowboarding</Text>
-        </BorderContainer>
-
-        <ImageBox className={cx(photoCss, blockMarginCss)}>
-          <Image isDisabled src={snowboarding} />
-        </ImageBox>
+        <div className={carouselCss}>
+          <AliceCarousel
+            animationType="fadeout"
+            autoPlay={true}
+            autoPlayInterval={3000}
+            animationDuration={500}
+            disableButtonsControls
+            disableDotsControls
+            autoWidth
+            infinite
+            items={videos}
+            mouseTracking
+          />
+        </div>
       </Container>
     </div>
   );
 };
+
+const carouselItemWrapperCss = css`
+  height: 100%;
+`;
+const carouselItemCss = css`
+  min-width: 80vw;
+  padding: 2rem 1rem;
+`;
+const carouselCss = css`
+  position: relative;
+  max-width: 100vw;
+  overflow: hidden;
+
+  & .alice-carousel__stage {
+    display: flex;
+    align-items: center;
+  }
+`;
 
 const photoFullWidthCss = css`
   min-height: 40vw;
@@ -85,19 +112,5 @@ const photoFullWidthCss = css`
     max-height: 60vw;
     min-width: 90%;
     max-width: 90%;
-  }
-`;
-
-const photoCss = css`
-  min-height: 60vw;
-  max-height: 60vw;
-  min-width: 80vw;
-  max-width: 80vw;
-
-  @media screen and (max-width: 575px) {
-    min-height: 60vw;
-    max-height: 60vw;
-    min-width: 80vw;
-    max-width: 80vw;
   }
 `;

@@ -1,6 +1,5 @@
 import { styled } from '@linaria/react';
 import { css } from '@linaria/core';
-import { theme } from '../theme';
 
 type ImageProps = {
   isDisabled?: boolean;

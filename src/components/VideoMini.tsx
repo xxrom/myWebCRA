@@ -9,6 +9,7 @@ export interface VideoMiniProps {
   src: string;
   size?: SizeType;
   marginTopBottom?: boolean;
+  className?: string;
 }
 
 const sizesCss: { [K in SizeType]: string } = {
@@ -47,6 +48,7 @@ export const VideoMini: FC<VideoMiniProps> = ({
   src,
   size = 'normal',
   marginTopBottom = true,
+  className = '',
 }) => {
   return (
     <Video
@@ -54,7 +56,11 @@ export const VideoMini: FC<VideoMiniProps> = ({
       muted
       playsInline
       loop
-      className={cx(getSizeCss(size), marginTopBottom && marginTopBottomCss)}
+      className={cx(
+        getSizeCss(size),
+        marginTopBottom && marginTopBottomCss,
+        className
+      )}
     >
       <source src={src} type="video/mp4" />
     </Video>
