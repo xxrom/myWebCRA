@@ -17,14 +17,12 @@ export type EducationAndHobbyProps = {};
 export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
   const videos = [
     <VideoMini className={carouselItemCss} src={circleVideo} size="normal" />,
-    <div className={carouselItemWrapperCss}>
-      <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />
-    </div>,
+    <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />,
     <VideoMini className={carouselItemCss} src={slicesVideo} size="normal" />,
   ];
 
   return (
-    <div>
+    <>
       <Container>
         <Text variant="h1" className={blockMarginCss}>
           Education:
@@ -61,6 +59,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image isDisabled src={hexapod} />
         </ImageBox>
+
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Blender</Text>
         </BorderContainer>
@@ -79,21 +78,23 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           />
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 
-const carouselItemWrapperCss = css`
-  height: 100%;
-`;
 const carouselItemCss = css`
-  min-width: 80vw;
+  min-width: 400px;
+  max-width: 80vw;
+  min-height: 400px;
+  max-height: 400px;
   padding: 2rem 1rem;
+  overflow: hidden;
 `;
 const carouselCss = css`
   position: relative;
-  max-width: 100vw;
-  overflow: hidden;
+  width: 100%;
+  padding: 0 -2rem;
+  margin-left: -1rem;
 
   & .alice-carousel__stage {
     display: flex;
@@ -104,13 +105,6 @@ const carouselCss = css`
 const photoFullWidthCss = css`
   min-height: 40vw;
   max-height: 60vw;
-  min-width: 90%;
-  max-width: 90%;
-
-  @media screen and (max-width: 575px) {
-    min-height: 40vw;
-    max-height: 60vw;
-    min-width: 90%;
-    max-width: 90%;
-  }
+  min-width: 50vw;
+  max-width: 80vw;
 `;

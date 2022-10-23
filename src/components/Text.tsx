@@ -147,5 +147,5 @@ export const Text = ({
 };
 
 export const blockMarginCss = css`
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
 `;

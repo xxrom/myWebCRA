@@ -74,12 +74,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 `;
 
 const Main = styled.main`
-  display: flex;
-  flex-grow: 1;
+  border: 0px solid red;
 `;
+
 const Nav = styled.nav`
   display: flex;
   position: sticky;

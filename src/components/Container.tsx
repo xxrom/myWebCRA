@@ -20,17 +20,12 @@ export const Container = ({
 
 const Wrapper = styled.div`
   position: relative;
-  display: flex;
   width: 100%;
-  max-width: 100vw;
-  min-height: 500px;
-  overflow: hidden;
 `;
 const paddingBottomCss = css`
   padding-bottom: 0rem;
 `;
 
-//TODO mobile,tablet,desktop renaming !
 const Border = styled.div`
   display: flex;
   flex: 1;
@@ -42,12 +37,12 @@ const Border = styled.div`
   margin: 2rem 4rem;
 
   ${desktop(`
-  margin: 0rem 4.5rem;
+  margin: 1rem 4.5rem;
   `)};
   ${tablet(`
-  margin: 0rem 2.5rem;
+  margin: 1rem 2.5rem;
   `)};
   ${mobile(`
-  margin: 0rem 1.5rem;
+  margin: 1rem 1.5rem;
   `)};
 `;
