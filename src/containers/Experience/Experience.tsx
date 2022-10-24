@@ -12,7 +12,7 @@ import { commonMdCss } from '../../commonStyles';
 import { pulseCss } from '../../components/Image';
 
 const sberInfo: JobProps['info'] = {
-  title: 'Sber (2 years)',
+  title: 'Sber (2+ years)',
   description: `
   Oct. 2016 - Aug. 2018: Sberbank, Moscow, Russia
 
@@ -30,7 +30,7 @@ const sberInfo: JobProps['info'] = {
   - ◽**React**, React-Native, Redux, Jasmine/Karma/Selenium, git, JIRA`,
 };
 const yandexInfo: JobProps['info'] = {
-  title: 'Yandex (6 months)',
+  title: 'Yandex (6+ months)',
   description: `
   Aug. 2018 - Jan. 2019: Yandex, Moscow, Russia
 
