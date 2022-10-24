@@ -1,21 +1,8 @@
 import { css } from '@linaria/core';
 import { Container, Text, BorderContainer } from '../components';
-import { blockMarginCss } from '../components/Text';
+import { blockMarginCss } from '../theme';
 
 export type StackProps = {};
-
-/*
-import MD from 'react-markdown';
-const stackMD = `
-- **JavaScript** / TypeScript
-- **React** / *GraphQL* / WebSockets 
-- *Python* / Node
-- *k8s* / **k3s** / AWS / Heroku
-`;
-        <Text variant="h3" isColumn={true}>
-          <MD>{stackMD}</MD>
-        </Text>
- */
 
 export const Stack = ({}: StackProps) => {
   return (
@@ -25,15 +12,18 @@ export const Stack = ({}: StackProps) => {
       </Text>
 
       <BorderContainer>
-        <Text variant="h3">
-          <b>JavaScript</b> / TypeScript
+        <Text variant="h3" className={textBoldCss}>
+          <b>TypeScript</b> / JavaScript
         </Text>
-        <Text variant="h3">
+
+        <Text variant="h3" className={textBoldCss}>
           <b>React</b> / GraphQL / WebSockets
         </Text>
-        <Text variant="h3">Python / Node</Text>
-        <Text variant="h3">
-          k8s / <b>k3s</b> / AWS / Heroku
+
+        <Text variant="h3">Python / Koa</Text>
+
+        <Text variant="h3" className={textBoldCss}>
+          <b>k3s/k8s</b> / AWS / GCP / Heroku
         </Text>
       </BorderContainer>
     </Container>
@@ -42,4 +32,10 @@ export const Stack = ({}: StackProps) => {
 
 const containerCss = css`
   flex-direction: column;
+`;
+
+const textBoldCss = css`
+  b {
+    font-weight: 400;
+  }
 `;

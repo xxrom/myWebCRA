@@ -1,5 +1,4 @@
 import { css, cx } from '@linaria/core';
-import { styled } from '@linaria/react';
 import { theme } from '../theme';
 
 type FlattenSimpleInterpolation = string;
@@ -61,7 +60,7 @@ const h5FontSize = css`
 `;
 
 const linkCommon = css`
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 1px;
 
   &:hover {
@@ -145,7 +144,3 @@ export const Text = ({
       );
   }
 };
-
-export const blockMarginCss = css`
-  margin-bottom: 1rem;
-`;

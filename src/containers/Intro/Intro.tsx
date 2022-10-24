@@ -17,7 +17,7 @@ export const Intro = ({}: IntroProps) => {
     <Container className={wrapperCss}>
       <BackgroundVideo src={surfVideo}>
         <Text variant="h1" className={marginCss}>
-          Chernyshov Nikita GCP
+          Chernyshov Nikita
         </Text>
 
         <Text variant="h3" className={marginCss}>

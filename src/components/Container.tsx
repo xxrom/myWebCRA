@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 import { css, cx } from '@linaria/core';
-import { mobile, tablet, desktop } from '../theme';
+import { mobile, tablet, desktop, theme } from '../theme';
 
 export type ContainerProps = {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ export const Container = ({
   className,
   isEnabledPaddingBottom = true,
 }: ContainerProps) => (
-  <Wrapper className={cx(isEnabledPaddingBottom && paddingBottomCss)}>
+  <Wrapper className={cx(isEnabledPaddingBottom && marginBottomCss)}>
     <Border className={cx(className)}>{children}</Border>
   </Wrapper>
 );
@@ -22,8 +22,9 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
 `;
-const paddingBottomCss = css`
-  padding-bottom: 0rem;
+
+const marginBottomCss = css`
+  margin-bottom: ${theme?.margin?.block};
 `;
 
 const Border = styled.div`
@@ -34,15 +35,15 @@ const Border = styled.div`
   align-items: center;
   justify-content: center;
 
-  margin: 2rem 4rem;
-
   ${desktop(`
-  margin: 1rem 4.5rem;
+    margin: 1rem 3rem;
   `)};
+
   ${tablet(`
-  margin: 1rem 2.5rem;
+    margin: 1rem 2rem;
   `)};
+
   ${mobile(`
-  margin: 1rem 1.5rem;
+    margin: 1rem 1rem;
   `)};
 `;

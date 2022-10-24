@@ -55,7 +55,7 @@ export const ImageBox = styled.div`
   min-height: 300px;
   max-height: 300px;
   min-width: 350px;
-  max-width: 50vw;
+  max-width: 30vw;
   margin-bottom: 0rem;
   transition: all 0.3s ease;
 

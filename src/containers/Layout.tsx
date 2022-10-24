@@ -1,11 +1,10 @@
 import { Link, Outlet } from 'react-router-dom';
-import { css, cx } from '@linaria/core';
+import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
 
-//<Text className={cx(footerItemCss, linksAlignFixH5)} variant="h5">
 export const Layout = () => (
   <Wrapper>
     <Nav>
@@ -22,9 +21,9 @@ export const Layout = () => (
           <Text
             variant="link-h5"
             className={linksAlignFixH3}
-            href="mailto:chernyshovnm@gmail.com"
+            href="https://www.linkedin.com/in/chernyshovn/"
           >
-            mail_📬
+            linkedin_🚀
           </Text>
         </Li>
 
@@ -32,9 +31,9 @@ export const Layout = () => (
           <Text
             variant="link-h5"
             className={linksAlignFixH3}
-            href="https://www.linkedin.com/in/chernyshovn/"
+            href="mailto:chernyshovnm@gmail.com"
           >
-            linkedin_🚀
+            mail_📬
           </Text>
         </Li>
       </Ul>
@@ -46,24 +45,24 @@ export const Layout = () => (
 
     <Footer>
       <Text className={footerItemCss} variant="h5">
-        Chernyshov
+        Chernyshov on GCP
       </Text>
 
       <div>
         <Text
           className={footerItemCss}
-          variant="link-h3"
-          href="mailto:chernyshovnm@gmail.com"
+          variant="link-h5"
+          href="https://www.linkedin.com/in/chernyshovn/"
         >
-          mail
+          linkedin
         </Text>
 
         <Text
           className={footerItemCss}
-          variant="link-h3"
-          href="https://www.linkedin.com/in/chernyshovn/"
+          variant="link-h5"
+          href="mailto:chernyshovnm@gmail.com"
         >
-          linkedin
+          mail
         </Text>
       </div>
     </Footer>
@@ -75,7 +74,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   max-width: 100vw;
-  overflow: hidden;
 `;
 
 const Main = styled.main`
@@ -95,7 +93,7 @@ const Nav = styled.nav`
     position: absolute;
     top: -8px; /* -blur */
     left: -8px; /* -blur */
-    width: calc(100% + 16px); /* 100% + blur * 2 */
+    width: calc(100%); /* 100% + blur * 2 */
     height: calc(100% + 16px); /* 100% + blur * 2 */
     background-image: linear-gradient(
       0.5turn,
@@ -155,10 +153,10 @@ const Footer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   background: ${theme.colors.bgInverted};
-  padding: 5rem 1rem;
+  padding: 3rem 1rem;
 
   @media screen and (max-width: 575px) {
-    padding: 3rem 0.5rem;
+    padding: 2rem 0.5rem;
     justify-content: center;
   }
 `;
