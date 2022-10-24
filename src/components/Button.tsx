@@ -22,10 +22,12 @@ export const Button: FC<ButtonProps> = ({
 
 const ButtonStyled = styled.button`
   font-size: 1rem;
-  font-size: calc(12px + (24 - 12) * (100vw -400px) / (1600 -400));
-  padding: ${theme.sizes.paddingSmall};
 
-  border: 1px solid ${theme.colors.bg};
+  font-size: calc(12px + (24 - 12) * (100vw -400px) / (1600 -400));
+  padding: ${theme.sizes.paddingNormal};
+
+  border: 1px solid ${theme.colors.bg50};
+
   border-radius: ${theme.sizes.borderRadius};
   cursor: pointer;
 

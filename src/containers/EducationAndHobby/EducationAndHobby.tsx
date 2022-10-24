@@ -1,11 +1,15 @@
 import { css, cx } from '@linaria/core';
-import { Container, Text, Image, ImageBox, VideoMini } from '../../components';
-import { blockMarginCss } from '../../components/Text';
+import {
+  Container,
+  BorderContainer,
+  Text,
+  Image,
+  ImageBox,
+  VideoMini,
+} from '../../components';
 
 import hexapod from './hexapod.png';
-import snowboarding from './snowboarding.jpeg';
-import { BorderContainer } from '../../components/BorderContainer';
-import { theme } from '../../theme';
+import { blockMarginCss, theme } from '../../theme';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import circleVideo from './circle_1.mp4';
@@ -28,7 +32,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           Education:
         </Text>
 
-        <BorderContainer>
+        <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">
             Bauman Moscow State Technical University (Russia):
           </Text>
@@ -42,27 +46,33 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           <Text variant="h5">Computer Science, Master’s degree</Text>
         </BorderContainer>
       </Container>
+
       <Container>
         <Text variant="h1" className={blockMarginCss}>
           Hobbies:
         </Text>
+
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Robots</Text>
           <Text variant="h5">
             Hexapod, balance robot (arduino, raspberry pi)
           </Text>
 
-          <Text variant="h3">-</Text>
-          <Text variant="h3">3D printing/ Inventor(CAD)</Text>
+          <Text variant="h3">---</Text>
+          <Text variant="h3">3D printing / Inventor(CAD)</Text>
           <Text variant="h5">Creating and printing different models</Text>
         </BorderContainer>
+
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image isDisabled src={hexapod} />
         </ImageBox>
+      </Container>
 
+      <Container>
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Blender</Text>
         </BorderContainer>
+
         <div className={carouselCss}>
           <AliceCarousel
             animationType="fadeout"
@@ -93,6 +103,7 @@ const carouselItemCss = css`
 const carouselCss = css`
   position: relative;
   width: 100%;
+  max-width: 1000px;
   padding: 0 -2rem;
   margin-left: -1rem;
 

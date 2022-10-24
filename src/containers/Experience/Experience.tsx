@@ -2,18 +2,17 @@ import { styled } from '@linaria/react';
 import { css, cx } from '@linaria/core';
 import MD from 'react-markdown';
 import { Container, Text, Image, ImageBox, Button } from '../../components';
-import { theme } from '../../theme';
+import { blockMarginCss, mobile, tablet, theme } from '../../theme';
 import sber from './sber.png';
 import yandex from './yandex.jpg';
 import vtb from './vtb.png';
 import sphere from './sphere.png';
 import { useCallback, useEffect, useState } from 'react';
-import { blockMarginCss } from '../../components/Text';
 import { commonMdCss } from '../../commonStyles';
 import { pulseCss } from '../../components/Image';
 
 const sberInfo: JobProps['info'] = {
-  title: 'Sber',
+  title: 'Sber (2 years)',
   description: `
   Oct. 2016 - Aug. 2018: Sberbank, Moscow, Russia
 
@@ -31,7 +30,7 @@ const sberInfo: JobProps['info'] = {
   - ◽**React**, React-Native, Redux, Jasmine/Karma/Selenium, git, JIRA`,
 };
 const yandexInfo: JobProps['info'] = {
-  title: 'Yandex',
+  title: 'Yandex (6 months)',
   description: `
   Aug. 2018 - Jan. 2019: Yandex, Moscow, Russia
 
@@ -52,7 +51,7 @@ const yandexInfo: JobProps['info'] = {
   `,
 };
 const vtbInfo: JobProps['info'] = {
-  title: 'VTB bank',
+  title: 'VTB bank (2+ years)',
   description: `
   Jan. 2019 - Jun. 2021: VTB bank, Moscow, Russia
 
@@ -78,7 +77,7 @@ const vtbInfo: JobProps['info'] = {
   `,
 };
 const sphereInfo: JobProps['info'] = {
-  title: 'Sphere inc',
+  title: 'Sphere inc (1.5+ years)',
   description: `
   Jun. 2021 - now: Sphere, North Miami Beach, FL 
 
@@ -105,7 +104,7 @@ export const Experience = ({}: ExperienceProps) => {
   return (
     <Container className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
-        Experience:
+        Experience (6+ years):
       </Text>
 
       <Container className={jobsContainerCss} isEnabledPaddingBottom={false}>
@@ -189,6 +188,7 @@ const containerCss = css`
 const jobsContainerCss = css`
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 0;
 `;
 
 const JobWrapper = styled.div`
@@ -197,21 +197,25 @@ const JobWrapper = styled.div`
   flex: 1;
 
   align-items: center;
-  padding: 2rem 2rem 2.5rem;
+  padding: 2rem 2rem;
   box-sizing: border-box;
 
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
   @media screen and (max-width: 575px) {
-    padding: 1rem 1rem 2rem;
+    padding: 1rem;
   }
 `;
 
 const Popup = styled.div`
   position: fixed;
   display: flex;
-  top: 2vh;
-  left: 2vw;
-  height: 96vh;
-  width: 96vw;
+  top: 5vh;
+  left: 5vw;
+  height: 90vh;
+  width: 90vw;
   background: ${theme.colors.bg};
   border: 5px solid ${theme.colors.bg50};
   border-radius: ${theme.sizes.borderRadius};
@@ -230,12 +234,23 @@ const PopupContent = styled.div`
   padding: 5rem 1rem;
   align-items: center;
   overflow-y: scroll;
+
+  ${tablet(`
+    padding: 3rem 2rem;
+      `)};
+  ${mobile(`
+    padding: 2rem 1rem;
+      `)};
 `;
 const CloseButton = styled.span`
   position: absolute;
   top: 1rem;
   right: 1rem;
   padding: 1rem;
+
+  ${mobile(`
+    padding: 0;
+      `)};
 `;
 const popupTitleCss = css`
   display: flex;

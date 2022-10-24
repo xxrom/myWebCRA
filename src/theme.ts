@@ -1,3 +1,5 @@
+import { css } from '@linaria/core';
+
 export const theme = {
   colors: {
     primary: '#111',
@@ -28,13 +30,14 @@ export const theme = {
     container: { width: 1200 },
     footer: { height: 128 },
     modal: { width: 540 },
-    borderRadius: '0',
+    borderRadius: '2px',
     paddingSmall: '8px',
+    paddingNormal: '10px 16px',
   },
 
   margin: {
-    block: '0rem',
-    content: '0rem',
+    block: '4rem',
+    content: '2rem 1rem',
   },
 
   // in ms
@@ -52,3 +55,7 @@ export const theme = {
 export const desktop = theme?.media.desktop;
 export const tablet = theme?.media.tablet;
 export const mobile = theme?.media.mobile;
+
+export const blockMarginCss = css`
+  margin-bottom: 2rem;
+`;

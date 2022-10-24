@@ -1,11 +1,5 @@
 import { styled } from '@linaria/react';
-import {
-  Intro,
-  Stack,
-  Experience,
-  Projects,
-  EducationAndHobby,
-} from '../containers';
+import { Intro, Stack, Experience, EducationAndHobby } from '../containers';
 import { ScrollProvider } from '../context';
 
 const Column = styled.div`
@@ -14,6 +8,7 @@ const Column = styled.div`
 `;
 
 // TODO: scaling mobile
+// TODO: add Projects
 export const Main = () => {
   return (
     <ScrollProvider>
@@ -23,8 +18,6 @@ export const Main = () => {
         <Stack />
 
         <Experience />
-
-        <Projects />
 
         <EducationAndHobby />
       </Column>

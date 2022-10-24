@@ -5,12 +5,18 @@ export const commonMdCss = css`
     margin: 0.5rem 0;
   }
 
+  b,
+  strong {
+    font-weight: 400;
+  }
+
   ul {
     list-style-type: none;
     margin: 0.5rem 0;
     padding-left: 1rem;
-  }
-  ul li {
-    margin: 0.5rem 0;
+
+    & li {
+      margin: 0.5rem 0;
+    }
   }
 `;

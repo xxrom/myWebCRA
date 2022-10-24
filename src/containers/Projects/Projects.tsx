@@ -1,7 +1,7 @@
 import { css, cx } from '@linaria/core';
 import { Container, Text, Image, ImageBox } from '../../components';
+import { blockMarginCss } from '../../theme';
 import activesoul from './activesoul.png';
-import { blockMarginCss } from '../../components/Text';
 
 export type ProjectsProps = {};
 
@@ -31,17 +31,17 @@ const linkCss = css`
 `;
 
 const imageCss = css`
-  min-height: 250px;
-  max-height: 50vw;
-  min-width: 250px;
-  max-width: 50vw;
+  min-height: 30vw;
+  max-height: 500px;
+  min-width: 30vw;
+  max-width: 500px;
 
   @media screen and (max-width: 575px) {
     min-height: 250px;
     height: 70vw;
-    max-height: 600px;
+    max-height: 500px;
     min-width: 250px;
     width: 70vw;
-    max-width: 600px;
+    max-width: 500px;
   }
 `;
