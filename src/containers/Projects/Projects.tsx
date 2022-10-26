@@ -1,18 +1,28 @@
 import { css, cx } from '@linaria/core';
 import { Container, Text, Image, ImageBox } from '../../components';
 import { blockMarginCss } from '../../theme';
-import activesoul from './activesoul.png';
+import activesoulSrc from './activesoul.png';
+import band3Src from './band3.jpg';
+import legoJsonSrc from './legoJson.png';
 
 export type ProjectsProps = {};
 
-const activeSoulUrl = 'https://active-soul.netlify.app/';
-
 export const Projects = ({}: ProjectsProps) => {
-  const items = [
+  const projects = [
+    {
+      title: 'Xiaomi Band 3',
+      url: 'https://band3.netlify.app/',
+      src: band3Src,
+    },
+    {
+      title: 'NPM: JSON Viewer',
+      url: 'https://lego-react-json-view.netlify.app/',
+      src: legoJsonSrc,
+    },
     {
       title: 'ActiveSoul',
-      url: activeSoulUrl,
-      src: activesoul,
+      url: 'https://active-soul.netlify.app/',
+      src: activesoulSrc,
     },
   ];
 
@@ -22,22 +32,29 @@ export const Projects = ({}: ProjectsProps) => {
         Projects:
       </Text>
 
-      <Text variant="link-h3" className={linkCss} href={activeSoulUrl}>
-        ActiveSoul
-      </Text>
+      <>
+        {projects.map(({ title, url, src }) => (
+          <>
+            {/* TODO: Image add wrapper with settings for scale and height/width */}
+            <a href={url}>
+              <ImageBox className={cx(imageCss)}>
+                <Image src={src} />
+              </ImageBox>
+            </a>
 
-      {/* TODO: Image add wrapper with settings for scale and height/width */}
-      <a href={activeSoulUrl}>
-        <ImageBox className={cx(imageCss)}>
-          <Image src={activesoul} />
-        </ImageBox>
-      </a>
+            <Text variant="link-h3" className={linkCss} href={url}>
+              {title}
+            </Text>
+          </>
+        ))}
+      </>
     </Container>
   );
 };
 
 const linkCss = css`
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
 `;
 
 const imageCss = css`

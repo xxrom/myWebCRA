@@ -36,6 +36,15 @@ export const Layout = () => (
             mail_📬
           </Text>
         </Li>
+        <Li>
+          <Text
+            variant="link-h5"
+            className={linksAlignFixH3}
+            href="https://github.com/workxrom"
+          >
+            GitHub_⛏
+          </Text>
+        </Li>
       </Ul>
     </Nav>
 
@@ -63,6 +72,14 @@ export const Layout = () => (
           href="mailto:chernyshovnm@gmail.com"
         >
           mail
+        </Text>
+
+        <Text
+          className={footerItemCss}
+          variant="link-h5"
+          href="https://github.com/workxrom"
+        >
+          GitHub
         </Text>
       </div>
     </Footer>

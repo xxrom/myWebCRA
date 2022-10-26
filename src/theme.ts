@@ -57,5 +57,10 @@ export const tablet = theme?.media.tablet;
 export const mobile = theme?.media.mobile;
 
 export const blockMarginCss = css`
+  margin-bottom: 3rem;
+
+  ${mobile(`
   margin-bottom: 2rem;
+
+  `)}
 `;
