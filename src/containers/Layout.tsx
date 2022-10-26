@@ -42,7 +42,7 @@ export const Layout = () => (
             className={linksAlignFixH3}
             href="https://github.com/workxrom"
           >
-            GitHub_⛏
+            git_⛏
           </Text>
         </Li>
       </Ul>
@@ -79,7 +79,7 @@ export const Layout = () => (
           variant="link-h5"
           href="https://github.com/workxrom"
         >
-          GitHub
+          git
         </Text>
       </div>
     </Footer>
