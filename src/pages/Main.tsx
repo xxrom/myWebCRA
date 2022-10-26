@@ -1,5 +1,11 @@
 import { styled } from '@linaria/react';
-import { Intro, Stack, Experience, EducationAndHobby } from '../containers';
+import {
+  Intro,
+  Stack,
+  Projects,
+  Experience,
+  EducationAndHobby,
+} from '../containers';
 import { ScrollProvider } from '../context';
 
 const Column = styled.div`
@@ -16,6 +22,8 @@ export const Main = () => {
         <Intro />
 
         <Stack />
+
+        <Projects />
 
         <Experience />
 
