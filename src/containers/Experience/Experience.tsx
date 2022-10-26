@@ -128,7 +128,7 @@ type JobProps = {
 const Job = ({ imgSrc = sber, info }: JobProps) => {
   const [isOpened, setIsOpened] = useState(false);
 
-  const onClick = useCallback(() => setIsOpened(!isOpened), [isOpened]);
+  const onTogglePopup = useCallback(() => setIsOpened(!isOpened), [isOpened]);
 
   useEffect(() => {
     // Hack for disabling blobal scroll when popup opened
@@ -149,7 +149,7 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
     <Popup>
       <PopupContent>
         <CloseButton>
-          <Button onClick={onClick}>close</Button>
+          <Button onClick={onTogglePopup}>close</Button>
         </CloseButton>
 
         <Text variant="h1" className={popupTitleCss}>
@@ -170,9 +170,14 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
   return (
     <JobWrapper>
       <ImageBox>
-        {isOpened && popupContent}
+        {isOpened && (
+          <>
+            <PopupBackground onClick={onTogglePopup} />
+            {popupContent}
+          </>
+        )}
 
-        <Image className={pulseCss} onClick={onClick} src={imgSrc} />
+        <Image className={pulseCss} onClick={onTogglePopup} src={imgSrc} />
       </ImageBox>
 
       <Text variant="h3" className={jobTitleCss}>
@@ -213,10 +218,10 @@ const JobWrapper = styled.div`
 const Popup = styled.div`
   position: fixed;
   display: flex;
-  top: 5vh;
-  left: 5vw;
-  height: 90vh;
-  width: 90vw;
+  top: 15vh;
+  left: 10vw;
+  height: 70vh;
+  width: 80vw;
   background: ${theme.colors.bg};
   border: 5px solid ${theme.colors.bg50};
   border-radius: ${theme.sizes.borderRadius};
@@ -235,6 +240,7 @@ const PopupContent = styled.div`
   padding: 5rem 1rem;
   align-items: center;
   overflow-y: scroll;
+  z-index: 12;
 
   ${tablet(`
     padding: 3rem 2rem;
@@ -242,6 +248,15 @@ const PopupContent = styled.div`
   ${mobile(`
     padding: 2rem 1rem;
       `)};
+`;
+const PopupBackground = styled.div`
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(220deg, #aaa 25%, #555 25%, #111 50%, #777 80%);
 `;
 const CloseButton = styled.span`
   position: absolute;
@@ -251,7 +266,9 @@ const CloseButton = styled.span`
 
   ${mobile(`
     padding: 0;
-      `)};
+    margin-right: -1rem;
+    margin-top: -1rem;
+  `)};
 `;
 const popupTitleCss = css`
   display: flex;

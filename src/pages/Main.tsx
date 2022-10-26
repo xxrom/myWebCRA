@@ -23,9 +23,9 @@ export const Main = () => {
 
         <Stack />
 
-        <Projects />
-
         <Experience />
+
+        <Projects />
 
         <EducationAndHobby />
       </Column>
