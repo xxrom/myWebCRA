@@ -7,24 +7,34 @@ export type ProjectsProps = {};
 
 const activeSoulUrl = 'https://active-soul.netlify.app/';
 
-export const Projects = ({}: ProjectsProps) => (
-  <Container>
-    <Text variant="h1" className={blockMarginCss}>
-      Projects:
-    </Text>
+export const Projects = ({}: ProjectsProps) => {
+  const items = [
+    {
+      title: 'ActiveSoul',
+      url: activeSoulUrl,
+      src: activesoul,
+    },
+  ];
 
-    <Text variant="link-h3" className={linkCss} href={activeSoulUrl}>
-      ActiveSoul
-    </Text>
+  return (
+    <Container>
+      <Text variant="h1" className={blockMarginCss}>
+        Projects:
+      </Text>
 
-    {/* TODO: Image add wrapper with settings for scale and height/width */}
-    <a href={activeSoulUrl}>
-      <ImageBox className={cx(imageCss)}>
-        <Image src={activesoul} />
-      </ImageBox>
-    </a>
-  </Container>
-);
+      <Text variant="link-h3" className={linkCss} href={activeSoulUrl}>
+        ActiveSoul
+      </Text>
+
+      {/* TODO: Image add wrapper with settings for scale and height/width */}
+      <a href={activeSoulUrl}>
+        <ImageBox className={cx(imageCss)}>
+          <Image src={activesoul} />
+        </ImageBox>
+      </a>
+    </Container>
+  );
+};
 
 const linkCss = css`
   margin-bottom: 1rem;
