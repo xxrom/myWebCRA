@@ -188,6 +188,7 @@ const containerCss = css`
 const jobsContainerCss = css`
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: start;
   margin: 0;
 `;
 

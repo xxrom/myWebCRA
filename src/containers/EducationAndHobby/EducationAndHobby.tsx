@@ -14,6 +14,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import circleVideo from './circle_1.mp4';
 import slicesVideo from './slices_1.mp4';
+import roundSlicesVideo from './round_slices_1.mp4';
 import rombVideo from './romb_1.mp4';
 
 export type EducationAndHobbyProps = {};
@@ -21,6 +22,11 @@ export type EducationAndHobbyProps = {};
 export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
   const videos = [
     <VideoMini className={carouselItemCss} src={circleVideo} size="normal" />,
+    <VideoMini
+      className={carouselItemCss}
+      src={roundSlicesVideo}
+      size="normal"
+    />,
     <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />,
     <VideoMini className={carouselItemCss} src={slicesVideo} size="normal" />,
   ];
