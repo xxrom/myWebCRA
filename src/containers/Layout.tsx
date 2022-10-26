@@ -91,10 +91,10 @@ const Nav = styled.nav`
   &::before {
     content: '';
     position: absolute;
-    top: -8px; /* -blur */
-    left: -8px; /* -blur */
+    top: 0px; /* -blur */
+    left: 0px; /* -blur */
     width: calc(100%); /* 100% + blur * 2 */
-    height: calc(100% + 16px); /* 100% + blur * 2 */
+    height: calc(100%); /* 100% + blur * 2 */
     background-image: linear-gradient(
       0.5turn,
       rgba(255, 255, 255, 1),
@@ -109,6 +109,7 @@ const Nav = styled.nav`
 
 const Ul = styled.ul`
   display: flex;
+  border-bottom: 1px solid gray;
   flex: 1;
 
   align-items: flex-end;
@@ -136,9 +137,6 @@ const Li = styled.li`
 
 const linksAlignFixH3 = css`
   line-height: 1.65;
-`;
-const linksAlignFixH5 = css`
-  line-height: 1.45;
 `;
 
 const LinkMin = styled(Link)`
