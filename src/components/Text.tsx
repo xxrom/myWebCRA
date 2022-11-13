@@ -16,6 +16,8 @@ type TextProps = {
   style?: { [key: string]: any };
   // href for links
   href?: string;
+  target?: string;
+  rel?: string;
 };
 
 export const fontCommon = css`
@@ -73,44 +75,33 @@ export const Text = ({
   children,
   className,
   isColumn = false,
-  ...other
+  ...rest
 }: TextProps) => {
   const commonClassName = cx(className, isColumn && isColumnCss);
+  console.log('rest', rest);
 
   switch (variant) {
     case 'h1':
       return (
-        <span
-          className={cx(commonClassName, fontCommon, h1FontSize)}
-          {...other}
-        >
+        <span className={cx(commonClassName, fontCommon, h1FontSize)} {...rest}>
           {children}
         </span>
       );
     case 'h3':
       return (
-        <span
-          className={cx(commonClassName, fontCommon, h3FontSize)}
-          {...other}
-        >
+        <span className={cx(commonClassName, fontCommon, h3FontSize)} {...rest}>
           {children}
         </span>
       );
     case 'h4':
       return (
-        <span
-          className={cx(commonClassName, fontCommon, h4FontSize)}
-          {...other}
-        >
+        <span className={cx(commonClassName, fontCommon, h4FontSize)} {...rest}>
           {children}
         </span>
       );
     case 'h5':
       return (
-        <span
-          className={cx(commonClassName, fontCommon, h5FontSize)}
-          {...other}
-        >
+        <span className={cx(commonClassName, fontCommon, h5FontSize)} {...rest}>
           {children}
         </span>
       );
@@ -118,9 +109,9 @@ export const Text = ({
     case 'link-h3':
       return (
         <a
-          href={other?.href}
+          target={rest?.target}
           className={cx(commonClassName, fontCommon, h3FontSize, linkCommon)}
-          {...other}
+          {...rest}
         >
           {children}
         </a>
@@ -128,9 +119,8 @@ export const Text = ({
     case 'link-h5':
       return (
         <a
-          href={other?.href}
           className={cx(commonClassName, fontCommon, h5FontSize, linkCommon)}
-          {...other}
+          {...rest}
         >
           {children}
         </a>
@@ -138,7 +128,7 @@ export const Text = ({
 
     default:
       return (
-        <span className={commonClassName} {...other}>
+        <span className={commonClassName} {...rest}>
           {children}
         </span>
       );
