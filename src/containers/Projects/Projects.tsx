@@ -4,11 +4,17 @@ import { blockMarginCss } from '../../theme';
 import activesoulSrc from './activesoul.png';
 import band3Src from './band3.jpg';
 import legoJsonSrc from './legoJson.png';
+import uniswapSrc from './uniswap.png';
 
 export type ProjectsProps = {};
 
 export const Projects = ({}: ProjectsProps) => {
   const projects = [
+    {
+      title: 'Uniswap Eth',
+      url: 'https://unswap-nik.netlify.app/',
+      src: uniswapSrc,
+    },
     {
       title: 'Xiaomi Band 3',
       url: 'https://band3.netlify.app/',
@@ -36,13 +42,19 @@ export const Projects = ({}: ProjectsProps) => {
         {projects.map(({ title, url, src }) => (
           <>
             {/* TODO: Image add wrapper with settings for scale and height/width */}
-            <a href={url}>
+            <a href={url} target="_blank" rel="noopener">
               <ImageBox className={cx(imageCss)}>
                 <Image src={src} />
               </ImageBox>
             </a>
 
-            <Text variant="link-h3" className={linkCss} href={url}>
+            <Text
+              variant="link-h3"
+              target="_blank"
+              rel="noopener"
+              className={linkCss}
+              href={url}
+            >
               {title}
             </Text>
           </>
