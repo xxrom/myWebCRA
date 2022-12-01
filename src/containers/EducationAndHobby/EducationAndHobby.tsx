@@ -3,15 +3,15 @@ import {
   Container,
   BorderContainer,
   Text,
-  Image,
-  ImageBox,
+  //Image,
+  //ImageBox,
   VideoMini,
 } from '../../components';
 
-import hexapod from './hexapod.png';
+//import hexapod from './hexapod.png';
 import { blockMarginCss, theme } from '../../theme';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+//import AliceCarousel from 'react-alice-carousel';
+//import 'react-alice-carousel/lib/alice-carousel.css';
 import circleVideo from './circle_1.mp4';
 import slicesVideo from './slices_1.mp4';
 import roundSlicesVideo from './round_slices_1.mp4';
@@ -47,7 +47,7 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
             School of Robotic Technologies and Complex Automatization
           </Text>
 
-          <Text variant="h3">-</Text>
+          <Text variant="h3">---</Text>
           <Text variant="h3">Glyndwr University (UK):</Text>
           <Text variant="h5">Computer Science, Master’s degree</Text>
         </BorderContainer>
@@ -69,15 +69,20 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
           <Text variant="h5">Creating and printing different models</Text>
         </BorderContainer>
 
+        {/*
         <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
           <Image isDisabled src={hexapod} />
         </ImageBox>
+      */}
       </Container>
 
+      {/*
       <Container>
         <BorderContainer margin={theme.margin.content}>
           <Text variant="h3">Blender</Text>
         </BorderContainer>
+
+        videos.map((video) => video)
 
         <div className={carouselCss}>
           <AliceCarousel
@@ -92,8 +97,9 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
             items={videos}
             mouseTracking
           />
-        </div>
+      </div>
       </Container>
+      */}
     </>
   );
 };

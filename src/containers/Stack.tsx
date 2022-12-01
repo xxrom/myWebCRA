@@ -25,6 +25,10 @@ export const Stack = ({}: StackProps) => {
         <Text variant="h3" className={textBoldCss}>
           <b>k3s/k8s</b> / AWS / GCP / Heroku
         </Text>
+
+        <Text variant="h3" className={textBoldCss}>
+          <b>Solidity</b> / Ethers.js / Web3.js
+        </Text>
       </BorderContainer>
     </Container>
   );
