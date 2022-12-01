@@ -1,5 +1,5 @@
 import { styled } from '@linaria/react';
-import { css } from '@linaria/core';
+import { css, cx } from '@linaria/core';
 
 type ImageProps = {
   isDisabled?: boolean;
@@ -28,16 +28,58 @@ export const pulseCss = css`
   }
 `;
 
+export type Image2Props = {
+  src: string;
+  fallback: string;
+  isDisabled?: boolean;
+  type?: string;
+  alt?: string;
+};
+export const Image2 = ({
+  type = 'image/webp',
+  alt = 'img',
+  isDisabled = false,
+  src,
+  fallback,
+  ...rest
+}: Image2Props) => (
+  <picture className={cx(imageCss, isDisabled && 'disabled')}>
+    <source className={imageCss} srcSet={src} type={type} />
+    <img className={imageCss} src={fallback} alt={alt} {...rest} />
+  </picture>
+);
+
+const imageCss = css`
+  position: relative;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  object-fit: cover;
+
+  transition: all 0.3s ease;
+  border-radius: 4px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  cursor: pointer;
+
+  .disabled {
+    cursor: default;
+    &:hover {
+      transform: scale(1);
+    }
+  }
+`;
+
 export const Image = styled.img<ImageProps & { pulse?: boolean }>`
   position: relative;
   top: 0;
   left: 0;
-
   min-height: 100%;
   width: 100%;
-
   object-fit: cover;
-
   transition: all 0.3s ease;
   cursor: ${(props) => (props?.isDisabled ? 'default' : 'pointer')};
   border-radius: 4px;
