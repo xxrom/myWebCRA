@@ -1,34 +1,45 @@
 import { css, cx } from '@linaria/core';
-import { Container, Text, Image, ImageBox } from '../../components';
+import { Container, Text, Image, ImageBox, Image2 } from '../../components';
 import { blockMarginCss } from '../../theme';
 import activesoulSrc from './activesoul.png';
 import band3Src from './band3.jpg';
 import legoJsonSrc from './legoJson.png';
 import uniswapSrc from './uniswap.png';
+import solidityTodoSrc from './solidity-todo.png';
 
 export type ProjectsProps = {};
 
 export const Projects = ({}: ProjectsProps) => {
   const projects = [
     {
-      title: 'Uniswap Eth',
+      title: 'Uniswap Ether / Solidity Web3',
       url: 'https://unswap-nik.netlify.app/',
-      src: uniswapSrc,
+      src: uniswapSrc, //'./uniswap.webp',
+      fallback: uniswapSrc, //'./uniswap.png',
+    },
+    {
+      title: 'Solidity TODO / Ehter Solidity Web3',
+      url: 'https://solidity-todo-nik.netlify.app/',
+      src: solidityTodoSrc,
+      fallback: solidityTodoSrc,
     },
     {
       title: 'Xiaomi Band 3',
       url: 'https://band3.netlify.app/',
       src: band3Src,
+      fallback: band3Src,
     },
     {
       title: 'NPM: JSON Viewer',
       url: 'https://lego-react-json-view.netlify.app/',
       src: legoJsonSrc,
+      fallback: legoJsonSrc,
     },
     {
       title: 'ActiveSoul',
       url: 'https://active-soul.netlify.app/',
       src: activesoulSrc,
+      fallback: activesoulSrc,
     },
   ];
 
@@ -39,19 +50,19 @@ export const Projects = ({}: ProjectsProps) => {
       </Text>
 
       <>
-        {projects.map(({ title, url, src }) => (
+        {projects.map(({ title, url, src, fallback }) => (
           <>
             {/* TODO: Image add wrapper with settings for scale and height/width */}
-            <a href={url} target="_blank" rel="noopener">
+            <a href={url} target="_blank" rel="noreferrer">
               <ImageBox className={cx(imageCss)}>
-                <Image src={src} />
+                <Image2 src={src} fallback={fallback} />
               </ImageBox>
             </a>
 
             <Text
               variant="link-h3"
               target="_blank"
-              rel="noopener"
+              rel="noreferrer"
               className={linkCss}
               href={url}
             >
