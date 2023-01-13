@@ -15,7 +15,7 @@ export const Button: FC<ButtonProps> = ({
   className,
   onClick = () => {},
 }) => (
-  <ButtonStyled classNameInside={cx(className, fontCommon)} onClick={onClick}>
+  <ButtonStyled className={cx(className, fontCommon)} onClick={onClick}>
     {children}
   </ButtonStyled>
 );
