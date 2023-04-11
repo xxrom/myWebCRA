@@ -7,6 +7,7 @@ import {
   EducationAndHobby,
 } from '../containers';
 import { ScrollProvider } from '../context';
+import { Spline } from '../containers/Spline';
 
 const Column = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ export const Main = () => {
   return (
     <ScrollProvider>
       <Column>
+        <div>Hello</div>
+        <Spline />
+        <div>Hello</div>
+
         <Intro />
 
         <Stack />
