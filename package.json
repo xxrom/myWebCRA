@@ -21,7 +21,7 @@
     "dev": "yarn start",
     "start": "BROWSER=none PORT=4444 craco start",
     "start3": "react-scripts start",
-    "build": "BUILD_PATH=build cracto build",
+    "build": "BUILD_PATH=build craco build",
     "start2": "BROWSER=none PORT=4444 react-app-rewired start",
     "build2": "BUILD_PATH=build react-app-rewired build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!ui-core)/\" --env=jsdom",
