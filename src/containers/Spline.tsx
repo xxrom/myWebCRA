@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import React, { useEffect, useRef } from 'react';
+import { styled } from '@linaria/react';
 
 export const Spline = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -8,6 +9,7 @@ export const Spline = () => {
     if (!canvasRef.current) {
       return;
     }
+
     const height = window.innerHeight;
     const width = window.innerWidth;
     const canvasScale = window.devicePixelRatio;
@@ -54,15 +56,25 @@ export const Spline = () => {
     animate();
   }, []);
 
-  // set the background gradient for the canvas element using CSS
-  useEffect(() => {
-    if (canvasRef.current) {
-      canvasRef.current.style.background =
-        'linear-gradient(to bottom, #1e9088, #00bfff)';
-    }
-  }, []);
-
-  return <canvas ref={canvasRef} />;
+  return <Canvas ref={canvasRef} />;
 };
 
 //export const Spline = () => renderer.domElement;
+
+const Canvas = styled.canvas`
+  background: linear-gradient(-45deg, #ee7752, #008888, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  /*animation: gradient-animation 45s ease infinite;*/
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 50% 50%;
+    }
+    50% {
+      background-position: 100% 80%;
+    }
+    100% {
+      background-position: 5% 50%;
+    }
+  }
+`;

@@ -58,6 +58,7 @@
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",
     "@types/react-router-dom": "5.3.3",
+    "@types/three": "^0.150.1",
     "craco-linaria": "1.1.2",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-react-hooks": "4.6.0",
