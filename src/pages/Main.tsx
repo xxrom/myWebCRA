@@ -5,9 +5,9 @@ import {
   Projects,
   Experience,
   EducationAndHobby,
+  Spline,
 } from '../containers';
 import { ScrollProvider } from '../context';
-import { Spline } from '../containers/Spline';
 
 const Column = styled.div`
   display: flex;
@@ -23,6 +23,11 @@ export const Main = () => {
         <div>Hello</div>
         <Spline />
         <div>Hello</div>
+      </Column>
+    </ScrollProvider>
+  );
+};
+/*
 
         <Intro />
 
@@ -33,7 +38,5 @@ export const Main = () => {
         <Projects />
 
         <EducationAndHobby />
-      </Column>
-    </ScrollProvider>
-  );
-};
+
+*/

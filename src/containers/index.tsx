@@ -1,8 +1,9 @@
-export {Layout} from './Layout';
-export {Intro} from './Intro';
-export {Stack} from './Stack';
-export {Experience} from './Experience';
-export {Projects} from './Projects';
-export {EducationAndHobby} from './EducationAndHobby';
-export {TodoUseReducer} from './TodoUseReducer';
-export {TodoRedux} from './TodoRedux';
+export { Layout } from './Layout';
+export { Intro } from './Intro';
+export { Stack } from './Stack';
+export { Experience } from './Experience';
+export { Projects } from './Projects';
+export { EducationAndHobby } from './EducationAndHobby';
+export { TodoUseReducer } from './TodoUseReducer';
+export { TodoRedux } from './TodoRedux';
+export { Spline } from './Spline';
