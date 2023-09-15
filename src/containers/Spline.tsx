@@ -38,13 +38,22 @@ export const Spline = () => {
 
     // Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    scene.add(ambientLight);
+    /*
+    const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+    skyLight.position.set(0, -1, 4);
+    scene.add(skyLight);
+    const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff0000, 1.2);
+    skyLight2.position.set(0, -1, 4);
+    scene.add(skyLight2);
+    */
 
     // Wave
     const shape = new THREE.Shape();
     let r;
-    let STAR_SIZE = 5 * 2;
+    let STAR_SIZE = 4 * 2;
     for (let i = 0; i < STAR_SIZE; i++) {
-      r = i % 2 === 0 ? 1.2 : 0.5;
+      r = i % 2 === 0 ? 1.5 : 0.5;
 
       const angle = (i * 2 * Math.PI) / STAR_SIZE;
       const x = r * Math.cos(angle) * r;
@@ -74,23 +83,6 @@ export const Spline = () => {
     };
 
     // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
-    /*
-    const t_width = 32,
-      t_height = 32;
-    const t_size = t_width * t_height;
-    const t_data = new Uint8Array(4 * t_size);
-    for (let i = 0; i < t_size; i++) {
-      const stride = i * 4,
-        a1 = i / t_size,
-        a2 = (i % t_width) / t_width;
-      // set r, g, b, and alpha data values
-      t_data[stride] = Math.floor(255 * a1); // red
-      t_data[stride + 1] = 255 - Math.floor(255 * a1); // green
-      t_data[stride + 2] = Math.floor(255 * a2); // blue
-      t_data[stride + 3] = 255; // alpha
-    }
-    const texture = new THREE.DataTexture(t_data, t_width, t_height);
-    */
     const texture = new THREE.TextureLoader().load(
       'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/golfball.jpg'
     );
@@ -103,6 +95,7 @@ export const Spline = () => {
     const geomentry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
     const material = new THREE.MeshPhysicalMaterial({
       color: 0x049ef4,
+      //color: 0xffffff,
       //emissive: 0x0000ff,
       metalness: -2,
       roughness: 0,
@@ -111,8 +104,8 @@ export const Spline = () => {
       //depthWrite: true,
       //depthTest: true,
       //vertexColors: true,
-      flatShading: true,
-      fog: true,
+      //flatShading: true,
+      //fog: true,
       //wireframe: true,
       side: THREE.FrontSide,
       map: texture,
@@ -121,7 +114,6 @@ export const Spline = () => {
     const cube = new THREE.Mesh(geomentry, material);
 
     scene.add(cube);
-    scene.add(ambientLight);
 
     const target = cube.position.clone();
     target.z += 20;
@@ -131,7 +123,11 @@ export const Spline = () => {
 
     camera.lookAt(target);
 
+    let delta = 0;
     const animate = () => {
+      delta += 0.001;
+      texture.offset.set(delta, delta);
+
       requestAnimationFrame(animate);
 
       cube.rotation.x += 0.02;
