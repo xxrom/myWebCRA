@@ -136,16 +136,26 @@ export const Spline = () => {
     //orbit.update();
 
     // MOD
-    // Taper across Z axis
     const mstack = new MOD3.ModifierStack(MOD3.LibraryThree, cube);
-    const taper = new MOD3.Taper(
+    // Taper (fadeoff, to one point) across Z axis
+    const taperZ0 = new MOD3.Taper(
       -1,
       3,
       MOD3.Vector3.Z(false),
       MOD3.Vector3.Z()
     );
+    const taperZ1 = new MOD3.Taper(
+      1,
+      0.1,
+      MOD3.Vector3.Z(false),
+      MOD3.Vector3.Z()
+    );
+    const twistZ = new MOD3.Twist(90 * (Math.PI / 180), MOD3.Vector3.Z());
 
-    mstack.addModifier(taper);
+    mstack.addModifier(taperZ0);
+    mstack.addModifier(taperZ1);
+    mstack.addModifier(twistZ);
+
     mstack.apply();
 
     let delta = 0;
