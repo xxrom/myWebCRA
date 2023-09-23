@@ -49,7 +49,7 @@ export const Spline = () => {
     scene.add(gridHelper);
 
     // Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
     /*
     const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
@@ -63,7 +63,8 @@ export const Spline = () => {
     // Wave
     const shape = new THREE.Shape();
     let r;
-    let STAR_SIZE = 4 * 2;
+    const STAR_EDGES = 50;
+    let STAR_SIZE = STAR_EDGES * 2;
     for (let i = 0; i < STAR_SIZE; i++) {
       r = i % 2 === 0 ? 1.5 : 0.5;
 
@@ -87,8 +88,8 @@ export const Spline = () => {
       bavelSegments: 3,
       extrudePath: new THREE.CatmullRomCurve3([
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 1, 5),
-        new THREE.Vector3(0, -4, 7),
+        new THREE.Vector3(0, 1, 3),
+        new THREE.Vector3(0, -1, 7),
         new THREE.Vector3(0, 0, 15),
         new THREE.Vector3(0, 0, 20),
       ]),
@@ -96,17 +97,21 @@ export const Spline = () => {
 
     // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
     const texture = new THREE.TextureLoader().load(
-      'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/golfball.jpg'
+      //process.env.PUBLIC_URL + 'textures/Crystal_001_COLOR.jpg'
+      process.env.PUBLIC_URL + 'textures/Abstract_010_basecolor.jpg'
+      //process.env.PUBLIC_URL + 'textures/Crystal_001_COLOR.jpg'
+      //'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/golfball.jpg'
     );
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(0.1, 0.1);
+    // Get part of the texture
+    texture.repeat.set(0.01, 0.01);
 
     // show shape
     const geomentry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
     const material = new THREE.MeshPhysicalMaterial({
-      color: 0x049ef4,
-      //color: 0xffffff,
+      //color: 0x049ef4,
+      color: 0xffffff,
       //emissive: 0x0000ff,
       metalness: -2,
       roughness: 0,
@@ -118,7 +123,7 @@ export const Spline = () => {
       //flatShading: true,
       //fog: true,
       //wireframe: true,
-      side: THREE.FrontSide,
+      //side: THREE.FrontSide,
       map: texture,
     });
 
@@ -127,13 +132,12 @@ export const Spline = () => {
     scene.add(cube);
 
     const target = cube.position.clone();
-    target.z += 20;
-    target.x -= 30;
+    target.z += 12;
+    target.x -= 10;
 
-    ambientLight.position.set(10, 20, 20);
+    //ambientLight.position.set(10, 20, 20);
 
     camera.lookAt(target);
-    //orbit.update();
 
     // MOD
     const mstack = new MOD3.ModifierStack(MOD3.LibraryThree, cube);
@@ -150,7 +154,11 @@ export const Spline = () => {
       MOD3.Vector3.Z(false),
       MOD3.Vector3.Z()
     );
-    const twistZ = new MOD3.Twist(90 * (Math.PI / 180), MOD3.Vector3.Z());
+    const twistZDeg = 90;
+    const twistZ = new MOD3.Twist(
+      twistZDeg * (Math.PI / 180),
+      MOD3.Vector3.Z()
+    );
 
     mstack.addModifier(taperZ0);
     mstack.addModifier(taperZ1);
@@ -160,14 +168,15 @@ export const Spline = () => {
 
     let delta = 0;
     const animate = () => {
-      delta += 0.0001;
+      // Move textures across
+      delta += 0.0004;
       texture.offset.set(delta, delta);
 
       requestAnimationFrame(animate);
 
-      cube.rotation.x += 0.002;
+      //cube.rotation.x += 0.002;
       //cube.rotation.y += 0.01;
-      //cube.rotation.z += 0.01;
+      cube.rotation.z += 0.01;
 
       renderer.render(scene, camera);
     };
