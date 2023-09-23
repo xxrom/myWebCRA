@@ -4,6 +4,18 @@ import { styled } from '@linaria/react';
 const MOD3: any = window.MOD3;
 const THREE: any = window.THREE;
 
+const generate_noise2d = (width: number, height: number) => {
+  const noise: Array<Array<Number>> = [];
+  for (let i = 0; i < width; i++) {
+    noise[i] = [];
+    for (let j = 0; j < height; j++) {
+      noise[i][j] = Math.random();
+    }
+  }
+
+  return noise;
+};
+
 export const Spline = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -49,7 +61,7 @@ export const Spline = () => {
     scene.add(gridHelper);
 
     // Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     scene.add(ambientLight);
     /*
     const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
@@ -98,8 +110,9 @@ export const Spline = () => {
     // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
     const texture = new THREE.TextureLoader().load(
       //process.env.PUBLIC_URL + 'textures/Crystal_001_COLOR.jpg'
-      process.env.PUBLIC_URL + 'textures/Abstract_010_basecolor.jpg'
+      //process.env.PUBLIC_URL + 'textures/Abstract_010_basecolor.jpg'
       //process.env.PUBLIC_URL + 'textures/Crystal_001_COLOR.jpg'
+      process.env.PUBLIC_URL + 'textures/Crystal_001_DISP.jpg'
       //'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/golfball.jpg'
     );
     texture.wrapS = THREE.RepeatWrapping;
@@ -132,10 +145,11 @@ export const Spline = () => {
     scene.add(cube);
 
     const target = cube.position.clone();
-    target.z += 12;
-    target.x -= 10;
+    target.z += 40;
+    target.x -= 70;
+    target.y -= 20;
 
-    //ambientLight.position.set(10, 20, 20);
+    ambientLight.position.set(10, 20, 20);
 
     camera.lookAt(target);
 
@@ -159,10 +173,12 @@ export const Spline = () => {
       twistZDeg * (Math.PI / 180),
       MOD3.Vector3.Z()
     );
+    const noise = new MOD3.CPerlin(0.9, generate_noise2d(100, 100), true);
 
     mstack.addModifier(taperZ0);
     mstack.addModifier(taperZ1);
     mstack.addModifier(twistZ);
+    mstack.addModifier(noise);
 
     mstack.apply();
 
