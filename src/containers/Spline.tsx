@@ -19,6 +19,17 @@ const generate_noise2d = (width: number, height: number) => {
 export const Spline = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  // Helper
+  useEffect(() => {
+    if (!canvasRef.current) {
+      return;
+    }
+
+    const showControls = true;
+    const showHelpers = true;
+  }, []);
+
+  // Spin
   useEffect(() => {
     if (!canvasRef.current) {
       return;
@@ -29,8 +40,12 @@ export const Spline = () => {
     const canvasScale = window.devicePixelRatio;
 
     const scene = new THREE.Scene();
+    // Add fog for disappiaring the tail in the fog-background
+    // Fog starts from 25 to 61 from the camera, really cool effect
+    scene.fog = new THREE.Fog(0x142641, 25, 61);
+
     const camera = new THREE.PerspectiveCamera(
-      25, // fov = Field Of View
+      35, // fov = Field Of View
       width / height, // aspect ratio (dummy value)
       0.1, // near clipping plane
       1000 // far clipping plane
@@ -39,7 +54,7 @@ export const Spline = () => {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       powerPreference: 'low-power', // default
-      //antialias: true,
+      antialias: true,
       alpha: true,
     });
     renderer.setSize(width * canvasScale, height * canvasScale);
@@ -47,9 +62,9 @@ export const Spline = () => {
 
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
-    camera.position.x = 52;
-    camera.position.y = 5;
-    camera.position.z = -15;
+    camera.position.x = 52; // 30
+    camera.position.y = 5; // 5
+    camera.position.z = -12; // -2
 
     // Control camera with mouse
     //const orbit = new OrbitControls(camera, renderer.domElement);
@@ -61,16 +76,15 @@ export const Spline = () => {
     scene.add(gridHelper);
 
     // Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.9);
     scene.add(ambientLight);
-    /*
+
     const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
     skyLight.position.set(0, -1, 4);
     scene.add(skyLight);
     const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff0000, 1.2);
     skyLight2.position.set(0, -1, 4);
     scene.add(skyLight2);
-    */
 
     // Wave
     const shape = new THREE.Shape();
@@ -145,13 +159,16 @@ export const Spline = () => {
     scene.add(cube);
 
     const target = cube.position.clone();
-    target.z += 40;
-    target.x -= 70;
-    target.y -= 20;
+    //target.x -= 70;
+    //target.y -= 20;
+    target.z += 10;
 
     ambientLight.position.set(10, 20, 20);
 
     camera.lookAt(target);
+    camera.rotation.z = 130 * (Math.PI / 180);
+    camera.rotation.x = 190 * (Math.PI / 180);
+    camera.rotation.y = 70 * (Math.PI / 180);
 
     // MOD
     const mstack = new MOD3.ModifierStack(MOD3.LibraryThree, cube);
@@ -164,7 +181,7 @@ export const Spline = () => {
     );
     const taperZ1 = new MOD3.Taper(
       1,
-      0.1,
+      0.15,
       MOD3.Vector3.Z(false),
       MOD3.Vector3.Z()
     );
@@ -203,6 +220,7 @@ export const Spline = () => {
 };
 
 const Canvas = styled.canvas`
+  background: linear-gradient(56deg, #000000, #000000, #23a6d5, #23d5ab);
   background: linear-gradient(-45deg, #ee7752, #008888, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   /*animation: gradient-animation 45s ease infinite;*/
