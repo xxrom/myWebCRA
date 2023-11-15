@@ -78,7 +78,7 @@ export const Text = ({
   ...rest
 }: TextProps) => {
   const commonClassName = cx(className, isColumn && isColumnCss);
-  console.log('rest', rest);
+  //console.log('rest', rest);
 
   switch (variant) {
     case 'h1':

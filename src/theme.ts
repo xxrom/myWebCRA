@@ -14,6 +14,7 @@ export const theme = {
     bg50: 'rgba(215,215,215,0.60)',
 
     font: '#111',
+    fontInverted: '#eee',
     fontHover: '#666',
   },
 
@@ -60,7 +61,6 @@ export const blockMarginCss = css`
   margin-bottom: 3rem;
 
   ${mobile(`
-  margin-bottom: 2rem;
-
+    margin-bottom: 2rem;
   `)}
 `;
