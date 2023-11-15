@@ -77,7 +77,7 @@ const vtbInfo: JobProps['info'] = {
   `,
 };
 const sphereInfo: JobProps['info'] = {
-  title: 'Sphere inc (1.5+ years)',
+  title: 'Sphere inc (2+ years)',
   description: `
   Jun. 2021 - now: Sphere, North Miami Beach, FL 
 
@@ -104,7 +104,7 @@ export const Experience = ({}: ExperienceProps) => {
   return (
     <Container className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
-        Experience (6+ years):
+        Experience (over 8 years):
       </Text>
 
       <Container className={jobsContainerCss} isEnabledPaddingBottom={false}>
