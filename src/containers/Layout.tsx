@@ -93,9 +93,7 @@ const Wrapper = styled.div`
   max-width: 100vw;
 `;
 
-const Main = styled.main`
-  border: 0px solid red;
-`;
+const Main = styled.main``;
 
 const Nav = styled.nav`
   display: flex;
@@ -104,6 +102,7 @@ const Nav = styled.nav`
 
   min-height: ${theme.sizes.nav.height}px;
   z-index: 10;
+  background: #ffffff;
 
   &::before {
     content: '';
@@ -114,10 +113,10 @@ const Nav = styled.nav`
     height: calc(100%); /* 100% + blur * 2 */
     background-image: linear-gradient(
       0.5turn,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0.5)
+      rgba(0, 0, 0, 0),
+      rgba(255, 255, 255, 0.1)
     ); /* change color or image here */
-    background-position: 50%;
+    background-position: 100%;
     filter: blur(4px);
     z-index: 9;
     backdrop-filter: blur(12px);
@@ -126,7 +125,6 @@ const Nav = styled.nav`
 
 const Ul = styled.ul`
   display: flex;
-  border-bottom: 1px solid gray;
   flex: 1;
 
   align-items: flex-end;

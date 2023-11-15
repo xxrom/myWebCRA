@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 import {
-  Intro,
+  //Intro,
   Stack,
   Projects,
   Experience,
@@ -8,6 +8,7 @@ import {
   Spline,
 } from '../containers';
 import { ScrollProvider } from '../context';
+import { memo } from 'react';
 
 const Column = styled.div`
   display: flex;
@@ -16,17 +17,23 @@ const Column = styled.div`
 
 // TODO: scaling mobile
 // TODO: add Projects
-export const Main = () => {
+export const Main = memo(() => {
   return (
     <ScrollProvider>
       <Column>
-        <div>Hello</div>
         <Spline />
-        <div>Hello</div>
+
+        <Stack />
+
+        <Experience />
+
+        <Projects />
+
+        <EducationAndHobby />
       </Column>
     </ScrollProvider>
   );
-};
+});
 /*
 
         <Intro />
