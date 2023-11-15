@@ -367,11 +367,12 @@ const Wrapper = styled.div`
   flex: 1;
   height: 100vh;
   min-height: 100vh;
-  max-height: 100vh;
+  max-height: 100%;
   width: 100vw;
   min-width: 100vw;
   max-width: 100vw;
   background: black;
+  oveerflow: hidden;
 `;
 
 const TextWrapper = styled.span`
