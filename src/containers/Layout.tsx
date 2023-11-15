@@ -23,7 +23,7 @@ export const Layout = () => (
             className={linksAlignFixH3}
             href="https://www.linkedin.com/in/chernyshovn/"
           >
-            linkedin_🚀
+            LinkedIn
           </Text>
         </Li>
 
@@ -33,7 +33,7 @@ export const Layout = () => (
             className={linksAlignFixH3}
             href="mailto:chernyshovnm@gmail.com"
           >
-            mail_📬
+            eMail
           </Text>
         </Li>
         <Li>
@@ -42,7 +42,7 @@ export const Layout = () => (
             className={linksAlignFixH3}
             href="https://github.com/workxrom"
           >
-            git_⛏
+            GitHub
           </Text>
         </Li>
       </Ul>
@@ -54,7 +54,7 @@ export const Layout = () => (
 
     <Footer>
       <Text className={footerItemCss} variant="h5">
-        Chernyshov on GCP
+        Chernyshovn
       </Text>
 
       <div>
