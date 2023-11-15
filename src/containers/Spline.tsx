@@ -27,11 +27,11 @@ export const Spline = memo(() => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const renderRef = useRef(false);
-  const { width, height, canvasScale } = useWindowSize();
+  const { width, canvasScale } = useWindowSize();
 
   // Helper
   useEffect(() => {
-    if (!canvasRef.current || width === 0 || height === 0) {
+    if (!canvasRef.current || width === 0) {
       return;
     }
 
@@ -39,6 +39,7 @@ export const Spline = memo(() => {
 
     // Common values
     const scene = new THREE.Scene();
+    const height = window.innerHeight;
 
     // Add fog for disappiaring the tail in the fog-background
     // Fog starts from 25 to 61 from the camera, really cool effect
@@ -346,7 +347,7 @@ export const Spline = memo(() => {
         wrapperNode.current.removeChild(renderer.domElement);
       }
     };
-  }, [height, width, canvasScale]);
+  }, [width, canvasScale]);
 
   return (
     <Wrapper ref={wrapperRef}>
