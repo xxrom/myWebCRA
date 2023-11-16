@@ -31,7 +31,7 @@ export const theme = {
     container: { width: 1200 },
     footer: { height: 128 },
     modal: { width: 540 },
-    borderRadius: '2px',
+    borderRadius: '4px',
     paddingSmall: '8px',
     paddingNormal: '10px 16px',
   },

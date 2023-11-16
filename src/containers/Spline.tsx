@@ -88,24 +88,19 @@ export const Spline = memo(() => {
     const showHelpers = IS_DEBUG; //true;
 
     const lights = [];
-
     const circles: any = [];
-
-    const gui = new dat.GUI({
-      autoPlace: false,
-      name: 'Controls',
-    });
-
-    const lightsFolder = gui.addFolder('Lights');
-
-    const sphereFolder = gui.addFolder('Sphere');
+    let gui = null;
     let updateCircles = () => {};
 
-    if (!showControls) {
-      gui.hide();
+    if (showControls) {
+      gui = new dat.GUI({
+        autoPlace: false,
+        name: 'Controls',
+      });
+      //lightsFolder =  gui.addFolder('Lights');
 
-      //return;
-    } else {
+      const sphereFolder = gui.addFolder('Sphere');
+
       // Add GUI on page
       gui.domElement.id = 'gui';
       document.body.appendChild(gui.domElement);
@@ -201,14 +196,14 @@ export const Spline = memo(() => {
     const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
     skyLight.position.set(0, -1, 4);
     scene.add(skyLight);
-    const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff0000, 1.2);
+    const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff0000, 1.5);
     skyLight2.position.set(0, -1, 4);
     scene.add(skyLight2);
 
     // Wave
     const shape = new THREE.Shape();
     let r;
-    const STAR_EDGES = 60;
+    const STAR_EDGES = 50;
     let STAR_SIZE = STAR_EDGES * 2;
     for (let i = 0; i < STAR_SIZE; i++) {
       r = i % 2 === 0 ? 1.5 : 0.5;
@@ -225,7 +220,7 @@ export const Spline = memo(() => {
     }
 
     const extrudeSettings = {
-      steps: 200, // steps for spline in line
+      steps: 300, // steps for spline in line
       depth: 30, // ??
       bevelEnabled: false, // false
       bevelThickness: 1,
@@ -327,7 +322,6 @@ export const Spline = memo(() => {
       // Move textures across
       delta += 0.0004;
       texture.offset.set(delta, delta / 2);
-      mstack.apply();
 
       //cube.rotation.x += 0.002;
       //cube.rotation.y += 0.01;
@@ -382,6 +376,7 @@ const Wrapper = styled.div`
   max-width: 100vw;
   background: black;
   oveerflow: hidden;
+  margin-bottom: ${theme.margin.block};
 `;
 
 const TextWrapper = styled.span`
@@ -403,8 +398,9 @@ const textCSS = css`
   margin: 0 2rem;
 
   background: #00000010;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(4px);
   height: fit-content;
   border: 0.1px solid ${theme.colors.fontInverted};
+  border-radius: ${theme.sizes.borderRadius};
   cursor: default;
 `;
