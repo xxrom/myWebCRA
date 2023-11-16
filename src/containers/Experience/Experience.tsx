@@ -218,10 +218,10 @@ const JobWrapper = styled.div`
 const Popup = styled.div`
   position: fixed;
   left: 80px;
-  top: 80px;
+  top: 120px;
   display: flex;
   margin: auto;
-  height: calc(100% - 160px);
+  height: calc(100% - 200px);
   width: calc(100% - 160px);
   background: ${theme.colors.bg};
   border: 0;
