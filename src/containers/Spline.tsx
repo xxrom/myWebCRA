@@ -45,7 +45,13 @@ export const Spline = memo(() => {
     // Fog starts from 25 to 61 from the camera, really cool effect
     scene.fog = new THREE.Fog(0x142641, 25, 71);
 
-    const fovShift = 15 * (height / 900);
+    let fovShift = 15 * (height / 900);
+    if (fovShift > 15) {
+      fovShift = 15;
+    }
+    if (fovShift < 0) {
+      fovShift = 0;
+    }
     //console.log('fovShift', fovShift);
     const camera = new THREE.PerspectiveCamera(
       10 + fovShift, // fov = Field Of View
@@ -275,7 +281,10 @@ export const Spline = memo(() => {
 
     camera.lookAt(target);
     // Change model angle to fit in the screen
-    const widthShift = 30 * ((width - 300) / 1000);
+    let widthShift = 30 * ((width - 300) / 1000);
+    if (widthShift > 30) {
+      widthShift = 30;
+    }
     //console.log('widthShift', widthShift);
     camera.rotation.z = (100 + widthShift) * (Math.PI / 180);
     camera.rotation.x = 180 * (Math.PI / 180); // 180
@@ -382,6 +391,7 @@ const TextWrapper = styled.span`
   align-items: center;
   height: 100%;
   width: 100%;
+  min-width: 100vw;
   z-index: 8;
   background: none;
 `;
@@ -389,7 +399,12 @@ const TextWrapper = styled.span`
 const textCSS = css`
   display: inline-block;
   color: ${theme.colors.fontInverted};
-  background: ${theme.colors.bgInverted};
   padding: 2rem;
+  margin: 0 2rem;
+
+  background: #00000010;
+  backdrop-filter: blur(8px);
   height: fit-content;
+  border: 0.1px solid ${theme.colors.fontInverted};
+  cursor: default;
 `;

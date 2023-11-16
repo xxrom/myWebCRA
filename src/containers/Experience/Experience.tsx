@@ -217,13 +217,14 @@ const JobWrapper = styled.div`
 
 const Popup = styled.div`
   position: fixed;
+  left: 80px;
+  top: 80px;
   display: flex;
-  top: 15vh;
-  left: 10vw;
-  height: 70vh;
-  width: 80vw;
+  margin: auto;
+  height: calc(100% - 160px);
+  width: calc(100% - 160px);
   background: ${theme.colors.bg};
-  border: 5px solid ${theme.colors.bg50};
+  border: 0;
   border-radius: ${theme.sizes.borderRadius};
   z-index: 11;
 `;
@@ -256,7 +257,9 @@ const PopupBackground = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(220deg, #aaa 25%, #555 25%, #111 50%, #777 80%);
+  background: #00000010;
+  filter: blur(4px);
+  backdrop-filter: blur(12px);
 `;
 const CloseButton = styled.span`
   position: absolute;
