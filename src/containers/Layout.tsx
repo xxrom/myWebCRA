@@ -4,8 +4,9 @@ import { styled } from '@linaria/react';
 import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
+import { memo } from 'react';
 
-export const Layout = () => (
+export const Layout = memo(() => (
   <Wrapper>
     <Nav>
       <Ul>
@@ -84,7 +85,7 @@ export const Layout = () => (
       </div>
     </Footer>
   </Wrapper>
-);
+));
 
 const Wrapper = styled.div`
   display: flex;
@@ -133,6 +134,7 @@ const Ul = styled.ul`
 
   margin: 0;
   padding: 0.5rem 1rem;
+  overflow-x: hidden;
 
   @media screen and (max-width: 575px) {
     padding: 0.5rem;

@@ -90,7 +90,7 @@ const imageCss = css`
     min-height: 250px;
     height: 70vw;
     max-height: 500px;
-    min-width: 250px;
+    min-width: 150px;
     width: 70vw;
     max-width: 500px;
   }
