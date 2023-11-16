@@ -227,6 +227,15 @@ const Popup = styled.div`
   border: 0;
   border-radius: ${theme.sizes.borderRadius};
   z-index: 11;
+
+  @media screen and (max-width: 575px) {
+    left: 20px;
+    top: 100px;
+    display: flex;
+    margin: auto;
+    height: calc(100% - 140px);
+    width: calc(100% - 40px);
+  }
 `;
 const jobTitleCss = css`
   display: flex;
