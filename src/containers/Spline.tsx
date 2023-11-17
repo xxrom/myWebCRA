@@ -43,18 +43,19 @@ export const Spline = memo(() => {
 
     // Add fog for disappiaring the tail in the fog-background
     // Fog starts from 25 to 61 from the camera, really cool effect
-    scene.fog = new THREE.Fog(0x142641, 25, 71);
+    //scene.fog = new THREE.Fog(0x142641, 25, 71);
+    scene.fog = new THREE.Fog(0x0000000f, 45, 71);
 
-    let fovShift = 15 * (height / 900);
-    if (fovShift > 15) {
-      fovShift = 15;
+    let fovShift = 13 * (height / 900);
+    if (fovShift > 13) {
+      fovShift = 13;
     }
     if (fovShift < 0) {
       fovShift = 0;
     }
     //console.log('fovShift', fovShift);
     const camera = new THREE.PerspectiveCamera(
-      10 + fovShift, // fov = Field Of View
+      12 + fovShift, // fov = Field Of View
       width / height, // aspect ratio (dummy value)
       0.1, // near clipping plane
       1000 // far clipping plane
@@ -63,7 +64,7 @@ export const Spline = memo(() => {
     const renderer = new THREE.WebGLRenderer({
       //canvas: canvasRef.current,
       powerPreference: 'low-power', // default
-      antialias: false, // true
+      antialias: true, // true
       alpha: true,
     });
     renderer.setSize(width * canvasScale, height * canvasScale);
@@ -190,27 +191,30 @@ export const Spline = memo(() => {
     }
 
     // Light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.9);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
 
-    const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+    const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
     skyLight.position.set(0, -1, 4);
     scene.add(skyLight);
-    const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff0000, 1.5);
+
+    const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff00ff, 0.3);
     skyLight2.position.set(0, -1, 4);
     scene.add(skyLight2);
 
     // Wave
     const shape = new THREE.Shape();
     let r;
-    const STAR_EDGES = 50;
-    let STAR_SIZE = STAR_EDGES * 2;
+    //const edgesShift = Math.floor(50 * ((width - 300) / 2000));
+    const STAR_EDGES = 100; // + edgesShift;
+    const STAR_SIZE = STAR_EDGES * 2;
+
     for (let i = 0; i < STAR_SIZE; i++) {
       r = i % 2 === 0 ? 1.5 : 0.5;
 
       const angle = (i * 2 * Math.PI) / STAR_SIZE;
-      const x = r * Math.cos(angle) * r;
-      const y = r * Math.sin(angle) * r;
+      const x = Math.pow(r, 2) * Math.cos(angle);
+      const y = Math.pow(r, 2) * Math.sin(angle);
 
       if (i === 0) {
         shape.moveTo(x, y);
@@ -221,15 +225,15 @@ export const Spline = memo(() => {
 
     const extrudeSettings = {
       steps: 300, // steps for spline in line
-      depth: 30, // ??
+      depth: 10, // ??
       bevelEnabled: false, // false
       bevelThickness: 1,
       bevelSize: 1,
       bavelSegments: 3,
       extrudePath: new THREE.CatmullRomCurve3([
-        new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(0, 1, 3),
-        new THREE.Vector3(0, -1, 7),
+        new THREE.Vector3(0, 0, -3),
+        new THREE.Vector3(0, 2, 2),
+        new THREE.Vector3(0, -2, 7),
         new THREE.Vector3(0, 2, 15),
         new THREE.Vector3(0, 1, 20),
       ]),
@@ -242,17 +246,18 @@ export const Spline = memo(() => {
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     // Get part of the texture
-    texture.repeat.set(0.1, 0.01);
+    texture.repeat.set(0.08, 0.01);
 
     // show shape
     const geomentry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
     const material = new THREE.MeshPhysicalMaterial({
-      //color: 0x049ef4,
+      //color: 0x049ef488,
+      //color: 0xffffff00,
       color: 0xffffff,
       //emissive: 0x0000ff,
-      metalness: -2, // -2
+      metalness: -3, // -2
       roughness: 0, // 0
-      reflectivity: 0,
+      //reflectivity: 1,
       // clearcoat: 0,
       //depthWrite: true,
       //depthTest: true,
@@ -276,11 +281,10 @@ export const Spline = memo(() => {
 
     camera.lookAt(target);
     // Change model angle to fit in the screen
-    let widthShift = 30 * ((width - 300) / 1000);
-    if (widthShift > 30) {
-      widthShift = 30;
+    let widthShift = 35 * ((width - 300) / 1000);
+    if (widthShift > 35) {
+      widthShift = 35;
     }
-    //console.log('widthShift', widthShift);
     camera.rotation.z = (100 + widthShift) * (Math.PI / 180);
     camera.rotation.x = 180 * (Math.PI / 180); // 180
     camera.rotation.y = 70 * (Math.PI / 180);
@@ -325,7 +329,7 @@ export const Spline = memo(() => {
 
       //cube.rotation.x += 0.002;
       //cube.rotation.y += 0.01;
-      cube.rotation.z += 0.01;
+      cube.rotation.z += 0.005;
 
       // Update circles
       if (IS_DEBUG) {
