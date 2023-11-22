@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 interface WindowSize {
   width: number;
@@ -33,8 +33,6 @@ export const useWindowSize = () => {
       }
     };
   }, []);
-
-  console.log('windowSize', windowSize);
 
   return windowSize;
 };
