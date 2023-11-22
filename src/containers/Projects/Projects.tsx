@@ -49,28 +49,26 @@ export const Projects = ({}: ProjectsProps) => {
         Projects:
       </Text>
 
-      <>
-        {projects.map(({ title, url, src, fallback }) => (
-          <>
-            {/* TODO: Image add wrapper with settings for scale and height/width */}
-            <a href={url} target="_blank" rel="noreferrer">
-              <ImageBox className={cx(imageCss)}>
-                <Image2 src={src} fallback={fallback} />
-              </ImageBox>
-            </a>
+      {projects.map(({ title, url, src, fallback }) => (
+        <Container isEnabledPaddingBottom={false} key={`${title}${url}`}>
+          {/* TODO: Image add wrapper with settings for scale and height/width */}
+          <a href={url} target="_blank" rel="noreferrer">
+            <ImageBox className={cx(imageCss)}>
+              <Image2 src={src} fallback={fallback} />
+            </ImageBox>
+          </a>
 
-            <Text
-              variant="link-h3"
-              target="_blank"
-              rel="noreferrer"
-              className={linkCss}
-              href={url}
-            >
-              {title}
-            </Text>
-          </>
-        ))}
-      </>
+          <Text
+            variant="link-h3"
+            target="_blank"
+            rel="noreferrer"
+            className={linkCss}
+            href={url}
+          >
+            {title}
+          </Text>
+        </Container>
+      ))}
     </Container>
   );
 };
