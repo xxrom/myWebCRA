@@ -1,7 +1,7 @@
-import React, { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import { styled } from '@linaria/react';
 import dat from 'dat.gui';
-import { useWindowSize } from '../hooks/useWindow';
+import { useWindowSize } from '../hooks';
 import { Text } from '../components';
 import { theme } from '../theme';
 import { css } from '@linaria/core';
@@ -404,7 +404,7 @@ const textCSS = css`
   background: #00000010;
   backdrop-filter: blur(4px);
   height: fit-content;
-  border: 0.1px solid ${theme.colors.fontInverted};
+  border: 1px solid ${theme.colors.fontInverted};
   border-radius: ${theme.sizes.borderRadius};
   cursor: default;
 `;
