@@ -3,10 +3,12 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface ScrollState {
   value: number;
+  offsetTop: number;
 }
 
 const initialState: ScrollState = {
   value: 0,
+  offsetTop: 0,
 };
 
 export const scrollSlice = createSlice({
@@ -26,10 +28,15 @@ export const scrollSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
+    setOffsetTop: (state, action: PayloadAction<number>) => {
+      console.log('scrollSlice: New offsetTop', action.payload);
+      state.offsetTop = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = scrollSlice.actions;
+export const { increment, decrement, incrementByAmount, setOffsetTop } =
+  scrollSlice.actions;
 
 export default scrollSlice.reducer;
