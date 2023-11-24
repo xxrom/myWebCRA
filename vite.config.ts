@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
+import linaria from '@linaria/vite';
 import react from '@vitejs/plugin-react-swc';
 import { ImportMeta } from './src/env.d';
 import path from 'path';
@@ -16,7 +17,7 @@ export default defineConfig(({ mode }) => {
   console.log('env', env);
 
   return {
-    plugins: [react()],
+    plugins: [linaria(), react()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
@@ -24,6 +25,11 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: parseInt(env.VITE_PORT) || 4445,
+    },
+    define: {
+      'process.env': {
+        PUBLIC_URL: '',
+      },
     },
   };
 });

@@ -1,4 +1,11 @@
-import { useEffect, useState, useCallback } from 'react';
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+  useMemo,
+} from 'react';
 
 export type UseInView = {
   [key: string]: {
@@ -9,62 +16,138 @@ export type UseInView = {
   };
 };
 
-function useInView() {
+const useInView = () => {
+  const initRef = useRef(0);
+  const componentRefs = useRef([]);
   const [components, setComponents] = useState<UseInView>({});
+  const [counter, setCounter] = useState(0);
 
   console.log('useInView', components);
 
-  const getElementData = useCallback((ref: HTMLDivElement) => {
-    const offsetTop = ref?.getBoundingClientRect()?.top || 0;
-    const componentHeight = ref.clientHeight;
+  const getElementData2 = useCallback((element: HTMLDivElement) => {
+    //console.log('Counter', counter);
+
+    const offsetTop = element?.getBoundingClientRect()?.top || 0;
+    const componentHeight = element.clientHeight;
     const isInView = Math.abs(offsetTop) < componentHeight;
 
+    console.log('offsetTop', offsetTop);
+
     return {
-      ref,
+      ref: element,
       offsetTop,
       componentHeight,
       isInView,
     };
   }, []);
 
-  const onScroll = useCallback(() => {
+  const getUpdatedComponents2 = () => {
+    console.log('New state', components, counter);
+
+    const updatedComponents = componentRefs.current.reduce(
+      (accumulate: any, element, index) => {
+        accumulate[index] = getElementData(element);
+
+        return accumulate;
+      },
+      {}
+    );
+    console.log('up', updatedComponents);
+
+    return updatedComponents;
+  };
+
+  const onScroll2 = useCallback(() => {
     console.log('SCROLL');
-    setComponents((state) => {
-      const s = { ...state };
-      console.log('New state', s);
+    setCounter(counter + 1);
 
-      Object.keys(s).forEach((key) => {
-        s[key] = getElementData(s[key].ref);
-      });
+    const c = getUpdatedComponents();
 
-      return s;
-    });
-  }, [getElementData]);
+    if (Object.keys(c).length > 4) {
+      console.log('UPPP', c, componentRefs.current);
+      setComponents(c);
+    }
+  }, [componentRefs]);
 
   useEffect(() => {
-    document.addEventListener('scroll', onScroll, true);
-    return () => document.removeEventListener('scroll', onScroll, true);
-  }, [onScroll]);
+    console.log(
+      'INIT SCROLL !!!',
+      initRef.current,
+      componentRefs.current.length
+    );
+    if (componentRefs.current.length === 0) {
+      return;
+    }
+    //if (initRef.current) {
+    //console.log('INIT SCROLL !!! EXIT');
+    //return;
+    //}
 
-  const subscribeComponent = useCallback(
-    (ref: HTMLDivElement | null, componentName: string | number) => {
-      console.log('SUBSCRIBE !!!', componentName);
+    initRef.current += 1;
+    const getElementData = (element: HTMLDivElement) => {
+      //console.log('Counter', counter);
 
-      if (!ref) {
+      const offsetTop = element?.getBoundingClientRect()?.top || 0;
+      const componentHeight = element.clientHeight;
+      const isInView = Math.abs(offsetTop) < componentHeight;
+
+      console.log('offsetTop', offsetTop);
+
+      return {
+        ref: element,
+        offsetTop,
+        componentHeight,
+        isInView,
+      };
+    };
+
+    const getUpdatedComponents = () => {
+      const updatedComponents = componentRefs.current.reduce(
+        (accumulate: any, element, index) => {
+          accumulate[index] = getElementData(element);
+
+          return accumulate;
+        },
+        {}
+      );
+      console.log('up', updatedComponents);
+
+      return updatedComponents;
+    };
+
+    function onScroll() {
+      console.log('SCROLL');
+      const c = getUpdatedComponents();
+
+      setComponents({ ...c });
+    }
+
+    const eventId = window.addEventListener('scroll', onScroll);
+
+    return () => {
+      console.log('DESTROY EVENTID', eventId);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  const subscribeComponents = useCallback(
+    (
+      //ref: HTMLDivElement | null,
+      refs: any
+      //componentName: string | number
+    ) => {
+      console.log('SUBSCRIBE !!!', refs);
+
+      if (!refs) {
         return;
       }
 
-      setComponents((state) => {
-        const s = { ...state };
-
-        s[componentName] = getElementData(ref);
-        return s;
-      });
+      componentRefs.current = refs.current;
     },
-    [getElementData]
+    []
   );
 
-  return { components, subscribeComponent };
-}
+  return { components, subscribeComponents };
+};
 
 export { useInView };
