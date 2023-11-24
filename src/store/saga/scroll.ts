@@ -1,4 +1,4 @@
-import { Task } from 'redux-saga';
+import { Task, eventChannel } from 'redux-saga';
 import {
   take,
   put,
@@ -7,13 +7,36 @@ import {
   cancel,
   cancelled,
   delay,
+  takeEvery,
 } from 'redux-saga/effects';
+import { setOffsetTop } from '../slices/scrollSlice';
+import { useAppDispatch } from '../store';
 
 export const SCROLL_STOP_WATCH = 'STOP_SCROLL_WATCH';
 export const SCROLL_START_WATCH = 'START_SCROLL_WATCH';
 
+//function onScroll() {
+//console.log('SCROLL', window.scrollY);
+//const dispatch = useAppDispatch();
+//dispatch(setOffsetTop(window.scrollY));
+//}
+
+function* updateScrollPosition() {
+  console.log('SCROLL', window.scrollY);
+  yield put(setOffsetTop(window.scrollY));
+}
+
 function* bgScrollWatcher(): any {
   try {
+    //window.addEventListener('scroll', onScroll);
+    //
+    const scrollChannel = eventChannel((emitter) => {
+      document.addEventListener('scroll', emitter);
+      return () => document.removeEventListener('scroll', emitter);
+    });
+
+    yield takeEvery(scrollChannel, updateScrollPosition);
+
     while (true) {
       console.log('tick');
       yield delay(5000);
@@ -25,6 +48,8 @@ function* bgScrollWatcher(): any {
       // task was canceld from parent
       console.log('BG SCROLL WATCHER Is cancelled from parent');
     }
+
+    //window.removeEventListener('scroll', onScroll);
   }
 }
 
