@@ -1,15 +1,15 @@
 import { Main, TodoReduxPage, TodoUseReducerPage, UI } from './pages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './containers';
-import React, { memo } from 'react';
-import { useInView } from './hooks/useInView';
+import { memo } from 'react';
+//import { useInView } from './hooks/useInView';
 
 //[> A <Routes> looks through its children <Route>s and
 //renders the first one that matches the current URL. */}
 //<GlobalStyle />
 const App = memo(() => {
-  const { components, subscribeComponent } = useInView();
-  console.log('APP', components, subscribeComponent);
+  //const { components, subscribeComponents } = useInView();
+  //console.log('APP', components, subscribeComponents);
 
   //return <Main />;
 

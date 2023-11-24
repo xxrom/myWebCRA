@@ -5,24 +5,17 @@ import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
 import { memo, useEffect, useRef, useState } from 'react';
-import { useInView } from '../hooks';
 
 export const Layout = memo(() => {
   const navRef = useRef<HTMLElement>(null);
   const [navHeight, setNavHeight] = useState(100);
   //const { scrollY } = useScroll();
-  const { components } = useInView();
+  //const { components } = useInView();
 
-  const visibleComponents = Object.values(components).filter(
-    (c: any) => c?.isInView
-  );
-  console.log('LAYOUT', components);
-  console.log('visibleComponents', visibleComponents);
+  const visibleComponents = Object.values({}).filter((c: any) => c?.isInView);
   const isDarkBackground = visibleComponents.some(
     (c: any) => c.offsetTop < navHeight / 2
   );
-  console.log('isDarkBackground', isDarkBackground);
-  //const isDarkBackground = scrollY < 945 - navHeight / 2;
 
   useEffect(() => {
     if (!navRef.current) {

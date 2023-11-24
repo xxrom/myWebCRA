@@ -8,7 +8,6 @@ import {
   Spline,
 } from '../containers';
 import { memo, useLayoutEffect, useRef, useCallback } from 'react';
-import { useInView } from '../hooks/useInView';
 
 const Column = styled.div`
   display: flex;
@@ -18,8 +17,8 @@ const Column = styled.div`
 const Components = [Spline, Stack, Experience, Projects, EducationAndHobby];
 
 export const Main = memo(() => {
-  const { components, subscribeComponent } = useInView();
-  console.log('Main', components);
+  //const { components, subscribeComponents } = useInView();
+  //console.log('Main', components);
   const componentRefs = useRef<any>(Array(Components.length));
 
   const addRefElement = useCallback((element: HTMLElement, index: number) => {
@@ -28,8 +27,9 @@ export const Main = memo(() => {
 
   useLayoutEffect(() => {
     console.log('MAIN', componentRefs);
-    componentRefs?.current?.map(subscribeComponent);
-  }, [subscribeComponent]);
+
+    //subscribeComponents(componentRefs);
+  }, [componentRefs]);
 
   return (
     <Column>
