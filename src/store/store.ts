@@ -3,18 +3,19 @@ import scrollReducer from './slices/scrollSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga/sagas';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-//import messageReducer from "./slices/messageSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
+const reducers = {
+  scroll: scrollReducer,
+};
+
 export const store = configureStore({
-  reducer: {
-    scroll: scrollReducer,
-    //message: messageReducer,
-  },
+  reducer: reducers,
   middleware: [sagaMiddleware],
 });
 
+// Activate/run saga
 sagaMiddleware.run(rootSaga);
 
 export const action = (type: string) => store.dispatch({ type });

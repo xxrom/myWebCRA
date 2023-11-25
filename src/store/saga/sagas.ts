@@ -1,14 +1,15 @@
-import { put, takeEvery, all, call, spawn } from 'redux-saga/effects';
+import { all, call, spawn } from 'redux-saga/effects';
 import { scroll } from './scroll';
 
-export const delay = (ms = 1000) => new Promise((res) => setTimeout(res, ms));
-
 // TODO:
-// 1.[] - add saga that will run onScroll (scrollY) watch event and
+// 1.[x] - add saga that will run onScroll (scrollY) watch event and
 // - will wait until it will be ended by other type event =)
 // 2.[] - add watchers on change in scrollY and will update compnents
 // - information isInView, offsetTop
 
+/*
+ * Handle all sagas one by one with try/catch
+ */
 export default function* rootSaga() {
   const sagas = [scroll];
 

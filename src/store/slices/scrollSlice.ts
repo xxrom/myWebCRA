@@ -1,14 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { Ref, RefObject } from 'react';
 
 export interface ScrollState {
   value: number;
-  offsetTop: number;
+  scrollY: number;
+  refs: RefObject<Array<HTMLDivElement>> | null;
+  positions: {
+    [key: string]: {
+      offsetTop: number;
+      componentHeight: number;
+      isInView: boolean;
+    };
+  };
 }
 
 const initialState: ScrollState = {
   value: 0,
-  offsetTop: 0,
+  scrollY: 0,
+  refs: null,
+  positions: {},
 };
 
 export const scrollSlice = createSlice({
@@ -16,10 +27,6 @@ export const scrollSlice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.value += 1;
     },
     decrement: (state) => {
@@ -28,15 +35,40 @@ export const scrollSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
-    setOffsetTop: (state, action: PayloadAction<number>) => {
+    updateComponentsScrollInfo: (state) => {
+      const getElementData = (element: HTMLDivElement) => {
+        const offsetTop = element?.getBoundingClientRect()?.top || 0;
+        const componentHeight = element.clientHeight;
+        const isInView = Math.abs(offsetTop) < componentHeight;
+
+        console.log('offsetTop', offsetTop);
+
+        return {
+          offsetTop,
+          componentHeight,
+          isInView,
+        };
+      };
+
+      const updatedComponents = state?.refs?.current?.reduce(
+        (accumulate, element, index) => {
+          //state.positions[index] = getElementData(element);
+
+          return accumulate;
+        },
+        []
+      );
+      console.log('up', updatedComponents);
+    },
+    setScrollY: (state, action: PayloadAction<number>) => {
       console.log('scrollSlice: New offsetTop', action.payload);
-      state.offsetTop = action.payload;
+      state.scrollY = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, setOffsetTop } =
+export const { increment, decrement, incrementByAmount, setScrollY } =
   scrollSlice.actions;
 
 export default scrollSlice.reducer;
