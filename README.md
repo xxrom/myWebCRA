@@ -7,3 +7,19 @@
 # redux saga example with fork and bgTask
 
 - https://redux-saga.js.org/docs/advanced/TaskCancellation
+
+# Redux saga: eventChannel example
+
+```
+function* someFunc(event) {
+    // ...
+}
+
+function* rootSaga() {
+    const clickChannel = eventChannel((emitter) => {
+        document.addEventListener('click', emitter);
+        return () => document.removeEventListener('click', emitter);
+    });
+    yield takeEvery(clickChannel, someFunc);
+}
+```
