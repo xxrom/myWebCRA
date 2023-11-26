@@ -23,3 +23,38 @@ function* rootSaga() {
     yield takeEvery(clickChannel, someFunc);
 }
 ```
+
+# React add components ref in array of refs example:
+
+```
+export const Main = memo(() => {
+  //const { components, subscribeComponents } = useInView();
+  //console.log('Main', components);
+  const componentRefs = useRef<any>(Array(Components.length));
+
+  const addRefElement = useCallback((element: HTMLElement, index: number) => {
+    componentRefs.current[index] = element;
+  }, []);
+
+  useLayoutEffect(() => {
+    console.log('MAIN', componentRefs);
+
+    //subscribeComponents(componentRefs);
+  }, [componentRefs]);
+
+  return (
+    <Column>
+      {Components.map((Component, index) => (
+        <div
+          key={index}
+          data-component-index={index}
+          ref={(element) => element && addRefElement(element, index)}
+        >
+          <Component index={index} />
+        </div>
+      ))}
+    </Column>
+  );
+});
+
+```
