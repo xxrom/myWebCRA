@@ -1,11 +1,4 @@
-import {
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  useLayoutEffect,
-  useMemo,
-} from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 export type UseInView = {
   [key: string]: {
@@ -41,12 +34,12 @@ const useInView = () => {
     };
   }, []);
 
-  const getUpdatedComponents2 = () => {
+  const getUpdatedComponents2 = useCallback(() => {
     console.log('New state', components, counter);
 
     const updatedComponents = componentRefs.current.reduce(
       (accumulate: any, element, index) => {
-        accumulate[index] = getElementData(element);
+        accumulate[index] = getElementData2(element);
 
         return accumulate;
       },
@@ -55,19 +48,7 @@ const useInView = () => {
     console.log('up', updatedComponents);
 
     return updatedComponents;
-  };
-
-  const onScroll2 = useCallback(() => {
-    console.log('SCROLL');
-    setCounter(counter + 1);
-
-    const c = getUpdatedComponents();
-
-    if (Object.keys(c).length > 4) {
-      console.log('UPPP', c, componentRefs.current);
-      setComponents(c);
-    }
-  }, [componentRefs]);
+  }, [components, counter, getElementData2]);
 
   useEffect(() => {
     console.log(
