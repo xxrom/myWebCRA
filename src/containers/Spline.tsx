@@ -5,6 +5,7 @@ import { useWindowSize } from '../hooks';
 import { Text } from '../components';
 import { theme } from '../theme';
 import { css } from '@linaria/core';
+import { scrollSelectors } from '@/store/slices/scrollSlice';
 
 // info: /alieninterfaces/05-vesica/blob/main/src/main.js
 const MOD3: any = window.MOD3;
@@ -23,7 +24,12 @@ const generate_noise2d = (width: number, height: number) => {
   return noise;
 };
 
-export const Spline = memo(() => {
+export type ComponentsCommonTypes = {
+  index?: number;
+};
+export type SplineProps = ComponentsCommonTypes;
+
+export const Spline = memo<SplineProps>(({ index }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const renderRef = useRef(false);
@@ -357,7 +363,7 @@ export const Spline = memo(() => {
   }, [width, canvasScale]);
 
   return (
-    <Wrapper ref={wrapperRef}>
+    <Wrapper data-component-index={index} ref={wrapperRef}>
       <div ref={canvasRef} />
       <TextWrapper>
         <Text variant="h1" className={textCSS}>
