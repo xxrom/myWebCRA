@@ -1,9 +1,12 @@
+// eslint-disable-next-line no-unused-vars
 import {render, screen} from '@testing-library/react';
+import { describe, it, expect } from 'vitest'
 import App from './App';
 
 const name = 'Chernyshov Nikita';
 
-test(`render full page with text ${name}`, () => {
+describe('App', ()=> {
+it(`render full page with text ${name}`, () => {
   render(<App />);
 
   const names = screen.getAllByText(name);
@@ -11,7 +14,7 @@ test(`render full page with text ${name}`, () => {
   expect(names.length).toBe(2);
 });
 
-test('render img', () => {
+it('render img', () => {
   render(<App />);
 
   // find img by aria-label='me'
@@ -19,3 +22,4 @@ test('render img', () => {
 
   expect(img).toBeInTheDocument();
 });
+}
