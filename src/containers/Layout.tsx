@@ -5,17 +5,30 @@ import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
 import { memo, useEffect, useRef, useState } from 'react';
+import {
+  scrollSelectors,
+  scrollSliceActions,
+} from '@/store/slices/scrollSlice';
+import { useAppSelector } from '@/store/store';
+
+export const NAV_Z_INDEX = 10;
 
 export const Layout = memo(() => {
   const navRef = useRef<HTMLElement>(null);
+  const firstComponentInfo = useAppSelector(
+    scrollSelectors.getComponentInfoById(0)
+  );
   const [navHeight, setNavHeight] = useState(100);
   //const { scrollY } = useScroll();
   //const { components } = useInView();
 
+  /*
   const visibleComponents = Object.values({}).filter((c: any) => c?.isInView);
   const isDarkBackground = visibleComponents.some(
     (c: any) => c.offsetTop < navHeight / 2
   );
+  */
+  const isDarkBackground = firstComponentInfo?.isInView;
 
   useEffect(() => {
     if (!navRef.current) {
@@ -67,6 +80,10 @@ export const Layout = memo(() => {
               GitHub
             </Text>
           </Li>
+
+          <AdditionalInfo>{`NAV: ${
+            isDarkBackground ? 'dark' : 'light'
+          }`}</AdditionalInfo>
         </Ul>
       </Nav>
 
@@ -134,9 +151,10 @@ const Nav = styled.nav`
   left: 0;
   top: 0;
 
+  width: 100vw;
   min-width: 100%;
   min-height: ${theme.sizes.nav.height}px;
-  z-index: 10;
+  z-index: ${NAV_Z_INDEX};
 
   &::before {
     content: '';
@@ -186,6 +204,15 @@ const Li = styled.li`
     padding: 0 0.5rem;
     padding-bottom: 0.5rem;
   }
+`;
+
+const AdditionalInfo = styled.span`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: ${NAV_Z_INDEX};
+  opacity: 0.3;
+  font-size: 0.5em;
 `;
 
 const linksAlignFixH3 = css`

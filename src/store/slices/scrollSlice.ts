@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { Ref, RefObject } from 'react';
+import type { Draft, PayloadAction } from '@reduxjs/toolkit';
+import { RootStateType, useAppSelector } from '../store';
 
 export interface ScrollState {
   value: number;
   scrollY: number;
-  refs: RefObject<Array<HTMLDivElement>> | null;
+  components: Array<Element>;
   positions: {
     [key: string]: {
       offsetTop: number;
@@ -18,7 +18,7 @@ export interface ScrollState {
 const initialState: ScrollState = {
   value: 0,
   scrollY: 0,
-  refs: null,
+  components: [],
   positions: {},
 };
 
@@ -36,9 +36,9 @@ export const scrollSlice = createSlice({
       state.value += action.payload;
     },
     updateComponentsScrollInfo: (state) => {
-      const getElementData = (element: HTMLDivElement) => {
+      const getElementData = (element: Draft<Element>) => {
         const offsetTop = element?.getBoundingClientRect()?.top || 0;
-        const componentHeight = element.clientHeight;
+        const componentHeight = element?.clientHeight || 0;
         const isInView = Math.abs(offsetTop) < componentHeight;
 
         console.log('offsetTop', offsetTop);
@@ -50,25 +50,52 @@ export const scrollSlice = createSlice({
         };
       };
 
-      const updatedComponents = state?.refs?.current?.reduce(
-        (accumulate, element, index) => {
-          //state.positions[index] = getElementData(element);
-
-          return accumulate;
-        },
-        []
+      console.log('UPDATE!', state.components);
+      const updatedComponents = state?.components?.reduce(
+        (accumulate: any, element, index) => ({
+          ...accumulate,
+          [index]: getElementData(element),
+        }),
+        {}
       );
       console.log('up', updatedComponents);
+      state.positions = updatedComponents;
+      console.log('updatedPositions', state.positions);
+    },
+    findAllComponents: (state) => {
+      state.components = Array.from(
+        document.querySelectorAll('[data-component-index]') as any
+      ); // TODO types ...
+      console.log('findAllComponents: ', state.components);
     },
     setScrollY: (state, action: PayloadAction<number>) => {
       console.log('scrollSlice: New offsetTop', action.payload);
       state.scrollY = action.payload;
     },
+    selectComponent: (state): any => {
+      const index = 0;
+      console.log('SelectComponent postition', state.positions);
+
+      return state?.positions?.[index];
+    },
   },
 });
 
+export const scrollSelectors = {
+  getComponentInfoById: (index?: number) => (state: RootStateType) =>
+    state.scroll.positions?.[index] || null,
+};
+
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, setScrollY } =
-  scrollSlice.actions;
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+  updateComponentsScrollInfo,
+  findAllComponents,
+  setScrollY,
+  selectComponent,
+} = scrollSlice.actions;
+export const scrollSliceActions = scrollSlice.actions;
 
 export default scrollSlice.reducer;
