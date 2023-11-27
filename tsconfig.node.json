@@ -11,8 +11,6 @@
     "node_modules",
     "./node_modules",
     "./node_modules/*",
-    "./node_modules/@types/node/index.d.ts",
-    "./src/types.d.ts",
-    "./src/global.d.ts"
+    "./node_modules/@types/node/index.d.ts"
   ]
 }
