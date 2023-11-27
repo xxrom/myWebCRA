@@ -207,8 +207,8 @@ const Li = styled.li`
 
 const AdditionalInfo = styled.span`
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 4px;
+  top: 4px;
   z-index: ${NAV_Z_INDEX};
   opacity: 0.3;
   font-size: 0.5em;
