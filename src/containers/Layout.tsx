@@ -12,9 +12,12 @@ export const NAV_Z_INDEX = 10;
 
 export const Layout = memo(() => {
   const navRef = useRef<HTMLElement>(null);
+  const components = useAppSelector((store) => store.scroll.positions);
   const firstComponentInfo = useAppSelector(
     scrollSelectors.getComponentInfoById(0)
   );
+
+  console.log('first', firstComponentInfo, components);
   const [_navHeight, setNavHeight] = useState(100);
   //const { scrollY } = useScroll();
 
