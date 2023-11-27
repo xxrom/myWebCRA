@@ -1,10 +1,10 @@
 import { useState, useLayoutEffect } from 'react';
 
-interface WindowSize {
+type WindowSize = {
   width: number;
   height: number;
   canvasScale: number;
-}
+};
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<WindowSize>({

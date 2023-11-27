@@ -5,10 +5,7 @@ import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
 import { memo, useEffect, useRef, useState } from 'react';
-import {
-  scrollSelectors,
-  scrollSliceActions,
-} from '@/store/slices/scrollSlice';
+import { scrollSelectors } from '@/store/slices/scrollSlice';
 import { useAppSelector } from '@/store/store';
 
 export const NAV_Z_INDEX = 10;
@@ -18,9 +15,8 @@ export const Layout = memo(() => {
   const firstComponentInfo = useAppSelector(
     scrollSelectors.getComponentInfoById(0)
   );
-  const [navHeight, setNavHeight] = useState(100);
+  const [_navHeight, setNavHeight] = useState(100);
   //const { scrollY } = useScroll();
-  //const { components } = useInView();
 
   /*
   const visibleComponents = Object.values({}).filter((c: any) => c?.isInView);

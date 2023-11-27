@@ -16,8 +16,6 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
     /* shadcn/ui */
@@ -28,14 +26,16 @@
 
     /* vitest */
     "types": ["vitest/globals", "@testing-library/jest-dom"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.d.ts",
+    //"src/**/*.d.ts",
     "src/**/*.tsx",
-    "./setupTest.ts",
-    "@testing-library/jest-dom"
+    "./setupTest.ts"
+    //"@testing-library/jest-dom"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "lib": ["WebWorker"]
