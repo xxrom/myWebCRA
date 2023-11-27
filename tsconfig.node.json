@@ -13,6 +13,6 @@
     "./node_modules/*",
     "./node_modules/@types/node/index.d.ts",
     "./src/types.d.ts",
-    "./src/globals.d.ts"
+    "./src/global.d.ts"
   ]
 }
