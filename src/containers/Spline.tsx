@@ -5,6 +5,7 @@ import { useWindowSize } from '../hooks';
 import { Text } from '../components';
 import { theme } from '../theme';
 import { css } from '@linaria/core';
+import Texture from '/textures/Crystal_001_DISP.jpg';
 import { scrollSelectors } from '@/store/slices/scrollSlice';
 
 // info: /alieninterfaces/05-vesica/blob/main/src/main.js
@@ -264,7 +265,8 @@ export const Spline = memo(({ index }: SplineProps) => {
 
     // USING THREE DATA TEXTURE To CREATE A RAW DATA TEXTURE
     const texture = new THREE.TextureLoader().load(
-      process.env.PUBLIC_URL + 'textures/Crystal_001_DISP.jpg'
+      Texture
+      //'textures/Crystal_001_DISP.jpg'
     );
 
     texture.wrapS = THREE.RepeatWrapping;

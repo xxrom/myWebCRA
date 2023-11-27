@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
   console.log('env', env);
 
   return {
+    publicDir: 'public',
     plugins: [
       linaria({
         include: ['**/*.{ts,tsx}'],
