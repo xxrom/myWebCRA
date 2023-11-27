@@ -26,6 +26,7 @@ describe('App', () => {
     render(defaultComponent);
 
     const component = document.querySelector('[data-component-index="0"]');
+
     // Assertions to check if the element exists
     expect(component).toBeInTheDocument();
   });

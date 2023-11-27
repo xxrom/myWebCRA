@@ -43,6 +43,7 @@ export const Spline = memo(({ index }: SplineProps) => {
     }
     if (!THREE) {
       console.warn('NOT FOUND THREE');
+
       return;
     }
 
