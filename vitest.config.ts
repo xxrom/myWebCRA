@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config';
 import path from 'path';
 
 export default defineConfig({
+  publicDir: 'public',
   test: {
     globals: true,
     environment: 'jsdom', // faster analog ? 'happy-dom',

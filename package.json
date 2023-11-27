@@ -7,6 +7,7 @@
     "dev": "vite --host --clearScreen false",
     "build": "tsc && BUILD_PATH=build vite build --outDir 'build'",
     "test": "vitest",
+    "preview": "vite preview --outDir 'build'",
     "coverage": "vitest run --coverage",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
