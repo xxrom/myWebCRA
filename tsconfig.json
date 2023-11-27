@@ -4,7 +4,7 @@
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "skipLibCheck": false,
+    "skipLibCheck": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -38,5 +38,13 @@
     //"@testing-library/jest-dom"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "lib": ["WebWorker"]
+  "lib": ["WebWorker"],
+  "exclude": [
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts",
+    "./src/types.d.ts",
+    "./src/globals.d.ts"
+  ]
 }

@@ -85,7 +85,7 @@ export const scrollSlice = createSlice({
 
 export const scrollSelectors = {
   getComponentInfoById: (index?: number) => (state: RootStateType) =>
-    state.scroll.positions?.[index] || null,
+    (typeof index === 'number' && state.scroll.positions?.[index]) || null,
 };
 
 // Action creators are generated for each case reducer function
