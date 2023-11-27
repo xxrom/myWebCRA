@@ -1,1 +1,1 @@
-export {EducationAndHobby} from './EducationAndHobby';
+export { EducationAndHobby } from './EducationAndHobby';

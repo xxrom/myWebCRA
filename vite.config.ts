@@ -2,8 +2,7 @@
 /// <reference types="vite/client" />
 import { defineConfig, loadEnv } from 'vite';
 import linaria from '@linaria/vite';
-//import react from '@vitejs/plugin-react-swc'; // todo: remove ?
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import { ImportMeta } from './src/env.d';
 import path from 'path';
 
@@ -20,7 +19,15 @@ export default defineConfig(({ mode }) => {
   console.log('env', env);
 
   return {
-    plugins: [linaria(), react()],
+    plugins: [
+      linaria({
+        include: ['**/*.{ts,tsx}'],
+        babelOptions: {
+          presets: ['@babel/preset-typescript', '@babel/preset-react'],
+        },
+      }),
+      react(),
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),

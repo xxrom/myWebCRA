@@ -20,7 +20,7 @@ export const Main = memo(() => {
   return (
     <Column>
       {ComponentsList.map((Component, index) => (
-        <Component index={index} />
+        <Component key={index} index={index} />
       ))}
     </Column>
   );

@@ -6,10 +6,11 @@ import band3Src from './band3.jpg';
 import legoJsonSrc from './legoJson.png';
 import uniswapSrc from './uniswap.png';
 import solidityTodoSrc from './solidity-todo.png';
+import { ComponentsCommonTypes } from '../Spline';
 
-export type ProjectsProps = {};
+export type ProjectsProps = ComponentsCommonTypes;
 
-export const Projects = ({}: ProjectsProps) => {
+export const Projects = ({ index }: ProjectsProps) => {
   const projects = [
     {
       title: 'Uniswap Ether / Solidity Web3',
@@ -44,7 +45,7 @@ export const Projects = ({}: ProjectsProps) => {
   ];
 
   return (
-    <Container>
+    <Container data-component-index={index}>
       <Text variant="h1" className={blockMarginCss}>
         Projects:
       </Text>

@@ -5,12 +5,12 @@ import { mobile, theme } from '../theme';
 
 export type SizeType = 'small' | 'normal' | 'full';
 
-export interface VideoMiniProps {
+export type VideoMiniProps = {
   src: string;
   size?: SizeType;
   marginTopBottom?: boolean;
   className?: string;
-}
+};
 
 const sizesCss: { [K in SizeType]: string } = {
   small: css`

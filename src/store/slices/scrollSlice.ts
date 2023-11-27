@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { Draft, PayloadAction } from '@reduxjs/toolkit';
 import { RootStateType, useAppSelector } from '../store';
 
-export interface ScrollState {
+export type ScrollState = {
   value: number;
   scrollY: number;
   components: Array<Element>;
@@ -13,7 +13,7 @@ export interface ScrollState {
       isInView: boolean;
     };
   };
-}
+};
 
 const initialState: ScrollState = {
   value: 0,
@@ -58,6 +58,7 @@ export const scrollSlice = createSlice({
         }),
         {}
       );
+
       console.log('up', updatedComponents);
       state.positions = updatedComponents;
       console.log('updatedPositions', state.positions);
@@ -74,6 +75,7 @@ export const scrollSlice = createSlice({
     },
     selectComponent: (state): any => {
       const index = 0;
+
       console.log('SelectComponent postition', state.positions);
 
       return state?.positions?.[index];

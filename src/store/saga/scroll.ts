@@ -26,6 +26,7 @@ function* bgScrollWatcher(): any {
     // Subscribe saga to 'scroll' event
     const scrollChannel = eventChannel((emitter) => {
       document?.addEventListener('scroll', emitter);
+
       return () => document.removeEventListener('scroll', emitter);
     });
 

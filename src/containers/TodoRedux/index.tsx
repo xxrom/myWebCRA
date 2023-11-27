@@ -1,1 +1,1 @@
-export {TodoRedux} from './TodoRedux';
+export { TodoRedux } from './TodoRedux';
