@@ -32,6 +32,11 @@ function* bgScrollWatcher(): any {
 
     yield takeEvery(scrollChannel, updateScrollPosition);
 
+    // TODO: find all components after initing it ???
+    yield delay(300);
+    yield put(scrollSliceActions.findAllComponents());
+    yield put(scrollSliceActions.updateComponentsScrollInfo());
+
     while (true) {
       console.log('tick');
       yield delay(5000);
