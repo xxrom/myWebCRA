@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host --clearScreen false",
-    "build": "tsc && BUILD_PATH=build vite build",
+    "build": "tsc && BUILD_PATH=build vite build --outDir 'build'",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "tsc": "tsc",
@@ -17,11 +17,7 @@
     "clean": "rm -rf ./build"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
