@@ -30,21 +30,13 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": [
-    "src/**/*.ts",
-    //"src/**/*.d.ts",
-    "src/**/*.tsx",
-    "./setupTest.ts"
-    //"@testing-library/jest-dom"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "./setupTest.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "lib": ["WebWorker"],
   "exclude": [
     "node_modules",
     "./node_modules",
     "./node_modules/*",
-    "./node_modules/@types/node/index.d.ts",
-    "./src/types.d.ts",
-    "./src/global.d.ts"
+    "./node_modules/@types/node/index.d.ts"
   ]
 }
