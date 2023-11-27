@@ -8,12 +8,13 @@ import { css } from '@linaria/core';
 import { scrollSelectors } from '@/store/slices/scrollSlice';
 
 // info: /alieninterfaces/05-vesica/blob/main/src/main.js
-const MOD3: any = window.MOD3;
-const THREE: any = window.THREE;
+const MOD3: any = window.MOD3 as any;
+const THREE: any = window.THREE as any;
 const IS_DEBUG = false;
 
 const generate_noise2d = (width: number, height: number) => {
-  const noise: Array<Array<Number>> = [];
+  const noise: Array<Array<number>> = [];
+
   for (let i = 0; i < width; i++) {
     noise[i] = [];
     for (let j = 0; j < height; j++) {
@@ -29,7 +30,7 @@ export type ComponentsCommonTypes = {
 };
 export type SplineProps = ComponentsCommonTypes;
 
-export const Spline = memo<SplineProps>(({ index }) => {
+export const Spline = memo(({ index }: SplineProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const renderRef = useRef(false);
@@ -38,6 +39,10 @@ export const Spline = memo<SplineProps>(({ index }) => {
   // Helper
   useEffect(() => {
     if (!canvasRef.current || width === 0) {
+      return;
+    }
+    if (!THREE) {
+      console.warn('NOT FOUND THREE');
       return;
     }
 
@@ -53,6 +58,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
     scene.fog = new THREE.Fog(0x0000000f, 45, 71);
 
     let fovShift = 13 * (height / 900);
+
     if (fovShift > 13) {
       fovShift = 13;
     }
@@ -73,6 +79,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
       antialias: true, // true
       alpha: true,
     });
+
     renderer.setSize(width * canvasScale, height * canvasScale);
     renderer.setClearColor(0x000000, 0);
 
@@ -114,6 +121,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
 
       const addSphere = (i: number) => {
         const folder = sphereFolder.addFolder(`Sphere ${i}`);
+
         folder.add(circles[i], 'speed', 0, 0.1).name('Speed');
         folder.add(circles[i], 'radius', 0, 2).name('Radius');
         folder.addColor(circles[i], 'color').name('Color');
@@ -121,6 +129,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
         folder.add(circles[i].position, 'y', -10, 10).name('Y');
         folder.add(circles[i].position, 'z', -10, 10).name('Z');
       };
+
       updateCircles = () => {
         //console.log('circles', circles);
         circles.forEach(
@@ -155,12 +164,14 @@ export const Spline = memo<SplineProps>(({ index }) => {
           const geometry2 = new THREE.SphereGeometry(15, 32, 16);
           const material2 = new THREE.MeshBasicMaterial({ color: 0xffff00 });
           const sphere = new THREE.Mesh(geometry2, material2);
+
           sphere.castShadow = true;
           sphere.receiveShadow = true;
           //console.log(sphere);
 
           circles.push({ ...newCircle, mesh: sphere });
           const size = circles.length - 1;
+
           circles[size].delta = Math.random() * 10;
 
           scene.add(circles[size].mesh);
@@ -190,21 +201,26 @@ export const Spline = memo<SplineProps>(({ index }) => {
     if (IS_DEBUG) {
       // Axes helpers
       const axesHelper = THREE.AxisHelper(15);
+
       scene.add(axesHelper);
       // Grid Helper
       const gridHelper = new THREE.GridHelper(15, 1);
+
       scene.add(gridHelper);
     }
 
     // Light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+
     scene.add(ambientLight);
 
     const skyLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
+
     skyLight.position.set(0, -1, 4);
     scene.add(skyLight);
 
     const skyLight2 = new THREE.HemisphereLight(0xffffff, 0xff00ff, 0.3);
+
     skyLight2.position.set(0, -1, 4);
     scene.add(skyLight2);
 
@@ -249,6 +265,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
     const texture = new THREE.TextureLoader().load(
       process.env.PUBLIC_URL + 'textures/Crystal_001_DISP.jpg'
     );
+
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     // Get part of the texture
@@ -276,9 +293,11 @@ export const Spline = memo<SplineProps>(({ index }) => {
     });
 
     const cube = new THREE.Mesh(geomentry, material);
+
     scene.add(cube);
 
     const target = cube.position.clone();
+
     //target.x -= 70;
     //target.y -= 20;
     target.z += 10;
@@ -288,6 +307,7 @@ export const Spline = memo<SplineProps>(({ index }) => {
     camera.lookAt(target);
     // Change model angle to fit in the screen
     let widthShift = 35 * ((width - 300) / 1000);
+
     if (widthShift > 35) {
       widthShift = 35;
     }

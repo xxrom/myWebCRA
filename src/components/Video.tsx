@@ -1,9 +1,9 @@
-import {styled} from '@linaria/react';
+import { styled } from '@linaria/react';
 
-export interface VideoProps {
+export type VideoProps = {
   src: string;
-}
-export const Video: React.FC<VideoProps> = ({src}) => {
+};
+export const Video = ({ src }: VideoProps) => {
   return (
     <VideoBlock autoPlay muted loop playsInline poster="">
       <source src={src} type="video/mp4" />
@@ -20,5 +20,5 @@ const VideoBlock = styled.video`
   @media screen and (max-width: 575px) {
     margin-right: 0.1rem;
     max-width: 45px;
-  } ;
+  }
 `;

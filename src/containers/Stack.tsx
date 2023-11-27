@@ -1,12 +1,13 @@
 import { css } from '@linaria/core';
 import { Container, Text, BorderContainer } from '../components';
 import { blockMarginCss } from '../theme';
+import { ComponentsCommonTypes } from './Spline';
 
-export type StackProps = {};
+export type StackProps = ComponentsCommonTypes;
 
-export const Stack = ({}: StackProps) => {
+export const Stack = ({ index }: StackProps) => {
   return (
-    <Container className={containerCss}>
+    <Container data-compontent-index={index} className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
         Stack:
       </Text>

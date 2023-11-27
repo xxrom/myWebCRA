@@ -1,10 +1,10 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
+type ImportMetaEnv = {
   readonly VITE_PORT: string;
   // more env variables...
-}
+};
 
-export interface ImportMeta {
+export type ImportMeta = {
   readonly env: ImportMetaEnv;
-}
+};

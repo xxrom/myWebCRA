@@ -1,25 +1,27 @@
-import { css, cx } from '@linaria/core';
+//import { css } from '@linaria/core';
 import {
   Container,
   BorderContainer,
   Text,
   //Image,
   //ImageBox,
-  VideoMini,
+  //VideoMini,
 } from '../../components';
 
 //import hexapod from './hexapod.png';
 import { blockMarginCss, theme } from '../../theme';
 //import AliceCarousel from 'react-alice-carousel';
 //import 'react-alice-carousel/lib/alice-carousel.css';
-import circleVideo from './circle_1.mp4';
-import slicesVideo from './slices_1.mp4';
-import roundSlicesVideo from './round_slices_1.mp4';
-import rombVideo from './romb_1.mp4';
+//import circleVideo from './circle_1.mp4';
+//import slicesVideo from './slices_1.mp4';
+//import roundSlicesVideo from './round_slices_1.mp4';
+//import rombVideo from './romb_1.mp4';
+import { ComponentsCommonTypes } from '../Spline';
 
-export type EducationAndHobbyProps = {};
+export type EducationAndHobbyProps = ComponentsCommonTypes;
 
-export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
+export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
+  /*
   const videos = [
     <VideoMini className={carouselItemCss} src={circleVideo} size="normal" />,
     <VideoMini
@@ -30,9 +32,10 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
     <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />,
     <VideoMini className={carouselItemCss} src={slicesVideo} size="normal" />,
   ];
+  */
 
   return (
-    <>
+    <div data-component-index={index}>
       <Container>
         <Text variant="h1" className={blockMarginCss}>
           Education:
@@ -100,10 +103,11 @@ export const EducationAndHobby = ({}: EducationAndHobbyProps) => {
       </div>
       </Container>
       */}
-    </>
+    </div>
   );
 };
 
+/*
 const carouselItemCss = css`
   min-width: 400px;
   max-width: 80vw;
@@ -131,3 +135,4 @@ const photoFullWidthCss = css`
   min-width: 50vw;
   max-width: 80vw;
 `;
+*/

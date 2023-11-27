@@ -1,17 +1,17 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import {styled} from '@linaria/react';
+import { styled } from '@linaria/react';
 
-export interface BackgroundVideoProps {
+export type BackgroundVideoProps = {
   src: string;
   playbackRate?: number;
   children: ReactNode;
-}
+};
 
-export const BackgroundVideo: React.FC<BackgroundVideoProps> = ({
+export const BackgroundVideo = ({
   src,
   children,
   playbackRate = 0.5,
-}) => {
+}: BackgroundVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

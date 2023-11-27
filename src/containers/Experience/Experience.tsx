@@ -10,6 +10,7 @@ import sphere from './sphere.png';
 import { useCallback, useEffect, useState } from 'react';
 import { commonMdCss } from '../../commonStyles';
 import { pulseCss } from '../../components/Image';
+import { ComponentsCommonTypes } from '../Spline';
 
 const sberInfo: JobProps['info'] = {
   title: 'Sber (2+ years)',
@@ -98,11 +99,11 @@ const sphereInfo: JobProps['info'] = {
   `,
 };
 
-export type ExperienceProps = {};
+export type ExperienceProps = ComponentsCommonTypes;
 
-export const Experience = ({}: ExperienceProps) => {
+export const Experience = ({ index }: ExperienceProps) => {
   return (
-    <Container className={containerCss}>
+    <Container data-component-index={index} className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
         Experience (over 8 years):
       </Text>
@@ -134,10 +135,12 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
     // Hack for disabling blobal scroll when popup opened
     if (isOpened === true) {
       const body = document.body;
+
       body.style.height = '100vh';
       body.style.overflowY = 'hidden';
     } else {
       const body = document.body;
+
       body.style.height = '';
       body.style.overflowY = '';
     }

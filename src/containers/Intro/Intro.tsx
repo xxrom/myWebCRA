@@ -9,12 +9,13 @@ import { css, cx } from '@linaria/core';
 import { theme } from '../../theme';
 import me from './me.jpg';
 import surfVideo from '../EducationAndHobby/surf_1.mp4';
+import { ComponentsCommonTypes } from '../Spline';
 
-export type IntroProps = {};
+export type IntroProps = ComponentsCommonTypes;
 
-export const Intro = ({}: IntroProps) => {
+export const Intro = ({ index }: IntroProps) => {
   return (
-    <Container className={wrapperCss}>
+    <Container data-component-index={index} className={wrapperCss}>
       <BackgroundVideo src={surfVideo}>
         <Text variant="h1" className={marginCss}>
           Chernyshov Nikita
