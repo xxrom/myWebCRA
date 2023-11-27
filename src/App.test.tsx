@@ -7,28 +7,26 @@ import { store } from './store/store';
 
 const name = 'Chernyshov Nikita';
 
+const defaultComponent = (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
 describe('App', () => {
   it(`render full page with text ${name}`, () => {
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    render(defaultComponent);
 
     const names = screen.getAllByText(name);
 
     expect(names.length).toBe(2);
   });
-});
 
-/*
-  it('render img', () => {
-    render(<App />);
+  it('Check data-component-index=0', () => {
+    render(defaultComponent);
 
-    // find img by aria-label='me'
-    const img = screen.getByRole('img', { name: 'me' });
-
-    expect(img).toBeInTheDocument();
+    const component = document.querySelector('[data-component-index="0"]');
+    // Assertions to check if the element exists
+    expect(component).toBeInTheDocument();
   });
-  */
-//});
+});

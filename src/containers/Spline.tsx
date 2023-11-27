@@ -386,7 +386,7 @@ export const Spline = memo(({ index }: SplineProps) => {
     <Wrapper data-component-index={index} ref={wrapperRef}>
       <div ref={canvasRef} />
       <TextWrapper>
-        <Text variant="h1" className={textCSS}>
+        <Text variant="h1" data-info="me" className={textCSS}>
           Chernyshov Nikita
         </Text>
       </TextWrapper>
