@@ -2,7 +2,8 @@
 /// <reference types="vite/client" />
 import { defineConfig, loadEnv } from 'vite';
 import linaria from '@linaria/vite';
-import react from '@vitejs/plugin-react-swc';
+//import react from '@vitejs/plugin-react-swc'; // todo: remove ?
+import react from '@vitejs/plugin-react';
 import { ImportMeta } from './src/env.d';
 import path from 'path';
 
@@ -35,9 +36,9 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       globals: true,
-      environment: 'jsdom',
-      //environment: 'happy-dom',
-      setupFiles: 'src/setupTest.js',
+      environment: 'jsdom', // faster analog ? 'happy-dom',
+      setupFiles: './setupTest.ts',
+      css: true, // false ? to do rendering faster
     },
   };
 });
