@@ -3,7 +3,7 @@ import { styled } from '@linaria/react';
 import { css, cx } from '@linaria/core';
 import { mobile, theme } from '../theme';
 
-export type SizeType = 'small' | 'normal' | 'full';
+export type SizeType = 'small' | 'normal' | 'full' | 'null';
 
 export type VideoMiniProps = {
   src: string;
@@ -29,6 +29,14 @@ const sizesCss: { [K in SizeType]: string } = {
   full: css`
     max-width: 720px;
     max-height: 720px;
+  `,
+  null: css`
+    display: flex;
+    flex: 1;
+    margin: 0;
+    height: 100%;
+    max-height: 100%;
+    min-width: 100%;
   `,
 };
 
@@ -68,14 +76,7 @@ export const VideoMini: FC<VideoMiniProps> = ({
 };
 
 const Video = styled.video`
-  width: 100%;
+  position: relative;
   object-fit: cover;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
   border-radius: ${theme.sizes.borderRadius};
-
-  @media screen and (max-width: 575px) {
-    margin-left: 0.1rem;
-    margin-right: 0.1rem;
-  }
 `;
