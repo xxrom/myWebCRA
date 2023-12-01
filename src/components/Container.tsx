@@ -13,21 +13,17 @@ export const Container = ({
   className,
   isEnabledPaddingBottom = true,
 }: ContainerProps) => (
-  <Wrapper className={cx(isEnabledPaddingBottom && marginBottomCss)}>
-    <Border className={cx(className)}>{children}</Border>
+  <Wrapper className={cx(className, isEnabledPaddingBottom && marginBottomCss)}>
+    {children}
   </Wrapper>
 );
-
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-`;
 
 const marginBottomCss = css`
   margin-bottom: ${theme?.margin?.block};
 `;
 
-const Border = styled.div`
+const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;

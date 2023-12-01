@@ -10,7 +10,7 @@ export const BorderContainer = styled.div<BorderContainerProps>`
   flex-direction: column;
   border-left: 1px solid ${theme.colors.font};
 
-  padding: 0 1rem;
+  padding: 0 2rem;
   margin: ${(props) => props.margin || 0};
 
   & > *:not(:last-child) {

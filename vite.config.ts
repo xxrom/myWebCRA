@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => {
     publicDir: 'public',
     plugins: [
       linaria({
+        displayName: true,
         include: ['**/*.{ts,tsx}'],
         babelOptions: {
           presets: ['@babel/preset-typescript', '@babel/preset-react'],

@@ -1,39 +1,20 @@
-//import { css } from '@linaria/core';
 import {
   Container,
   BorderContainer,
   Text,
-  //Image,
-  //ImageBox,
-  //VideoMini,
+  ImageBox,
+  Image,
 } from '../../components';
 
-//import hexapod from './hexapod.png';
 import { blockMarginCss, theme } from '../../theme';
-//import AliceCarousel from 'react-alice-carousel';
-//import 'react-alice-carousel/lib/alice-carousel.css';
-//import circleVideo from './circle_1.mp4';
-//import slicesVideo from './slices_1.mp4';
-//import roundSlicesVideo from './round_slices_1.mp4';
-//import rombVideo from './romb_1.mp4';
 import { ComponentsCommonTypes } from '../Spline';
+import me from '../Intro/me.jpg';
+import { Row } from '@/components/Row';
+import { styled } from '@linaria/react';
 
 export type EducationAndHobbyProps = ComponentsCommonTypes;
 
 export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
-  /*
-  const videos = [
-    <VideoMini className={carouselItemCss} src={circleVideo} size="normal" />,
-    <VideoMini
-      className={carouselItemCss}
-      src={roundSlicesVideo}
-      size="normal"
-    />,
-    <VideoMini className={carouselItemCss} src={rombVideo} size="normal" />,
-    <VideoMini className={carouselItemCss} src={slicesVideo} size="normal" />,
-  ];
-  */
-
   return (
     <div data-component-index={index}>
       <Container>
@@ -57,82 +38,32 @@ export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
       </Container>
 
       <Container>
-        <Text variant="h1" className={blockMarginCss}>
-          Hobbies:
-        </Text>
+        <Text variant="h1">Hobbies:</Text>
 
-        <BorderContainer margin={theme.margin.content}>
-          <Text variant="h3">Robots</Text>
-          <Text variant="h5">
-            Hexapod, balance robot (arduino, raspberry pi)
-          </Text>
+        <Row>
+          <MyImg>
+            <Image src={me} aria-label="me" alt="me" />
+          </MyImg>
 
-          <Text variant="h3">---</Text>
-          <Text variant="h3">3D printing / Inventor(CAD)</Text>
-          <Text variant="h5">Creating and printing different models</Text>
-        </BorderContainer>
+          <BorderContainer margin="2rem 0">
+            <Text variant="h3">Robots</Text>
+            <Text variant="h5">
+              Hexapod, balance robot (arduino, raspberry pi)
+            </Text>
 
-        {/*
-        <ImageBox className={cx(photoFullWidthCss, blockMarginCss)}>
-          <Image isDisabled src={hexapod} />
-        </ImageBox>
-      */}
+            <Text variant="h3">---</Text>
+            <Text variant="h3">3D printing / Inventor(CAD)</Text>
+            <Text variant="h5">Creating and printing different models</Text>
+          </BorderContainer>
+        </Row>
       </Container>
-
-      {/*
-      <Container>
-        <BorderContainer margin={theme.margin.content}>
-          <Text variant="h3">Blender</Text>
-        </BorderContainer>
-
-        videos.map((video) => video)
-
-        <div className={carouselCss}>
-          <AliceCarousel
-            animationType="fadeout"
-            autoPlay={true}
-            autoPlayInterval={3000}
-            animationDuration={500}
-            disableButtonsControls
-            disableDotsControls
-            autoWidth
-            infinite
-            items={videos}
-            mouseTracking
-          />
-      </div>
-      </Container>
-      */}
     </div>
   );
 };
 
-/*
-const carouselItemCss = css`
-  min-width: 400px;
-  max-width: 80vw;
-  min-height: 400px;
-  max-height: 400px;
-  padding: 2rem 1rem;
-  overflow: hidden;
+const MyImg = styled(ImageBox)`
+  margin: 2rem;
+  min-height: 300px;
+  min-width: 260px;
+  max-width: 320px;
 `;
-const carouselCss = css`
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  padding: 0 -2rem;
-  margin-left: -1rem;
-
-  & .alice-carousel__stage {
-    display: flex;
-    align-items: center;
-  }
-`;
-
-const photoFullWidthCss = css`
-  min-height: 40vw;
-  max-height: 60vw;
-  min-width: 50vw;
-  max-width: 80vw;
-`;
-*/
