@@ -3,6 +3,7 @@ import { css, cx } from '@linaria/core';
 
 type ImageProps = {
   isDisabled?: boolean;
+  pulse?: boolean;
 };
 
 const pulseColor = 150;
@@ -10,23 +11,35 @@ const pulseColor = 150;
 export const pulseCss = css`
   box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 1);
   transform: scale(1);
-  animation: pulse 2s infinite;
+  animation: pulse 4s infinite;
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.7);
+      box-shadow: 4px 2px 1px 1px
+        rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.6);
     }
 
-    70% {
-      box-shadow: 0 0 0 20px
-        rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0);
+    50% {
+      box-shadow: 10px 10px 3px 4px
+        rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.4);
     }
+
+    100% {
+      box-shadow: 4px 2px 1px 1px
+        rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.6);
+    }
+  }
+`;
+/*
+    20% {
+      box-shadow: 4px 8px 1px 4px rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0.1);
+    }
+
 
     100% {
       box-shadow: 0 0 0 0 rgba(${pulseColor}, ${pulseColor}, ${pulseColor}, 0);
     }
-  }
-`;
+*/
 
 export type Image2Props = {
   src: string;
@@ -73,7 +86,7 @@ const imageCss = css`
   }
 `;
 
-export const Image = styled.img<ImageProps & { pulse?: boolean }>`
+export const Image = styled.img<ImageProps>`
   position: relative;
   top: 0;
   left: 0;
@@ -81,11 +94,15 @@ export const Image = styled.img<ImageProps & { pulse?: boolean }>`
   width: 100%;
   object-fit: cover;
   transition: all 0.3s ease;
-  cursor: ${(props) => (props?.isDisabled ? 'default' : 'pointer')};
   border-radius: 4px;
+  cursor: ${(props) => (props?.isDisabled ? 'default' : 'pointer')};
 
   &:hover {
     transform: scale(${(props) => (props?.isDisabled ? 1.0 : 1.05)});
+  }
+
+  &.pulse {
+    ${pulseCss};
   }
 `;
 

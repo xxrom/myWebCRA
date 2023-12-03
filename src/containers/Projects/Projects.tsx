@@ -7,6 +7,7 @@ import legoJsonSrc from './legoJson.png';
 import uniswapSrc from './uniswap.png';
 import solidityTodoSrc from './solidity-todo.png';
 import { ComponentsCommonTypes } from '../Spline';
+import { containerWrapCss } from '../Experience/Experience';
 
 export type ProjectsProps = ComponentsCommonTypes;
 
@@ -50,36 +51,39 @@ export const Projects = ({ index }: ProjectsProps) => {
         Projects:
       </Text>
 
-      {projects.map(({ title, url, src, fallback }) => (
-        <Container isEnabledPaddingBottom={false} key={`${title}${url}`}>
-          {/* TODO: Image add wrapper with settings for scale and height/width */}
-          <a href={url} target="_blank" rel="noreferrer">
-            <ImageBox className={cx(imageCss)}>
-              <Image2 src={src} fallback={fallback} />
-            </ImageBox>
-          </a>
+      <Container isEnabledPaddingBottom={false} className={containerWrapCss}>
+        {projects.map(({ title, url, src, fallback }) => (
+          <Container isEnabledPaddingBottom={false} key={`${title}${url}`}>
+            {/* TODO: Image add wrapper with settings for scale and height/width */}
+            <a href={url} target="_blank" rel="noreferrer">
+              <ImageBox className={cx(imageCss)}>
+                <Image2 src={src} fallback={fallback} />
+              </ImageBox>
+            </a>
 
-          <Text
-            variant="link-h3"
-            target="_blank"
-            rel="noreferrer"
-            className={linkCss}
-            href={url}
-          >
-            {title}
-          </Text>
-        </Container>
-      ))}
+            <Text
+              variant="link-h3"
+              target="_blank"
+              rel="noreferrer"
+              className={linkCss}
+              href={url}
+            >
+              {title}
+            </Text>
+          </Container>
+        ))}
+      </Container>
     </Container>
   );
 };
 
 const linkCss = css`
   margin-top: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 `;
 
 const imageCss = css`
+  overflow: hidden;
   min-height: 30vw;
   max-height: 500px;
   min-width: 30vw;

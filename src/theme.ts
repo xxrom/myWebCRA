@@ -37,8 +37,8 @@ export const theme = {
   },
 
   margin: {
-    block: '4rem',
-    content: '2rem 1rem',
+    block: '3rem !important',
+    content: '2rem 1rem !important',
   },
 
   // in ms
