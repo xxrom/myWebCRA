@@ -1,4 +1,11 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { styled } from '@linaria/react';
 import dat from 'dat.gui';
 import { useWindowSize } from '../hooks';
@@ -34,9 +41,10 @@ export type ComponentsCommonTypes = {
 export type SplineProps = ComponentsCommonTypes;
 
 export const Spline = memo(({ index }: SplineProps) => {
+  const initRef = useRef(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
-  const renderRef = useRef(false);
+  const timeoutId = useRef<NodeJS.Timeout | null>(null);
   const isInViewRef = useRef(true);
   const deltaRef = useRef(0);
   const { width, canvasScale } = useWindowSize();
@@ -47,33 +55,26 @@ export const Spline = memo(({ index }: SplineProps) => {
   const [_mStack, setMStack] = useState<any>();
 
   const { isInView = true } =
-    useAppSelector(scrollSelectors.getComponentInfoById(index)) || {};
+    useAppSelector(scrollSelectors.selectComponentInfoById(index)) || {};
 
   useEffect(() => {
     isInViewRef.current = isInView;
   }, [isInView]);
 
-  const isInitialized = useCallback(() => {
-    if (!canvasRef.current || width === 0) {
-      return false;
-    }
-    if (!THREE) {
-      return false;
-    }
-
-    return true;
-  }, [width]);
-
   // First model init
   useEffect(() => {
-    if (!canvasRef.current) {
-      return;
-    }
-    if (!THREE) {
+    if (
+      !canvasRef.current ||
+      !wrapperRef.current ||
+      !THREE ||
+      initRef.current
+    ) {
       return;
     }
 
-    // Common values
+    // Init all values only once !
+    initRef.current = true;
+
     const scene = new THREE.Scene();
 
     // Add fog for disappearing the tail in the fog-background
@@ -220,8 +221,6 @@ export const Spline = memo(({ index }: SplineProps) => {
     setTexture(texture);
     setMStack(mStack);
 
-    renderRef.current = true;
-
     const wrapper = wrapperRef.current;
 
     if (wrapperRef.current) {
@@ -229,7 +228,11 @@ export const Spline = memo(({ index }: SplineProps) => {
     }
 
     return () => {
-      if (wrapper && wrapper.contains(renderer.domElement)) {
+      if (
+        !initRef.current &&
+        wrapper &&
+        wrapper.contains(renderer.domElement)
+      ) {
         wrapper.removeChild(renderer.domElement);
       }
     };
@@ -237,11 +240,17 @@ export const Spline = memo(({ index }: SplineProps) => {
 
   // Main Render loop
   useEffect(() => {
-    if (!isInitialized() || !scene || !renderer || !spline || !texture) {
+    if (
+      !canvasRef.current ||
+      !THREE ||
+      !scene ||
+      !renderer ||
+      !spline ||
+      !texture ||
+      width < 30
+    ) {
       return;
     }
-
-    renderRef.current = true;
 
     const height = window.innerHeight;
 
@@ -272,11 +281,9 @@ export const Spline = memo(({ index }: SplineProps) => {
     camera.position.y = 0; // 5; // 5
     camera.position.z = 0; // -12; // -2
 
-    //
     // GUI PART
-    //
-    const showControls = IS_DEBUG; //true;
-    const showHelpers = IS_DEBUG; //true;
+    const showControls = IS_DEBUG;
+    //const showHelpers = IS_DEBUG;
 
     const lights = [];
     const circles: any = [];
@@ -388,7 +395,7 @@ export const Spline = memo(({ index }: SplineProps) => {
     camera.rotation.x = 180 * (Math.PI / 180); // 180
     camera.rotation.y = 70 * (Math.PI / 180);
 
-    let frameId: number;
+    let frameId: number | null;
 
     function animate() {
       if (!isInViewRef.current) {
@@ -396,9 +403,17 @@ export const Spline = memo(({ index }: SplineProps) => {
         const DELAY = 300;
 
         // Check isInView current component
-        new Promise((res) => setTimeout(() => res(''), DELAY)).then(() =>
-          animate()
-        );
+        new Promise((res) => {
+          // Track all timeouts
+          const id = setTimeout(() => res(''), DELAY);
+
+          if (timeoutId.current) {
+            // Clear previous timeouts
+            clearTimeout(timeoutId.current);
+          }
+
+          timeoutId.current = id;
+        }).then(() => animate());
 
         return;
       }
@@ -424,11 +439,11 @@ export const Spline = memo(({ index }: SplineProps) => {
     animate();
 
     return () => {
-      if (frameId) {
+      if (typeof frameId === 'number') {
         cancelAnimationFrame(frameId);
       }
     };
-  }, [width, canvasScale, isInitialized, scene, renderer, spline, texture]);
+  }, [width, canvasScale, scene, renderer, spline, texture]);
 
   return (
     <Wrapper data-component-index={index} ref={wrapperRef}>
