@@ -115,7 +115,7 @@ export const Spline = memo(({ index }: SplineProps) => {
 
     // Wave
     const shape = new THREE.Shape();
-    const STAR_EDGES = 80; // + edgesShift;
+    const STAR_EDGES = 100; // + edgesShift;
     const STAR_SIZE = STAR_EDGES * 2;
     let r;
 
