@@ -12,32 +12,10 @@ export const NAV_Z_INDEX = 10;
 
 export const Layout = memo(() => {
   const navRef = useRef<HTMLElement>(null);
-  const components = useAppSelector((store) => store.scroll.positions);
   const firstComponentInfo = useAppSelector(
     scrollSelectors.getComponentInfoById(0)
   );
-
-  console.log('first', firstComponentInfo, components);
-  const [_navHeight, setNavHeight] = useState(100);
-  //const { scrollY } = useScroll();
-
-  /*
-  const visibleComponents = Object.values({}).filter((c: any) => c?.isInView);
-  const isDarkBackground = visibleComponents.some(
-    (c: any) => c.offsetTop < navHeight / 2
-  );
-  */
   const isDarkBackground = firstComponentInfo?.isInView;
-
-  useEffect(() => {
-    if (!navRef.current) {
-      return;
-    }
-
-    const height = navRef?.current?.clientHeight;
-
-    setNavHeight(height);
-  }, []);
 
   return (
     <Wrapper>
@@ -80,7 +58,7 @@ export const Layout = memo(() => {
             </Text>
           </Li>
 
-          <AdditionalInfo>{`NAV: ${
+          <AdditionalInfo className={infoCommonCss}>{`NAV: ${
             isDarkBackground ? 'dark' : 'light'
           }`}</AdditionalInfo>
         </Ul>
@@ -205,13 +183,16 @@ const Li = styled.li`
   }
 `;
 
-const AdditionalInfo = styled.span`
+export const infoCommonCss = css`
   position: absolute;
+  opacity: 0.4;
+  font-size: 0.5em;
+`;
+
+const AdditionalInfo = styled.span`
   right: 4px;
   top: 4px;
   z-index: ${NAV_Z_INDEX};
-  opacity: 0.3;
-  font-size: 0.5em;
 `;
 
 const linksAlignFixH3 = css`

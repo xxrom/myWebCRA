@@ -21,6 +21,8 @@ type TextProps = {
 };
 
 export const fontCommon = css`
+  display: inline-flex;
+  justify-content: center;
   color: ${theme.colors.font};
   text-align: center;
   font-weight: 300;
@@ -29,9 +31,9 @@ export const fontCommon = css`
 `;
 
 const isColumnCss = css`
-  display: flex;
   flex-direction: column;
   text-align: left;
+  justify-content: flex-start;
 `;
 
 /*
@@ -83,25 +85,25 @@ export const Text = ({
   switch (variant) {
     case 'h1':
       return (
-        <span className={cx(commonClassName, fontCommon, h1FontSize)} {...rest}>
+        <span className={cx(fontCommon, h1FontSize, commonClassName)} {...rest}>
           {children}
         </span>
       );
     case 'h3':
       return (
-        <span className={cx(commonClassName, fontCommon, h3FontSize)} {...rest}>
+        <span className={cx(fontCommon, h3FontSize, commonClassName)} {...rest}>
           {children}
         </span>
       );
     case 'h4':
       return (
-        <span className={cx(commonClassName, fontCommon, h4FontSize)} {...rest}>
+        <span className={cx(fontCommon, h4FontSize, commonClassName)} {...rest}>
           {children}
         </span>
       );
     case 'h5':
       return (
-        <span className={cx(commonClassName, fontCommon, h5FontSize)} {...rest}>
+        <span className={cx(fontCommon, h5FontSize, commonClassName)} {...rest}>
           {children}
         </span>
       );
@@ -110,7 +112,7 @@ export const Text = ({
       return (
         <a
           target={rest?.target}
-          className={cx(commonClassName, fontCommon, h3FontSize, linkCommon)}
+          className={cx(fontCommon, h3FontSize, linkCommon, commonClassName)}
           {...rest}
         >
           {children}
@@ -119,7 +121,7 @@ export const Text = ({
     case 'link-h5':
       return (
         <a
-          className={cx(commonClassName, fontCommon, h5FontSize, linkCommon)}
+          className={cx(fontCommon, h5FontSize, linkCommon, commonClassName)}
           {...rest}
         >
           {children}

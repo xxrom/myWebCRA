@@ -108,7 +108,7 @@ export const Experience = ({ index }: ExperienceProps) => {
         Experience (over 8 years):
       </Text>
 
-      <Container className={jobsContainerCss} isEnabledPaddingBottom={false}>
+      <Container className={containerWrapCss} isEnabledPaddingBottom={false}>
         <Job info={sphereInfo} imgSrc={sphere} />
         <Job info={vtbInfo} imgSrc={vtb} />
         <Job info={yandexInfo} imgSrc={yandex} />
@@ -193,11 +193,11 @@ const Job = ({ imgSrc = sber, info }: JobProps) => {
 const containerCss = css`
   flex-direction: column;
 `;
-const jobsContainerCss = css`
+
+export const containerWrapCss = css`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: start;
-  margin: 0;
 `;
 
 const JobWrapper = styled.div`
@@ -206,15 +206,15 @@ const JobWrapper = styled.div`
   flex: 1;
 
   align-items: center;
-  padding: 2rem 2rem;
+  padding: 2rem 0.5rem;
   box-sizing: border-box;
 
   @media screen and (max-width: 768px) {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 0.5rem;
   }
 
   @media screen and (max-width: 575px) {
-    padding: 1rem;
+    padding: 1rem 0.5;
   }
 `;
 

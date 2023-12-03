@@ -21,14 +21,20 @@ export default defineConfig(({ mode }) => {
   return {
     publicDir: 'public',
     plugins: [
+      react(),
       linaria({
         displayName: true,
+        sourceMap: process.env.NODE_ENV !== 'production',
         include: ['**/*.{ts,tsx}'],
         babelOptions: {
-          presets: ['@babel/preset-typescript', '@babel/preset-react'],
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-typescript',
+            '@babel/preset-react',
+            '@linaria',
+          ],
         },
       }),
-      react(),
     ],
     resolve: {
       alias: {
