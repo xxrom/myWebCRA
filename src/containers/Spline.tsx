@@ -40,11 +40,11 @@ export const Spline = memo(({ index }: SplineProps) => {
   const isInViewRef = useRef(true);
   const deltaRef = useRef(0);
   const { width, canvasScale } = useWindowSize();
-  const [scene, setScene] = useState();
-  const [renderer, setRenderer] = useState();
-  const [spline, setSpline] = useState();
-  const [texture, setTexture] = useState();
-  const [mStack, setMStack] = useState();
+  const [scene, setScene] = useState<any>();
+  const [renderer, setRenderer] = useState<any>();
+  const [spline, setSpline] = useState<any>();
+  const [texture, setTexture] = useState<any>();
+  const [_mStack, setMStack] = useState<any>();
 
   const { isInView = true } =
     useAppSelector(scrollSelectors.getComponentInfoById(index)) || {};
@@ -222,16 +222,15 @@ export const Spline = memo(({ index }: SplineProps) => {
 
     renderRef.current = true;
 
+    const wrapper = wrapperRef.current;
+
     if (wrapperRef.current) {
       wrapperRef.current.appendChild(renderer.domElement);
     }
 
     return () => {
-      if (
-        wrapperRef.current &&
-        wrapperRef.current.contains(renderer.domElement)
-      ) {
-        wrapperRef.current.removeChild(renderer.domElement);
+      if (wrapper && wrapper.contains(renderer.domElement)) {
+        wrapper.removeChild(renderer.domElement);
       }
     };
   }, []);
