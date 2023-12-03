@@ -13,7 +13,7 @@ export const NAV_Z_INDEX = 10;
 export const Layout = memo(() => {
   const navRef = useRef<HTMLElement>(null);
   const firstComponentInfo = useAppSelector(
-    scrollSelectors.getComponentInfoById(0)
+    scrollSelectors.selectComponentInfoById(0)
   );
   const isDarkBackground = firstComponentInfo?.isInView;
 

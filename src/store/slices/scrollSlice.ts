@@ -41,8 +41,6 @@ export const scrollSlice = createSlice({
         const componentHeight = element?.clientHeight || 0;
         const isInView = Math.abs(offsetTop) < componentHeight;
 
-        console.log('offsetTop', offsetTop);
-
         return {
           offsetTop,
           componentHeight,
@@ -50,7 +48,6 @@ export const scrollSlice = createSlice({
         };
       };
 
-      console.log('UPDATE!', state.components);
       const updatedComponents = state?.components?.reduce(
         (accumulate: any, element, index) => ({
           ...accumulate,
@@ -59,32 +56,41 @@ export const scrollSlice = createSlice({
         {}
       );
 
-      console.log('up', updatedComponents);
       state.positions = updatedComponents;
-      console.log('updatedPositions', state.positions);
+      //console.log('updatedPositions', state.positions);
     },
     findAllComponents: (state) => {
       state.components = Array.from(
         document.querySelectorAll('[data-component-index]') as any
       ); // TODO types ...
-      console.log('findAllComponents: ', state.components);
+      //console.log('findAllComponents: ', state.components);
     },
     setScrollY: (state, action: PayloadAction<number>) => {
-      console.log('scrollSlice: New offsetTop', action.payload);
       state.scrollY = action.payload;
-    },
-    selectComponent: (state): any => {
-      const index = 0;
-
-      console.log('SelectComponent postition', state.positions);
-
-      return state?.positions?.[index];
     },
   },
 });
 
+/*
 export const scrollSelectors = {
-  getComponentInfoById: (index?: number) => (state: RootStateType) =>
+  selectComponentInfoById: (index?: number) => () => {
+
+    const selectPositions = (s: RootStateType) => s?.scroll?.positions;
+    const selectPositionIndex = (s: RootStateType, innerIndex: number) => innerIndex;
+
+    return createSelector([selectPositions, selectPositionIndex],
+      (positions, i) => {
+        if (typeof index !== 'number' || index < 0) {
+          return null;
+        }
+
+        return positions?.[i];
+      }
+    );
+  },
+*/
+export const scrollSelectors = {
+  selectComponentInfoById: (index?: number) => (state: RootStateType) =>
     (typeof index === 'number' && state.scroll.positions?.[index]) || null,
 };
 
@@ -96,7 +102,6 @@ export const {
   updateComponentsScrollInfo,
   findAllComponents,
   setScrollY,
-  selectComponent,
 } = scrollSlice.actions;
 export const scrollSliceActions = scrollSlice.actions;
 
