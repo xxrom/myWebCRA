@@ -47,6 +47,7 @@ export type Image2Props = {
   isDisabled?: boolean;
   type?: string;
   alt?: string;
+  className?: string;
 };
 export const Image2 = ({
   type = 'image/webp',
@@ -54,9 +55,10 @@ export const Image2 = ({
   isDisabled = false,
   src,
   fallback,
+  className,
   ...rest
 }: Image2Props) => (
-  <picture className={cx(imageCss, isDisabled && 'disabled')}>
+  <picture className={cx(imageCss, className, isDisabled && 'disabled')}>
     <source className={imageCss} srcSet={src} type={type} />
     <img className={imageCss} src={fallback} alt={alt} {...rest} />
   </picture>
