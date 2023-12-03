@@ -56,7 +56,7 @@ export const Projects = ({ index }: ProjectsProps) => {
           <Container isEnabledPaddingBottom={false} key={`${title}${url}`}>
             {/* TODO: Image add wrapper with settings for scale and height/width */}
             <a href={url} target="_blank" rel="noreferrer">
-              <ImageBox className={cx(imageCss)}>
+              <ImageBox className={imageCss}>
                 <Image2 src={src} fallback={fallback} />
               </ImageBox>
             </a>
@@ -83,18 +83,29 @@ const linkCss = css`
 `;
 
 const imageCss = css`
-  overflow: hidden;
   min-height: 30vw;
-  max-height: 500px;
+  max-height: 300px;
   min-width: 30vw;
-  max-width: 500px;
+  max-width: 300px;
 
-  @media screen and (max-width: 575px) {
-    min-height: 250px;
-    height: 70vw;
-    max-height: 500px;
-    min-width: 150px;
-    width: 70vw;
-    max-width: 500px;
+  @media screen and (min-width: 575px) {
+    min-height: 20vw;
+    max-height: 400px;
+    min-width: 20vw;
+    max-width: 400px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: 20vw;
+    max-height: 300px;
+    min-width: 20vw;
+    max-width: 300px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-height: 20vw;
+    max-height: 400px;
+    min-width: 20vw;
+    max-width: 400px;
   }
 `;
