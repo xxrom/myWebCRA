@@ -17,14 +17,14 @@ export const Projects = ({ index }: ProjectsProps) => {
     {
       title: 'OpenAI Component Generation',
       url: 'http://178.128.195.181:5050/',
-      src: genSrc, //'./uniswap.webp',
-      fallback: genSrc, //'./uniswap.png',
+      src: genSrc,
+      fallback: genSrc,
     },
     {
       title: 'Uniswap Ether / Solidity Web3',
       url: 'https://unswap-nik.netlify.app/',
-      src: uniswapSrc, //'./uniswap.webp',
-      fallback: uniswapSrc, //'./uniswap.png',
+      src: uniswapSrc,
+      fallback: uniswapSrc,
     },
     {
       title: 'Solidity TODO / Ehter Solidity Web3',
