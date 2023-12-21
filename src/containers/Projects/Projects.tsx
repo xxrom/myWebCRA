@@ -1,10 +1,11 @@
 import { css, cx } from '@linaria/core';
 import { Container, Text, Image, ImageBox, Image2 } from '../../components';
 import { blockMarginCss } from '../../theme';
-import activesoulSrc from './activesoul.png';
+import activeSoulSrc from './activesoul.png';
 import band3Src from './band3.jpg';
 import legoJsonSrc from './legoJson.png';
 import uniswapSrc from './uniswap.png';
+import genSrc from './gen.png';
 import solidityTodoSrc from './solidity-todo.png';
 import { ComponentsCommonTypes } from '../Spline';
 import { containerWrapCss } from '../Experience/Experience';
@@ -13,6 +14,12 @@ export type ProjectsProps = ComponentsCommonTypes;
 
 export const Projects = ({ index }: ProjectsProps) => {
   const projects = [
+    {
+      title: 'OpenAI Component Generation',
+      url: 'http://178.128.195.181:5050/',
+      src: genSrc, //'./uniswap.webp',
+      fallback: genSrc, //'./uniswap.png',
+    },
     {
       title: 'Uniswap Ether / Solidity Web3',
       url: 'https://unswap-nik.netlify.app/',
@@ -40,8 +47,8 @@ export const Projects = ({ index }: ProjectsProps) => {
     {
       title: 'ActiveSoul',
       url: 'https://active-soul.netlify.app/',
-      src: activesoulSrc,
-      fallback: activesoulSrc,
+      src: activeSoulSrc,
+      fallback: activeSoulSrc,
     },
   ];
 
