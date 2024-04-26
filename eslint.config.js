@@ -1,3 +1,55 @@
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import hooksPlugin from 'eslint-plugin-react-hooks';
+
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  {
+    plugins: {
+      'react-hooks': hooksPlugin,
+    },
+    rules: {
+      ...{
+        '@typescript-eslint/no-explicit-any': 'warn',
+        semi: ['error', 'always'],
+        quotes: ['warn', 'single'],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
+        'react/display-name': 'off',
+        //'prettier/prettier': 'warn',
+        '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-unused-vars': [
+          'off',
+          { argsIgnorePattern: '^_' },
+        ],
+        'padding-line-between-statements': [
+          'error',
+          {
+            blankLine: 'always',
+            prev: '*',
+            next: 'return',
+          },
+          {
+            blankLine: 'always',
+            prev: ['const', 'let', 'var'],
+            next: '*',
+          },
+          {
+            blankLine: 'any',
+            prev: ['const', 'let', 'var'],
+            next: ['const', 'let', 'var'],
+          },
+        ],
+      },
+      ...hooksPlugin.configs.recommended.rules,
+    },
+  }
+);
+
+/*
 export default [
   {
     languageOptions: {
@@ -60,6 +112,7 @@ export default [
     ],
   },
 ];
+*/
 
 /*
 export default [
