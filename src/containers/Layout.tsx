@@ -4,7 +4,7 @@ import { styled } from '@linaria/react';
 import { Text } from '../components';
 import { fontCommon } from '../components/Text';
 import { theme } from '../theme';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useRef } from 'react';
 import { scrollSelectors } from '@/store/slices/scrollSlice';
 import { useAppSelector } from '@/store/store';
 
@@ -17,12 +17,19 @@ export const Layout = memo(() => {
   );
   const isDarkBackground = firstComponentInfo?.isInView;
 
+  const onClickLink = useCallback(
+    (url: string) => () => {
+      window?.tracker?.track('chernyshov.app', 'click', 'link', 'layout', url);
+    },
+    []
+  );
+
   return (
     <Wrapper>
       <Nav ref={navRef} className={cx(isDarkBackground && darkNavCSS)}>
         <Ul>
           <Li className={mobileHideTextCss}>
-            <LinkMin to="/" className={fontCommon}>
+            <LinkMin to="/" className={fontCommon} onClick={onClickLink('/')}>
               <Text variant="h3" className={mobileHideTextCss}>
                 Chernyshov Nikita
               </Text>
@@ -34,6 +41,7 @@ export const Layout = memo(() => {
               variant="link-h5"
               className={linksAlignFixH3}
               href="https://www.linkedin.com/in/chernyshovn/"
+              onClick={onClickLink('https://www.linkedin.com/in/chernyshovn/')}
             >
               LinkedIn
             </Text>
@@ -44,6 +52,7 @@ export const Layout = memo(() => {
               variant="link-h5"
               className={linksAlignFixH3}
               href="mailto:chernyshovnm@gmail.com"
+              onClick={onClickLink('mailto:chernyshovnm@gmail.com')}
             >
               eMail
             </Text>
@@ -52,7 +61,8 @@ export const Layout = memo(() => {
             <Text
               variant="link-h5"
               className={linksAlignFixH3}
-              href="https://github.com/workxrom"
+              href="https://github.com/xxrom"
+              onClick={onClickLink('https://github.com/xxrom')}
             >
               GitHub
             </Text>
@@ -78,6 +88,7 @@ export const Layout = memo(() => {
             className={footerItemCss}
             variant="link-h5"
             href="https://www.linkedin.com/in/chernyshovn/"
+            onClick={onClickLink('https://www.linkedin.com/in/chernyshovn/')}
           >
             linkedin
           </Text>
@@ -86,6 +97,7 @@ export const Layout = memo(() => {
             className={footerItemCss}
             variant="link-h5"
             href="mailto:chernyshovnm@gmail.com"
+            onClick={onClickLink('mailto:chernyshovnm@gmail.com')}
           >
             mail
           </Text>
@@ -93,7 +105,8 @@ export const Layout = memo(() => {
           <Text
             className={footerItemCss}
             variant="link-h5"
-            href="https://github.com/workxrom"
+            href="https://github.com/xxrom"
+            onClick={onClickLink('https://github.com/xxrom')}
           >
             git
           </Text>

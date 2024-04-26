@@ -11,10 +11,15 @@ import { ComponentsCommonTypes } from '../Spline';
 import me from '../Intro/me.jpg';
 import { Row } from '@/components/Row';
 import { styled } from '@linaria/react';
+import { useCallback } from 'react';
 
 export type EducationAndHobbyProps = ComponentsCommonTypes;
 
 export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
+  const onClickSend = useCallback(() => {
+    window?.tracker?.track('chernyshov.app', 'click', 'myPhoto');
+  }, []);
+
   return (
     <div data-component-index={index}>
       <Container>
@@ -23,17 +28,16 @@ export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
         </Text>
 
         <BorderContainer margin={theme.margin.content}>
-          <Text variant="h3">
-            Bauman Moscow State Technical University (Russia):
-          </Text>
+          <Text variant="h3">Glyndwr University:</Text>
+          <Text variant="h5">Computer Science, Master’s degree</Text>
+
+          <Text variant="h3">---</Text>
+
+          <Text variant="h3">Bauman Moscow State Technical University:</Text>
 
           <Text variant="h5">
             School of Robotic Technologies and Complex Automatization
           </Text>
-
-          <Text variant="h3">---</Text>
-          <Text variant="h3">Glyndwr University (UK):</Text>
-          <Text variant="h5">Computer Science, Master’s degree</Text>
         </BorderContainer>
       </Container>
 
@@ -41,7 +45,7 @@ export const EducationAndHobby = ({ index }: EducationAndHobbyProps) => {
         <Text variant="h1">Hobbies:</Text>
 
         <Row>
-          <MyImg>
+          <MyImg onClick={onClickSend}>
             <Image src={me} aria-label="me" alt="me" />
           </MyImg>
 

@@ -9,6 +9,7 @@ import genSrc from './gen.png';
 import solidityTodoSrc from './solidity-todo.png';
 import { ComponentsCommonTypes } from '../Spline';
 import { containerWrapCss } from '../Experience/Experience';
+import { useCallback } from 'react';
 
 export type ProjectsProps = ComponentsCommonTypes;
 
@@ -52,6 +53,13 @@ export const Projects = ({ index }: ProjectsProps) => {
     },
   ];
 
+  const onClickSendStats = useCallback(
+    (url: string) => () => {
+      window?.tracker?.track('chernyshov.app', 'projects', 'link', 'open', url);
+    },
+    []
+  );
+
   return (
     <Container data-component-index={index}>
       <Text variant="h1" className={blockMarginCss}>
@@ -62,7 +70,12 @@ export const Projects = ({ index }: ProjectsProps) => {
         {projects.map(({ title, url, src, fallback }) => (
           <Container isEnabledPaddingBottom={false} key={`${title}${url}`}>
             {/* TODO: Image add wrapper with settings for scale and height/width */}
-            <a href={url} target="_blank" rel="noreferrer">
+            <a
+              href={url}
+              onClick={onClickSendStats(url)}
+              target="_blank"
+              rel="noreferrer"
+            >
               <ImageBox className={imageCss}>
                 <Image2 src={src} fallback={fallback} />
               </ImageBox>
@@ -73,6 +86,7 @@ export const Projects = ({ index }: ProjectsProps) => {
               target="_blank"
               rel="noreferrer"
               className={linkCss}
+              onClick={onClickSendStats(url)}
               href={url}
             >
               {title}

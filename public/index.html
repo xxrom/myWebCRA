@@ -27,6 +27,31 @@
     -->
     <title>Chernyshov</title>
 
+    <script >
+      (function(w, d, m, s, src, myScript, firstScript) {
+        w[m] = function(){w[m].q.push(arguments);};
+        w[m].q = w[m].q || [];
+        w[m].t = new Date().getTime();
+
+        // Add my <script /> at first place
+        myScript = d.createElement(s);
+        myScript.async = 1;
+        myScript.src = src;
+
+        // insert myScript before firstScript
+        firstScript = d.getElementsByTagName(s)[0];
+        firstScript.parentNode.insertBefore(myScript, firstScript);
+      })(
+        window,
+        document,
+        "nc",
+        "script",
+        "http://litl.cloud/tracker",
+      );
+
+      nc("open", "pageview");
+      nc("chernyshov.app", "initview");
+    </script>
 
   </head>
   <body>

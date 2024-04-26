@@ -15,7 +15,7 @@ import { ComponentsCommonTypes } from '../Spline';
 const sberInfo: JobProps['info'] = {
   title: 'Sber (2+ years)',
   description: `
-  Oct. 2016 - Aug. 2018: Sberbank, Moscow, Russia
+  Oct. 2016 - Aug. 2018: Sberbank
 
   **Project**: 
 
@@ -33,7 +33,7 @@ const sberInfo: JobProps['info'] = {
 const yandexInfo: JobProps['info'] = {
   title: 'Yandex (6+ months)',
   description: `
-  Aug. 2018 - Jan. 2019: Yandex, Moscow, Russia
+  Aug. 2018 - Jan. 2019: Yandex
 
   **Project Yandex News**: 
 
@@ -54,7 +54,7 @@ const yandexInfo: JobProps['info'] = {
 const vtbInfo: JobProps['info'] = {
   title: 'VTB bank (2+ years)',
   description: `
-  Jan. 2019 - Jun. 2021: VTB bank, Moscow, Russia
+  Jan. 2019 - Jun. 2021: VTB bank
 
   **Project**: 
 
@@ -78,11 +78,11 @@ const vtbInfo: JobProps['info'] = {
   `,
 };
 const sphereInfo: JobProps['info'] = {
-  title: 'Sphere inc (2+ years)',
+  title: 'Sphere inc (3 years)',
   description: `
-  Jun. 2021 - now: Sphere, North Miami Beach, FL 
+  Jun. 2021 - now: Sphere / BP pulse
 
-  **Project BP** (british petroleum): 
+  **Project BP pulse** (british petroleum): 
 
   - 👉 marketing website 
   - 👉 contentful 
@@ -129,7 +129,16 @@ type JobProps = {
 const Job = ({ imgSrc = sber, info }: JobProps) => {
   const [isOpened, setIsOpened] = useState(false);
 
-  const onTogglePopup = useCallback(() => setIsOpened(!isOpened), [isOpened]);
+  const onTogglePopup = useCallback(() => {
+    setIsOpened(!isOpened);
+    window?.tracker?.track(
+      'chernyshov.app',
+      'toggle',
+      !isOpened ? 'open' : 'close',
+      'experience',
+      info.title
+    );
+  }, [isOpened, info]);
 
   useEffect(() => {
     // Hack for disabling blobal scroll when popup opened

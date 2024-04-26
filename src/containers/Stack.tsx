@@ -7,7 +7,7 @@ export type StackProps = ComponentsCommonTypes;
 
 export const Stack = ({ index }: StackProps) => {
   return (
-    <Container data-compontent-index={index} className={containerCss}>
+    <Container data-component-index={index} className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
         Stack:
       </Text>
