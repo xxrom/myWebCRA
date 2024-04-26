@@ -11,7 +11,7 @@
     "coverage": "vitest run --coverage",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
+    "lint": "eslint",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\" --fix",
     "lint:fix2": "eslint . --ext ts --ext tsx --ext js --quiet --fix",
     "circleci:validate_old": "circleci config validate",

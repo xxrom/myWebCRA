@@ -1,5 +1,0 @@
-build
-coverage
-dist
-./src/types.d.ts
-./src/global.d.ts
