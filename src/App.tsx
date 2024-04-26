@@ -11,6 +11,7 @@ const App = memo(() => {
   //const { components, subscribeComponents } = useInView();
   //console.log('APP', components, subscribeComponents);
 
+  //return <div>Hello</div>;
   //return <Main />;
 
   return (

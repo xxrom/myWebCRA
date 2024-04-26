@@ -1,6 +1,5 @@
 import { styled } from '@linaria/react';
 import {
-  //Intro,
   Stack,
   Projects,
   Experience,

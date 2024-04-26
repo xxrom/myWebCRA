@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { Tuple, configureStore } from '@reduxjs/toolkit';
 import scrollReducer from './slices/scrollSlice';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './saga/sagas';
@@ -12,7 +12,7 @@ const reducers = {
 
 export const store = configureStore({
   reducer: reducers,
-  middleware: [sagaMiddleware],
+  middleware: () => new Tuple(sagaMiddleware),
 });
 
 // Activate/run saga
