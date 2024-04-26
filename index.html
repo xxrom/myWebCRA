@@ -43,13 +43,14 @@
         // insert myScript before firstScript
         firstScript = d.getElementsByTagName(s)[0];
         firstScript.parentNode.insertBefore(myScript, firstScript);
-      })(window, document, 'nc', 'script', 'http://litl.cloud/tracker');
+      })(window, document, 'nc', 'script', 'https://litl.cloud/tracker');
 
       nc('open', 'pageview');
       nc('chernyshov.app', 'initview');
 
       nc(
-        'user', 'params',
+        'user',
+        'params',
         'screen.width',
         window.screen.width.toString(),
         'screen.height',
