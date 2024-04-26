@@ -10,10 +10,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node@18
+      - name: Setup Node@20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.17
+          node-version: 20.11
 
       - name: Install Eslint dependencies
         run: yarn add -D eslint eslint-plugin-react-hooks eslint-plugin-jest-dom eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-react
@@ -33,10 +33,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node@18
+      - name: Setup Node@20
         uses: actions/setup-node@v3
         with:
-          node-version: 18.17
+          node-version: 20.11
 
       - name: Install TS dependencies
         run: yarn add typescript
