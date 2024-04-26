@@ -1,45 +1,45 @@
-#name: Super-Linter
+name: Super-Linter
 
-#on: push
+on: push
 
-#jobs:
-  #lint:
-    #name: Lint code base
-    #runs-on: ubuntu-latest
-    #steps:
-      #- name: Checkout code
-        #uses: actions/checkout@v2
+jobs:
+  lint:
+    name: Lint code base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      #- name: Setup Node@20
-        #uses: actions/setup-node@v3
-        #with:
-          #node-version: 20.11
+      - name: Setup Node@20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11
 
-      #- name: Install Eslint dependencies
-        #run: yarn add -D eslint eslint-plugin-react-hooks eslint-plugin-jest-dom eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-react
+      - name: Install Eslint dependencies
+        run: yarn add -D eslint eslint-plugin-react-hooks eslint-plugin-jest-dom eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-react
 
-      #- name: Run linter
-        #run: yarn lint
+      - name: Run linter
+        run: yarn lint
 
-        ##uses: github/super-linter@v4
-        #env:
-          #DEFAULT_BRANCH: master
-          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #uses: github/super-linter@v4
+        env:
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  #tsc:
-    #name: TSC code base
-    #runs-on: ubuntu-latest
-    #steps:
-      #- name: Checkout code
-        #uses: actions/checkout@v2
+  tsc:
+    name: TSC code base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      #- name: Setup Node@20
-        #uses: actions/setup-node@v3
-        #with:
-          #node-version: 20.11
+      - name: Setup Node@20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.11
 
-      #- name: Install TS dependencies
-        #run: yarn add typescript
+      - name: Install TS dependencies
+        run: yarn add typescript
 
-      #- name: Run tsc check
-        #run: yarn tsc
+      - name: Run tsc check
+        run: yarn tsc
