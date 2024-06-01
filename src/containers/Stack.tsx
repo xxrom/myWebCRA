@@ -14,35 +14,41 @@ export const Stack = ({ index }: StackProps) => {
 
       <BorderContainer>
         <Text variant="h3" className={textBoldCss}>
-          <b>TypeScript</b> / JavaScript
+          <b>TypeScript</b> / <span>JavaScript</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          React / <b>Next.js</b> / GraphQL / WebSockets / CRUD API
+          <span>React</span> / <b>Next.js</b> / <span>GraphQL</span> /{' '}
+          <span>WebSockets</span> / <span>CRUD API</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          Python / Vite / <b>Nest.js</b> / Fastify
+          <span>Python</span> / <span>Vite</span> / <span>Nest.js</span> /{' '}
+          <span>Fastify</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>DigitalOcean</b> / AWS / GCP / Heroku
+          <b>DigitalOcean</b>/<span>AWS</span>/<span>GCP</span>/
+          <span>Heroku</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>k3s/k8s</b> / Proxmox / Ansible / Traefik / Harbor
+          <b>k3s/k8s</b> / <span>Proxmox</span> / <span>Ansible</span> /{' '}
+          <span>Traefik</span> / <span>Harbor</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          Agile / <b>JIRA</b> / CI/CD / Docker / Storybook
+          <span>Agile</span> / <b>JIRA</b> / <span>CI/CD</span> /{' '}
+          <span>Docker</span> / <span>Storybook</span>
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>Leadership</b> / Mentoring / Performance Optimization
+          <b>Leadership</b> / <span>Mentoring</span> /{' '}
+          <span>Performance Optimization</span>{' '}
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>Solidity</b> / Ethers.js / Web3.js
+          <b>Solidity</b> / <span>Ethers.js</span> / <span>Web3.js</span>
         </Text>
       </BorderContainer>
     </Container>
@@ -54,7 +60,13 @@ const containerCss = css`
 `;
 
 const textBoldCss = css`
+  display: flex;
+  flex-flow: wrap;
   b {
     font-weight: 400;
+  }
+  b,
+  span {
+    padding: 0 0.5rem;
   }
 `;
