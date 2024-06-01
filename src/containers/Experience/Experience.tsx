@@ -17,9 +17,9 @@ const sberInfo: JobProps['info'] = {
   description: `
   Oct. 2016 - Aug. 2018: Sberbank
 
-  **Project**: 
+  **Project**:
 
-  - 👉 debit cards ordering system at bank branches 
+  - 👉 debit cards ordering system at bank branches
   - 👉 entering customers **personal information** like phone, email, name and so on
 
   **Responsiblities**:
@@ -35,14 +35,14 @@ const yandexInfo: JobProps['info'] = {
   description: `
   Aug. 2018 - Jan. 2019: Yandex
 
-  **Project Yandex News**: 
+  **Project Yandex News**:
 
-  - 👉 biggest news platform 
-  - 👉 stock charts 
-  - 👉 all kind of news 
+  - 👉 biggest news platform
+  - 👉 stock charts
+  - 👉 all kind of news
 
   **Responsiblities**:
-  - 🪴  developed componet **Carousel** for images (like in Instagram) 
+  - 🪴  developed componet **Carousel** for images (like in Instagram)
   - ◽ development / code review / testing
   - ◽ adapted **new header component** (with search integration)
 
@@ -56,9 +56,9 @@ const vtbInfo: JobProps['info'] = {
   description: `
   Jan. 2019 - Jun. 2021: VTB bank
 
-  **Project**: 
+  **Project**:
 
-  - 👉 **multi-user** 👫 online editor 📝 
+  - 👉 **multi-user** 👫 online editor 📝
   - 👉 like online MS Word based on markdown
   - 👉 **chats** / comments
   - 👉 version control
@@ -67,7 +67,7 @@ const vtbInfo: JobProps['info'] = {
   **Responsiblities**:
   - 🪴  built and maintained projects **from** **scratch**
   - ◽ development / team-leading / project actualization / testing
-  - 🚀 optimized project build for **40%** from 3min to 1:50 min 
+  - 🚀 optimized project build for **40%** from 3min to 1:50 min
   - ◽ mentorship of team members
   - 👨‍💻 interviewing for team (**20+** candidates)
 
@@ -82,11 +82,11 @@ const sphereInfo: JobProps['info'] = {
   description: `
   Jun. 2021 - now: Sphere / BP pulse
 
-  **Project BP pulse** (british petroleum): 
+  **Project BP pulse** (british petroleum):
 
-  - 👉 marketing website 
-  - 👉 contentful 
-  - 👉 apollo (graphQL) 
+  - 👉 marketing website
+  - 👉 contentful
+  - 👉 apollo (graphQL)
   - 👉 k8s
 
   **Responsiblities**:
@@ -99,13 +99,15 @@ const sphereInfo: JobProps['info'] = {
   `,
 };
 
+const TotalExperience = 'Experience (9+ years):';
+
 export type ExperienceProps = ComponentsCommonTypes;
 
 export const Experience = ({ index }: ExperienceProps) => {
   return (
     <Container data-component-index={index} className={containerCss}>
       <Text variant="h1" className={blockMarginCss}>
-        Experience (over 8 years):
+        {TotalExperience}
       </Text>
 
       <Container className={containerWrapCss} isEnabledPaddingBottom={false}>
