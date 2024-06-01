@@ -4,22 +4,12 @@ import { Layout } from './containers';
 import { memo } from 'react';
 //import { useInView } from './hooks/useInView';
 
-//[> A <Routes> looks through its children <Route>s and
-//renders the first one that matches the current URL. */}
-//<GlobalStyle />
 const App = memo(() => {
-  //const { components, subscribeComponents } = useInView();
-  //console.log('APP', components, subscribeComponents);
-
-  //return <div>Hello</div>;
-  //return <Main />;
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path="new" element={<NewPage />} />
           <Route path="ui" element={<UI />} />
           <Route path="ui2" element={<UI />} />
         </Route>
@@ -34,12 +24,15 @@ const App = memo(() => {
   );
 });
 
-export default App;
+/*
+* For generating all pages use: !!!
+  <Text
+    className={footerItemCss}
+    variant="link-h5"
+    onClick={onClickLink('ui')}
+  >
+    <Link to="/ui">UI</Link>
+  </Text>
+*/
 
-const NewPage = () => {
-  return (
-    <div>
-      <h1>new</h1>
-    </div>
-  );
-};
+export default App;
