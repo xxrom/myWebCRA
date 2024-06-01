@@ -110,6 +110,13 @@ export const Layout = memo(() => {
           >
             git
           </Text>
+          <Text
+            className={footerItemCss}
+            variant="link-h5"
+            onClick={onClickLink('ui')}
+          >
+            <Link to="/ui">UI</Link>
+          </Text>
         </div>
       </Footer>
     </Wrapper>
