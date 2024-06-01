@@ -1,4 +1,4 @@
-gcp-manual-update:
+up:
 	yarn
 	yarn build
 	sudo cp -r ./build/* /var/www/chernyshov.app/html
