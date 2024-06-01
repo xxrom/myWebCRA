@@ -21,6 +21,8 @@ const App = memo(() => {
           <Route index element={<Main />} />
           <Route path="new" element={<NewPage />} />
           <Route path="ui" element={<UI />} />
+          <Route path="ui2" element={<UI />} />
+          <Route path="ui2" element={<UI />} />
         </Route>
         <Route path="/todo-use-reducer" element={<Layout />}>
           <Route index element={<TodoUseReducerPage />} />

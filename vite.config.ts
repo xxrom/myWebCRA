@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 import { defineConfig, loadEnv } from 'vite';
-import linaria from '@linaria/vite';
 import react from '@vitejs/plugin-react-swc';
 import { ImportMeta } from './src/env.d';
 import path from 'path';
+import wyw from '@wyw-in-js/vite';
 
 /*
   import.meta.env - will be available in React only "VITE_*"
@@ -21,20 +21,21 @@ export default defineConfig(({ mode }) => {
   return {
     publicDir: 'public',
     plugins: [
-      react(),
-      linaria({
+      wyw({
         displayName: true,
         sourceMap: process.env.NODE_ENV !== 'production',
         include: ['**/*.{ts,tsx}'],
         babelOptions: {
           presets: [
-            '@babel/preset-env',
+            //'@babel/preset-env',
             '@babel/preset-typescript',
             '@babel/preset-react',
-            '@linaria',
+            //'@linaria',
           ],
+          //plugins: ['@wyw-in-js/babel-preset'],
         },
       }),
+      react(),
     ],
     resolve: {
       alias: {
