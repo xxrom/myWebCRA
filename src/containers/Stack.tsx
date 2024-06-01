@@ -18,13 +18,19 @@ export const Stack = ({ index }: StackProps) => {
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>React</b> / GraphQL / WebSockets
+          <b>React</b> / GraphQL / WebSockets / CRUD API
         </Text>
 
-        <Text variant="h3">Python / Koa</Text>
+        <Text variant="h3">
+          Python / <b>Nest.js</b> / Fastify
+        </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>k3s/k8s</b> / AWS / GCP / Heroku
+          <b>DigitalOcean</b> / AWS / GCP / Heroku
+        </Text>
+
+        <Text variant="h3" className={textBoldCss}>
+          <b>k3s/k8s</b> / Proxmox / Ansible / Traefik / Harbor
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
