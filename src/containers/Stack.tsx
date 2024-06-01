@@ -18,11 +18,11 @@ export const Stack = ({ index }: StackProps) => {
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
-          <b>React</b> / GraphQL / WebSockets / CRUD API
+          React / <b>Next.js</b> / GraphQL / WebSockets / CRUD API
         </Text>
 
-        <Text variant="h3">
-          Python / <b>Nest.js</b> / Fastify
+        <Text variant="h3" className={textBoldCss}>
+          Python / Vite / <b>Nest.js</b> / Fastify
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
@@ -31,6 +31,14 @@ export const Stack = ({ index }: StackProps) => {
 
         <Text variant="h3" className={textBoldCss}>
           <b>k3s/k8s</b> / Proxmox / Ansible / Traefik / Harbor
+        </Text>
+
+        <Text variant="h3" className={textBoldCss}>
+          Agile / <b>JIRA</b> / CI/CD / Docker / Storybook
+        </Text>
+
+        <Text variant="h3" className={textBoldCss}>
+          <b>Leadership</b> / Mentoring / Performance Optimization
         </Text>
 
         <Text variant="h3" className={textBoldCss}>
